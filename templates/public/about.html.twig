@@ -6,8 +6,8 @@
             <span class="mt-1">{{ 'about.intro_title'|trans }}</span>
             <span>👩‍💻</span>
         </h2>
-        <p>{{ 'about.intro_text1'|trans }}</p>
-        <p>{{ 'about.intro_text2'|trans }}</p>
+        <p class="justify">{{ 'about.intro_text1'|trans }}</p>
+        <p class="justify">{{ 'about.intro_text2'|trans }}</p>
 
         <hr>
 
@@ -15,9 +15,9 @@
             <span class="mt-1">{{ 'about.learning_title'|trans }}</span>
             <span>🧠</span>
         </h2>
-        <p>
+        <p class="justify">
             {{ 'about.learning_text'|trans({
-                '%link%': '<a href="https://openclassrooms.com/paths/59-developpeur-dapplication-php-symfony" target="_blank">OpenClassrooms</a>'
+                '%link%': '<a href="https://openclassrooms.com/paths/59-developpeur-dapplication-php-symfony" target="_blank">OpenClassrooms</a>',
             })|raw }}
         </p>
 
@@ -27,9 +27,9 @@
             <span class="mt-1">{{ 'about.skills_title'|trans }}</span>
             <span>🧰</span>
         </h2>
-        <p>{{ 'about.skills_text'|trans|raw }}</p>
+        <p class="justify">{{ 'about.skills_text'|trans|raw }}</p>
 
-        <p class="pt-3">{{ 'about.outro'|trans }}</p>
+        <p class="justify pt-3">{{ 'about.outro'|trans }}</p>
 
         <div class="xp-bar mt-5 text-center">
             <div class="progress-bar-title press-start-2p-regular">

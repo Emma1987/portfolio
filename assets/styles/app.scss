@@ -12,7 +12,7 @@ html, body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin: 10px 10px 0 10px;
+    margin: 10px 10px 0;
     background-color: $background;
     color: $primary-color;
     font-family: 'Space Grotesk', sans-serif;
@@ -40,6 +40,10 @@ html, body {
         word-spacing: -10px;
         gap: 10px;
         font-size: 1.1rem;
+    }
+
+    .justify {
+        text-align: justify;
     }
 
     header {
@@ -138,10 +142,6 @@ html, body {
                 margin: 2rem 0;
             }
 
-            p {
-                text-align: justify;
-            }
-
             .progress-bar-title {
                 font-size: .8rem;
             }
@@ -161,7 +161,7 @@ html, body {
                 height: 100%;
                 width: 67%;
                 background-color: $bright-yellow;
-                box-shadow: inset -2px -2px 0px $bright-green;
+                box-shadow: inset -2px -2px 0 $bright-green;
             }
         }
 
@@ -197,7 +197,7 @@ html, body {
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (width >= 768px) {
     body {
         header {
             #navigation {
