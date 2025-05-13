@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section id="contact">
+        <div class="text-center py-5">
+            <h2 class="title press-start-2p-regular">
+                <span>📮</span>
+                <span class="mt-1">{{ 'contact.title'|trans }}</span>
+            </h2>
+            <p class="sub-title mb-5">{{ 'contact.sub_title'|trans }}</p>
+
+            <div class="d-grid gap-3 col-6 mx-auto" id="contact-cards">
+                <a href="mailto:pingme@e-mercadal.com" class="mailto btn btn-outline-dark py-2">
+                    <i class="fa-solid fa-envelope"></i> {{ 'contact.email'|trans }}
+                </a>
+                <a href="https://www.linkedin.com/in/emmanuelle-mercadal/" target="_blank" class="linkedin btn btn-outline-dark py-2">
+                    <i class="fa-brands fa-linkedin"></i> {{ 'contact.linkedin'|trans }}
+                </a>
+                <a href="https://github.com/Emma1987" target="_blank" class="github btn btn-outline-dark py-2">
+                    <i class="fab fa-github"></i> {{ 'contact.github'|trans }}
+                </a>
+            </div>
+
+            <p class="mt-5 text-muted">
+                {{ 'contact.congrats'|trans }}
+            </p>
+        </div>
+    </section>
+{% endblock %}

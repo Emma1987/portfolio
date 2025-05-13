@@ -1,0 +1,49 @@
+meta:
+  title: Emmanuelle – Code, café & chaos bienveillant
+  description: Dev backend boostée au PHP, au café et à des playlists douteuses sur Spotify. Le frontend ? J'en fais aussi (quand il faut).
+
+header:
+    language:
+        french: 🇫🇷 Français
+        english: 🇬🇧 English
+
+    name: Emmanuelle
+    title: Développeur PHP/Symfony
+    sub_title: (et un peu Javascript aussi)
+
+    nav:
+        projects: Projets
+        skills: Skills
+        about: À propos
+        contact: Contact
+
+introduction:
+    hello: SALUT 👋
+    my_name_is: Je m'appelle Emmanuelle
+    what_i_do: 'J''écris du code, je fais des blagues nulles, et je prétends savoir ce que je fais (spoiler : c''est souvent vrai).'
+
+about:
+    intro_title: Moi
+    intro_text1: Moi c'est Emmanuelle, développeuse backend qui aime créer des applications à la fois utiles et agréables à utiliser (alors forcément, je fais aussi un peu de JavaScript côté front).
+    intro_text2: J'aime aussi les cafés Starbucks ☕, les orages ⛈️ et la photographie 📸.
+    learning_title: Le commencencement
+    learning_text: Je me suis formée via le parcours %link% Développeur d'applications PHP/Symfony, et je n'ai pas arrêté d'apprendre depuis.
+    skills_title: Ma boîte à outils
+    skills_text: |
+        Langages :<br><ul><li>PHP 6/7/8 🐘</li><li>JavaScript 💻 (notions en VueJS et React)</li><li>HTML5 & CSS3 🎨</li><li>SQL (MySQL, PostgreSQL) 🗄️</li></ul>
+        Frameworks :<br><ul><li>Symfony 4/5/6 ⚙ & PHPUnit 🧪️️</li><li>Bootstrap 🧩</li><li>jQuery 🕸️</li></ul>
+        Outils :<br><ul><li>Git & GitHub 🧬️</li><li>Bitbucket & Jira 📋️</li><li>Docker 🐳️</li><li>Caféine ☕</li></ul>
+        Méthodes :<br><ul><li>Pair programming 👯‍♀️</li><li>Code review 🔍</li></ul>
+        <p>Je fais attention au code propre, à l'accessibilité, et au confort des développeurs.</p>
+    outro: En résumé, je crée des trucs qui marchent, qui sont jolis, et bien sûr que non, je n'ai jamais développé en PHP6.
+    progress_bar: Level 2 — 67% to Level 3
+
+contact:
+    title: Contactez-moi
+    sub_title: Construisons quelque chose de cool ensemble !
+    email: E-mail
+    linkedin: LinkedIn
+    github: GitHub
+    congrats: Merci d'avoir scrollé. Vous gagnez 100 XP.
+
+footer: Tous droits réservés &copy; %date% - Emmanuelle Mercadal

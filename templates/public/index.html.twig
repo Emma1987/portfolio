@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section id="introduction">
+        <div class="profile-pic-container">
+            <img src="{{ asset('/images/profile.png') }}" alt="Profile picture">
+        </div>
+        <div class="introduction-text">
+            <p>{{ 'introduction.hello'|trans }}</p>
+            <p>{{ 'introduction.my_name_is'|trans }}</p>
+            <p>{{ 'introduction.what_i_do'|trans }}</p>
+        </div>
+    </section>
+{% endblock %}

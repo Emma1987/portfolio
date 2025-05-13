@@ -1,0 +1,228 @@
+$primary-color: #143347;
+$secondary-color: #c9a37a;
+$light-gray: #d3d3d3;
+$pastel-pink: #ffaebc;
+$pastel-green: #a0e7e5;
+$pastel-yellow: #fbe7c6;
+$bright-green: #b4f8c8;
+$bright-yellow: #fcd34d;
+$background: #FFF9FB;
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 10px 10px 0 10px;
+    background-color: $background;
+    color: $primary-color;
+    font-family: 'Space Grotesk', sans-serif;
+
+    .press-start-2p-regular {
+        font-family: "Press Start 2P", system-ui;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .dropdown {
+        .dropdown-toggle {
+            background-color: $background;
+            border-color: $light-gray;
+        }
+
+        .dropdown-menu {
+            min-width: 0;
+        }
+    }
+
+    h2.title.press-start-2p-regular {
+        display: flex;
+        margin-bottom: 1.5rem;
+        word-spacing: -10px;
+        gap: 10px;
+        font-size: 1.1rem;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+
+        #pre-header {
+            display: flex;
+            width: 100%;
+            justify-content: end;
+        }
+
+        #header {
+            a {
+                text-decoration: none;
+                color: $primary-color;
+            }
+
+            .title {
+                font-size: clamp(1.5rem, 4vw, 4rem);
+            }
+
+            .sub-title {
+                font-size: clamp(1rem, 3vw, 3rem);
+            }
+
+            .sub-sub-title {
+                font-size: clamp(.5rem, 1.2vw, 2rem);
+            }
+
+            .title, .sub-title, .sub-sub-title {
+                text-align: center;
+            }
+        }
+
+        #navigation {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 2rem;
+
+            > a {
+                max-width: 20%;
+                color: $primary-color;
+                text-decoration: none;
+
+                img {
+                    max-width: 100%;
+                }
+
+                p {
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    main {
+        flex: 1;
+
+        #introduction {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+            gap: 15px;
+
+            .profile-pic-container {
+                width: 250px;
+                height: 250px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                border-radius: 50%;
+                opacity: .7;
+                border: 4px solid $pastel-pink;
+
+                img {
+                    max-width: 100%;
+                }
+            }
+
+            .introduction-text {
+                text-align: center;
+            }
+        }
+
+        #about {
+            width: 100%;
+
+            hr {
+                margin: 2rem 0;
+            }
+
+            p {
+                text-align: justify;
+            }
+
+            .progress-bar-title {
+                font-size: .8rem;
+            }
+
+            .xp-bar-container {
+                width: 100%;
+                height: 20px;
+                background-color: $light-gray;
+                border: 2px solid $primary-color;
+                box-shadow: inset 2px 2px 0 $bright-green;
+                position: relative;
+                margin: 0 auto;
+                max-width: 400px;
+            }
+
+            .xp-bar-fill {
+                height: 100%;
+                width: 67%;
+                background-color: $bright-yellow;
+                box-shadow: inset -2px -2px 0px $bright-green;
+            }
+        }
+
+        #contact {
+            .title {
+                justify-content: center;
+            }
+
+            .sub-title {
+                font-size: 1.2rem;
+            }
+
+            #contact-cards {
+                .mailto {
+                    background-color: $pastel-yellow;
+                }
+
+                .linkedin {
+                    background-color: $pastel-pink;
+                }
+
+                .github {
+                    background-color: $pastel-green;
+                }
+            }
+        }
+    }
+
+    footer {
+        text-align: right;
+        color: $light-gray;
+        font-size: .8rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        header {
+            #navigation {
+                max-width: 60%;
+
+                > a {
+                    max-width: 15%;
+                }
+            }
+        }
+
+        main {
+            #introduction {
+                flex-direction: row-reverse;
+                justify-content: space-around;
+
+                .introduction-text {
+                    width: 60%;
+                }
+            }
+
+            #about {
+                width: 50%;
+                margin: auto;
+            }
+        }
+    }
+}
