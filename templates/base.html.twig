@@ -44,12 +44,12 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li>
-                        <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'en'})) }}">
+                        <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'en'})) }}">
                             {{ 'header.language.english'|trans }}
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'fr'})) }}">
+                        <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'fr'})) }}">
                             {{ 'header.language.french'|trans }}
                         </a>
                     </li>
@@ -90,7 +90,7 @@
     </main>
 
     <footer>
-        <p>{{ 'footer'|trans({'%date%': "now"|date("Y")})|raw }}</p>
+        <p>{{ 'footer'|trans({'%date%': 'now'|date('Y')})|raw }}</p>
     </footer>
 </body>
 </html>

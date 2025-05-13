@@ -1,0 +1,49 @@
+name: Lint Check
+
+on:
+    push:
+        branches:
+            - '**'
+    pull_request:
+        branches:
+            - '**'
+
+jobs:
+    lint:
+        name: Run Linters
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: ⬇️ Checkout code
+              uses: actions/checkout@v3
+
+            - name: ⚙️ Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                php-version: '8.2'
+
+            - name: ⚙️ Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: '18'
+
+            - name: 🧶 Install JS dependencies
+              run: npm install
+
+            - name: 📦 Install PHP dependencies
+              run: composer install --prefer-dist --no-progress
+
+            - name: 🧹 PHP-CS-Fixer
+              run: vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php --dry-run --diff
+
+            - name: 🧹 PHP-Stan
+              run: vendor/bin/phpstan analyse -n
+
+            - name: ✨ Twigcs
+              run: vendor/bin/twig-cs-fixer lint
+
+            - name: 📏 ESLint
+              run: npm run lint:js
+
+            - name: 🎨 Stylelint
+              run: npm run lint:scss
