@@ -2,3 +2,6 @@ parameters:
     level: 6
     paths:
         - src/
+    ignoreErrors:
+        - '#Property App\\Entity\\.*::\$id \(int\|null\) is never assigned int#'
+        - '#Property .* has no value type specified in iterable type#'

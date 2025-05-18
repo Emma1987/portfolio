@@ -1,0 +1,199 @@
+$pastel-pink: #fee3d8;
+$darker-pastel-pink: #fcd2c4;
+$pastel-yellow: #fefbf1;
+$darker-pastel-yellow: #feeec3;
+$pastel-green: #def2e6;
+$darker-pastel-green: #c2e3d4;
+$pastel-red: #ffe6e6;
+$pastel-blue: #ddecf0;
+$light-gray: #bbb;
+$background: $pastel-yellow;
+$text-color: #324662;
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: $background;
+    color: $text-color;
+    font-family: Inter, sans-serif;
+    font-size: 1.1rem;
+    padding: 10px;
+    gap: 20px;
+
+    .btn-primary {
+        background-color: $pastel-pink;
+        color: $text-color;
+        border-color: $pastel-pink;
+        box-shadow: 0 0 5px $pastel-pink;
+
+        &:hover, &:active {
+            background-color: $darker-pastel-pink;
+            border-color: $darker-pastel-pink;
+            color: $text-color;
+        }
+    }
+
+    .alert-success {
+        background-color: #D7F5E8;
+        color: #1E4F3F;
+        border: 1px solid #4BAF8B;
+        text-align: center;
+    }
+
+    .alert-danger {
+        background-color: #FFE6E6;
+        color: #771C1C;
+        border: 1px solid #FF7A7A;
+        text-align: center;
+    }
+
+    .custom-card {
+        padding: 1rem;
+        border-radius: 15px;
+
+        &.custom-card-blue {
+            background-color: $pastel-blue;
+        }
+
+        &.custom-card-green {
+            background-color: $pastel-green;
+        }
+
+        &.custom-card-yellow {
+            background-color: $darker-pastel-yellow;
+        }
+    }
+
+    input[type="checkbox"] {
+        accent-color: $pastel-pink;
+    }
+
+    header {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        .menu-toggle {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.2rem;
+            z-index: 10;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5rem 4rem 3rem 2rem;
+            border: 2px solid $pastel-yellow;
+            border-radius: 15px;
+            background-color: $pastel-green;
+
+            /* Animation setup */
+            transform: translateX(-100%);
+            opacity: 0;
+            transition: transform .7s ease, opacity .6s ease;
+
+            &.open {
+                display: flex;
+                transform: translateX(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                list-style: none;
+                padding: 0;
+                width: 100%;
+
+                li {
+                    width: 100%;
+                    padding: 0 .5rem;
+                    margin-bottom: 1rem;
+                    border-radius: 10px;
+
+                    &.active {
+                        background-color: $darker-pastel-green;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: $text-color;
+
+                        &:hover {
+                            color: $text-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    main {
+        flex: 1;
+        border-radius: 15px;
+        padding: 1rem;
+
+        h1 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .custom-card {
+            &.login-card {
+                margin: 2rem auto;
+                padding: 2rem 1rem;
+            }
+        }
+    }
+}
+
+@media screen and (width >= 768px) {
+    body {
+        flex-direction: row;
+        padding: 30px;
+
+        header {
+            position: relative;
+            width: 20%;
+            height: 100%;
+
+            > div {
+                height: 100%;
+
+                .menu-toggle {
+                    display: none;
+                }
+
+                nav {
+                    position: relative;
+                    align-items: start;
+                    padding: 2rem;
+                    transform: translateX(0);
+                    opacity: 1;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                }
+            }
+        }
+
+        main {
+            padding: 0;
+
+            h1 {
+                text-align: left;
+            }
+
+            .custom-card {
+                &.login-card {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
