@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ 'admin.title'|trans({}, 'admin', 'en') }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('admin') }}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('admin') }}
+    {% endblock %}
+</head>
+<body>
+    {% if app.user %}
+        <header>
+            <div {{ stimulus_controller('menu') }}>
+                <div role="button"
+                     tabindex="0"
+                     aria-label="Toggle menu"
+                     class="menu-toggle"
+                     {{ stimulus_action('menu', 'toggle', 'click') }}
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <nav {{ stimulus_target('menu', 'menu') }}>
+                    <ul class="nav-links">
+                        <li class="{{ app.request.attributes.get('_route') == 'em_portfolio_backend' ? 'active' : '' }}">
+                            <a href="{{ path('em_portfolio_backend') }}">{{ 'navigation.home'|trans({}, 'admin', 'en') }}</a>
+                        </li>
+                        <li class="{{ app.request.attributes.get('_route') == 'em_portfolio_backend_projects' ? 'active' : '' }}">
+                            <a href="{{ path('em_portfolio_backend_projects') }}">{{ 'navigation.projects'|trans({}, 'admin', 'en') }}</a>
+                        </li>
+                        <li class="{{ app.request.attributes.get('_route') == 'em_portfolio_backend_toolbox' ? 'active' : '' }}">
+                            <a href="{{ path('em_portfolio_backend_toolbox') }}">{{ 'navigation.tool_box'|trans({}, 'admin', 'en') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('em_portfolio_backend_logout') }}" data-turbo="false">
+                                {{ 'login.logout'|trans({}, 'admin', 'en') }}
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    {% endif %}
+
+    <main>
+        {% block body_title %}<h1>{{ 'admin.title'|trans({}, 'admin', 'en') }}</h1>{% endblock %}
+
+        {% block body %}{% endblock %}
+    </main>
+</body>
+</html>
