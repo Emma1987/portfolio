@@ -1,6 +1,8 @@
 {% extends 'admin_base.html.twig' %}
 
-{% block body_title %}<h1>{{ 'admin.title'|trans({}, 'admin') }} <i class="fa-solid fa-mug-hot"></i></h1>{% endblock %}
+{% block body_title %}
+    <h1 class="d-flex">{{ 'admin.title'|trans({}, 'admin') }}<twig:ux:icon name="lucide:atom" class="ux-icon ms-2" /></h1>
+{% endblock %}
 
 {% block body %}
     <div class="custom-card custom-card-yellow text-center">
@@ -18,7 +20,7 @@
 
             <hr>
 
-            {{ form_start(form, { 'action': path('em_portfolio_technologies_add') }) }}
+            {{ form_start(form, {action: path('em_portfolio_technologies_add')}) }}
                 <div class="d-flex">
                     <div class="flex-grow-1 me-2">
                         {{ form_rest(form) }}
@@ -40,14 +42,14 @@
 
             {% if technologies|length > 0 %}
                 <div {{ stimulus_controller('sortable-list') }}>
-                    {{ form_start(sortForm, { 'action': path('em_portfolio_technologies_sort') }) }}
+                    {{ form_start(sort_form, {action: path('em_portfolio_technologies_sort')}) }}
                         <ul class="sortable-list" {{ stimulus_target('sortable-list', 'list') }}>
-                            {% for technologyForm in sortForm.technologies %}
+                            {% for technology_form in sort_form.technologies %}
                                 <li {{ stimulus_target('sortable-list', 'item') }}>
-                                    {{ form_widget(technologyForm.name) }}
-                                    {{ form_widget(technologyForm.position) }}
+                                    {{ form_widget(technology_form.name) }}
+                                    {{ form_widget(technology_form.position) }}
                                     <div class="technology-name">
-                                        <twig:ux:icon name="pixel:sort" class="ux-icon" /> {{ technologyForm.vars.data.name }}
+                                        <twig:ux:icon name="pixel:sort" class="ux-icon" /> {{ technology_form.vars.data.name }}
                                     </div>
                                     <button
                                         type="button"
@@ -56,8 +58,8 @@
                                         data-bs-target="#confirmModal"
                                         {{ stimulus_action('confirm-modal', 'open') }}
                                         data-title="{{ 'technologies.delete.modal_title'|trans({}, 'admin') }}"
-                                        data-body="{{ 'technologies.delete.modal_body'|trans({'%name%': technologyForm.vars.data.name}, 'admin') }}"
-                                        data-confirm-url="{{ path('em_portfolio_technologies_delete', { id: technologyForm.vars.data.id }) }}"
+                                        data-body="{{ 'technologies.delete.modal_body'|trans({'%name%': technology_form.vars.data.name}, 'admin') }}"
+                                        data-confirm-url="{{ path('em_portfolio_technologies_delete', {id: technology_form.vars.data.id}) }}"
                                     >
                                         <twig:ux:icon name="material-symbols:delete-outline" class="ux-icon" data-action="confirm-modal#open" />
                                     </button>
@@ -68,7 +70,7 @@
                         <button type="submit" class="btn btn-sm btn-primary mb-3">
                             {{ 'technologies.list.save_list'|trans({}, 'admin') }}
                         </button>
-                    {{ form_end(sortForm) }}
+                    {{ form_end(sort_form) }}
                 </div>
             {% else %}
                 <p class="text-center">

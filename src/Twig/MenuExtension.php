@@ -11,6 +11,7 @@ class MenuExtension extends AbstractExtension
     public const HOME = 'home';
     public const PROJECTS = 'projects';
     public const TECHNOLOGIES = 'technologies';
+    public const COMPANIES = 'companies';
     public const TOOLBOX = 'toolbox';
 
     public function __construct(private RequestStack $requestStack) {}
@@ -30,6 +31,7 @@ class MenuExtension extends AbstractExtension
             self::HOME => 'em_portfolio_backend' === $currentRoute,
             self::PROJECTS => in_array($currentRoute, ['em_portfolio_projects_list', 'em_portfolio_projects_add']),
             self::TECHNOLOGIES => 'em_portfolio_technologies_list' === $currentRoute,
+            self::COMPANIES => 'em_portfolio_companies_list' === $currentRoute,
             self::TOOLBOX => 'em_portfolio_backend_toolbox' === $currentRoute,
             default => false,
         };

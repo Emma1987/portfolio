@@ -27,7 +27,7 @@ class TechnologyController extends AbstractController
         return $this->render('admin/technologies/list.html.twig', [
             'technologies' => $technologies,
             'form' => $form,
-            'sortForm' => $sortForm,
+            'sort_form' => $sortForm,
         ]);
     }
 
