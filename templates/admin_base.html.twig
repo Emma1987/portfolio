@@ -43,6 +43,9 @@
                         <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::TECHNOLOGIES')) ? 'active' : '' }}">
                             <a href="{{ path('em_portfolio_technologies_list') }}">{{ 'navigation.technologies'|trans({}, 'admin') }}</a>
                         </li>
+                        <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::TAGS')) ? 'active' : '' }}">
+                            <a href="{{ path('em_portfolio_tags_list') }}">{{ 'navigation.tags'|trans({}, 'admin') }}</a>
+                        </li>
                         <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::COMPANIES')) ? 'active' : '' }}">
                             <a href="{{ path('em_portfolio_companies_list') }}">{{ 'navigation.companies'|trans({}, 'admin') }}</a>
                         </li>
