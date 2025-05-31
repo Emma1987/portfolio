@@ -1,0 +1,11 @@
+<div
+    class="alert alert-{{ type }} alert-dismissible fade show"
+    role="alert"
+    {% if autoDismiss %}
+        data-controller="auto-dismiss"
+        data-alert-delay-value="4000"
+    {% endif %}
+>
+    {{ message }}
+    <button type="button" class="btn-sm btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>

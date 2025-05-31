@@ -1,0 +1,51 @@
+admin:
+    title: The Command Room
+
+login:
+    title: SE CONNECTER
+    logged_in: ✅ Access granted. Welcome back, %name%.
+    label:
+        email: Email
+        password: Mot de passe
+        remember_me: Se souvenir de moi
+    submit: Se connecter
+
+navigation:
+    home: Home
+    projects: Projets
+    technologies: Technologies
+    tool_box: Boite à outils
+    logout: Se déconnecter
+
+confirm_modal:
+    cancel: Annuler
+    confirm: Confirmer
+
+projects:
+    list_quote: You don’t have to do everything today. Just one thing is enough. ✨
+    add_quote: The version of you who started this couldn’t have done what you just did. 🧠
+    add_project: Nouveau projet
+    back_to_list: Liste des projets
+    form:
+        title: Nouveau projet
+        title_placeholder: Titre
+        summary_placeholder: Résumé
+        description_placeholder: Description
+        level_placeholder: Niveau de difficulté
+        technologies_placeholder: Sélectionner ou ajouter une technologie
+        companies_placeholder: Sélectionner ou ajouter une entreprise
+        tags_placeholder: Sélectionner ou ajouter un tag
+
+technologies:
+    list_quote: You’re allowed to take your time and still be amazing. 🥰
+    form:
+        title: Nouvelle technologie
+        name_placeholder: Nouvelle technologie
+        submit: Ajouter
+    list:
+        title: Technologies
+        empty: So empty, even tumbleweeds are bored. 🌾
+        save_list: Enregistrer la liste
+    delete:
+        modal_title: Supprimer une technologie
+        modal_body: Êtes-vous sûr de vouloir supprimer la technologie %name% ?

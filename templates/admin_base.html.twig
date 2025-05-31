@@ -13,7 +13,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap" rel="stylesheet">
     {% endblock %}
 
     {% block javascripts %}
@@ -34,18 +34,21 @@
                 </div>
                 <nav {{ stimulus_target('menu', 'menu') }}>
                     <ul class="nav-links">
-                        <li class="{{ app.request.attributes.get('_route') == 'em_portfolio_backend' ? 'active' : '' }}">
-                            <a href="{{ path('em_portfolio_backend') }}">{{ 'navigation.home'|trans({}, 'admin', 'en') }}</a>
+                        <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::HOME')) ? 'active' : '' }}">
+                            <a href="{{ path('em_portfolio_backend') }}">{{ 'navigation.home'|trans({}, 'admin') }}</a>
                         </li>
-                        <li class="{{ app.request.attributes.get('_route') == 'em_portfolio_backend_projects' ? 'active' : '' }}">
-                            <a href="{{ path('em_portfolio_backend_projects') }}">{{ 'navigation.projects'|trans({}, 'admin', 'en') }}</a>
+                        <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::PROJECTS')) ? 'active' : '' }}">
+                            <a href="{{ path('em_portfolio_projects_list') }}">{{ 'navigation.projects'|trans({}, 'admin') }}</a>
                         </li>
-                        <li class="{{ app.request.attributes.get('_route') == 'em_portfolio_backend_toolbox' ? 'active' : '' }}">
-                            <a href="{{ path('em_portfolio_backend_toolbox') }}">{{ 'navigation.tool_box'|trans({}, 'admin', 'en') }}</a>
+                        <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::TECHNOLOGIES')) ? 'active' : '' }}">
+                            <a href="{{ path('em_portfolio_technologies_list') }}">{{ 'navigation.technologies'|trans({}, 'admin') }}</a>
+                        </li>
+                        <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::TOOLBOX')) ? 'active' : '' }}">
+                            <a href="{{ path('em_portfolio_backend_toolbox') }}">{{ 'navigation.tool_box'|trans({}, 'admin') }}</a>
                         </li>
                         <li>
                             <a href="{{ path('em_portfolio_backend_logout') }}" data-turbo="false">
-                                {{ 'login.logout'|trans({}, 'admin', 'en') }}
+                                {{ 'navigation.logout'|trans({}, 'admin') }}
                             </a>
                         </li>
                     </ul>
@@ -54,10 +57,42 @@
         </header>
     {% endif %}
 
-    <main>
-        {% block body_title %}<h1>{{ 'admin.title'|trans({}, 'admin', 'en') }}</h1>{% endblock %}
+    <main {{ stimulus_controller('confirm-modal') }}>
+        {% block body_title %}<h1>{{ 'admin.title'|trans({}, 'admin') }}</h1>{% endblock %}
+
+        <turbo-frame id="flash-message-container">
+            {% for message in app.flashes('success') %}
+                <twig:Alert message="{{ message }}" type="success" :autoDismiss="true" />
+            {% endfor %}
+
+            {% for message in app.flashes('error') %}
+                <twig:Alert message="{{ message }}" type="danger" :autoDismiss="true" />
+            {% endfor %}
+        </turbo-frame>
 
         {% block body %}{% endblock %}
+
+        {% block confirm_modal %}
+            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="Confirm Modal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title fs-5 fw-bold space-grotesk" {{ stimulus_target('confirm-modal', 'title') }}></div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body my-3" {{ stimulus_target('confirm-modal', 'body') }}></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                {{ 'confirm_modal.cancel'|trans({}, 'admin') }}
+                            </button>
+                            <a href="#" class="btn btn-primary" {{ stimulus_target('confirm-modal', 'confirmButton') }}>
+                                {{ 'confirm_modal.confirm'|trans({}, 'admin') }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
     </main>
 </body>
 </html>
