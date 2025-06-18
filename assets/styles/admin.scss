@@ -6,20 +6,24 @@ $pastel-green: #def2e6;
 $darker-pastel-green: #c2e3d4;
 $pastel-red: #ffe6e6;
 $pastel-blue: #ddecf0;
+$darker-pastel-blue: #bfd3e0;
 $light-gray: #bbb;
+$red: #ff7a7a;
 $background: $pastel-yellow;
 $text-color: #324662;
 
 html, body {
     display: flex;
     flex-direction: column;
-    height: 100%;
     background-color: $background;
     color: $text-color;
-    font-family: Inter, sans-serif;
-    font-size: 1.1rem;
+    font-family: Lato, sans-serif;
     padding: 10px;
     gap: 20px;
+
+    .space-grotesk {
+        font-family: 'Space Grotesk', monospace;
+    }
 
     .btn-primary {
         background-color: $pastel-pink;
@@ -34,6 +38,19 @@ html, body {
         }
     }
 
+    .btn-secondary {
+        background-color: $pastel-blue;
+        color: $text-color;
+        border-color: $pastel-blue;
+        box-shadow: 0 0 5px $pastel-blue;
+
+        &:hover, &:active {
+            background-color: $darker-pastel-blue;
+            border-color: $darker-pastel-blue;
+            color: $text-color;
+        }
+    }
+
     .alert-success {
         background-color: #D7F5E8;
         color: #1E4F3F;
@@ -44,8 +61,21 @@ html, body {
     .alert-danger {
         background-color: #FFE6E6;
         color: #771C1C;
-        border: 1px solid #FF7A7A;
+        border: 1px solid $red;
         text-align: center;
+    }
+
+    .form-control, .form-select, .form-select input, select {
+        background-color: inherit;
+        border-color: $light-gray;
+
+        &:focus {
+            background-color: inherit;
+        }
+
+        &::placeholder {
+            color: #32466244;
+        }
     }
 
     .custom-card {
@@ -63,10 +93,79 @@ html, body {
         &.custom-card-yellow {
             background-color: $darker-pastel-yellow;
         }
+
+        &.custom-card-pink {
+            background-color: $darker-pastel-pink;
+        }
+    }
+
+    .ux-icon {
+        width: 1.5rem;
+    }
+
+    .sortable-list {
+        list-style: none;
+        padding: 0;
+
+        li {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+
+            .technology-name, .company-name, .tag-name {
+                border: 1px solid $darker-pastel-blue;
+                border-radius: 0.375rem;
+                margin-bottom: .5rem;
+                padding: .5rem;
+                flex-grow: 1;
+
+                .ux-icon {
+                    margin-right: 1rem;
+                    cursor: pointer;
+                }
+            }
+
+            .delete-icon {
+                margin: 0 0 .5rem 1rem;
+                color: $red;
+                background: none;
+	            border: none;
+	            padding: 0;
+	            outline: inherit;
+            }
+        }
+    }
+
+    #flash-message-container {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        min-width: 350px;
+
+        .alert {
+            text-align: left;
+
+            button {
+                font-size: .7rem;
+            }
+        }
     }
 
     input[type="checkbox"] {
         accent-color: $pastel-pink;
+    }
+
+    option.placeholder {
+        color: #32466244;
+    }
+
+    a {
+        text-decoration: none;
+        color: $text-color;
+
+        &:hover {
+            color: $text-color;
+        }
     }
 
     header {
@@ -117,15 +216,6 @@ html, body {
                     &.active {
                         background-color: $darker-pastel-green;
                     }
-
-                    a {
-                        text-decoration: none;
-                        color: $text-color;
-
-                        &:hover {
-                            color: $text-color;
-                        }
-                    }
                 }
             }
         }
@@ -149,6 +239,57 @@ html, body {
                 padding: 2rem 1rem;
             }
         }
+
+        .page-header {
+            display: flex;
+            flex-direction: column;
+
+            > div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+
+                &:first-child {
+                    margin: 0 0 .5rem;
+                }
+            }
+        }
+
+        .project-cards {
+            > div {
+                margin-bottom: .5rem;
+
+                .open-picture-modal-button {
+                    margin: 0;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    outline: inherit;
+                }
+            }
+        }
+
+        .project-form {
+            .existing-project-picture {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                img {
+                    max-width: 10%;
+                }
+
+                .delete-icon {
+                    margin: 0 0 .5rem 1rem;
+                    color: $red;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    outline: inherit;
+                }
+            }
+        }
     }
 }
 
@@ -160,7 +301,7 @@ html, body {
         header {
             position: relative;
             width: 20%;
-            height: 100%;
+            min-height: 100%;
 
             > div {
                 height: 100%;
@@ -193,6 +334,42 @@ html, body {
                 &.login-card {
                     width: 50%;
                 }
+            }
+
+            .page-header {
+                flex-direction: row;
+
+                > div {
+                    &:first-child {
+                        margin: 0 .5rem 0 0;
+                        flex: 0 0 75%;
+                    }
+
+                    &:nth-child(2) {
+                        flex: 1;
+                    }
+                }
+            }
+
+            .project-cards {
+                column-count: 2;
+                column-gap: 1rem;
+                margin-bottom: 0;
+
+                > div {
+                    break-inside: avoid;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .project-form {
+                width: 70%;
+                margin: auto;
+            }
+
+            .technologies-card, .companies-card, .tags-card {
+                width: 70%;
+                margin: auto;
             }
         }
     }

@@ -1,0 +1,40 @@
+{% extends 'admin/project/add.html.twig' %}
+
+{% block project_form_title %}
+    {{ 'projects.form.edit_title'|trans({}, 'admin') }}
+{% endblock %}
+
+{% block project_form_pictures %}
+    <div class="text-decoration-underline fw-bold" id="existing-pictures">
+        {{ 'projects.form.pictures_label'|trans({}, 'admin') }}
+    </div>
+
+    {% if form.vars.data.pictures|length > 0 %}
+        {% for picture in form.vars.data.pictures %}
+            <div class="existing-project-picture mb-3">
+                <div>
+                    <img src="{{ asset('images/project/' ~ picture.path) }}" alt="Project picture" />
+                    {{ picture.path }}
+                </div>
+                <button
+                    type="button"
+                    class="delete-icon"
+                    data-bs-toggle="modal"
+                    data-bs-target="#confirmModal"
+                    {{ stimulus_action('confirm-modal', 'open') }}
+                    data-title="{{ 'projects.remove_picture.modal_title'|trans({}, 'admin') }}"
+                    data-body="{{ 'projects.remove_picture.modal_body'|trans({'%path%': picture.path}, 'admin') }}"
+                    data-confirm-url="{{ path('em_portfolio_picture_delete', {id: picture.id}) }}"
+                >
+                    <twig:ux:icon name="material-symbols:delete-outline" class="ux-icon" data-action="confirm-modal#open" />
+                </button>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>{{ 'projects.form.no_pics'|trans({}, 'admin') }}</p>
+    {% endif %}
+{% endblock %}
+
+{% block project_form_button %}
+    {{ 'projects.form.edit'|trans({}, 'admin') }}
+{% endblock %}

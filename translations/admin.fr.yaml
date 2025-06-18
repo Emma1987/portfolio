@@ -1,0 +1,110 @@
+admin:
+    title: The Command Room
+
+enum:
+    level:
+        noobquest: 🧟‍️ Noob Quest
+        sidequest: 🔪 Slasher Sprint
+        bossfight: 🧛️ Bloodbath Build
+        finalboss: 👹 Nightmare Merge
+
+login:
+    title: SE CONNECTER
+    logged_in: ✅ Access granted. Welcome back, %name%.
+    label:
+        email: Email
+        password: Mot de passe
+        remember_me: Se souvenir de moi
+    submit: Se connecter
+
+navigation:
+    home: Home
+    projects: Projets
+    technologies: Technologies
+    tags: Tags
+    companies: Entreprises
+    tool_box: Boite à outils
+    logout: Se déconnecter
+
+confirm_modal:
+    cancel: Annuler
+    confirm: Confirmer
+
+projects:
+    list_quote: You don’t have to do everything today. Just one thing is enough. ✨
+    add_quote: The version of you who started this couldn’t have done what you just did. 🧠
+    add_project: Nouveau projet
+    back_to_list: Liste des projets
+    technologies: "Technologies :"
+    tags: "Tags :"
+    pictures: "Images :"
+    built_for: Développé avec %companies%.
+    preview_project: Aperçu
+    edit_project: Éditer
+    delete_project: Supprimer
+    form:
+        title: Nouveau projet
+        edit_title: Éditer projet
+        title_placeholder: Titre
+        summary_placeholder: Résumé
+        description_placeholder: Description
+        level_placeholder: Niveau de difficulté
+        technologies_placeholder: Sélectionner ou ajouter une technologie
+        companies_placeholder: Sélectionner ou ajouter une entreprise
+        tags_placeholder: Sélectionner ou ajouter un tag
+        pictures: Ajouter de nouvelles images
+        add: Créer
+        edit: Mettre à jour
+        no_pics: No pics yet, but trust me, it’s gorgeous. 😍
+        pictures_label: "Images actuelles :"
+    list:
+        empty: Just imagine how good this is gonna look soon... 😍
+    delete:
+        modal_title: Supprimer le projet
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer le projet "%title%" ?
+    remove_picture:
+        modal_title: Supprimer l'image
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer l'image "%path%" ?<br>⚠️ Action irréversible ! ⚠️
+
+
+technologies:
+    list_quote: You’re allowed to take your time and still be amazing. 🥰
+    form:
+        title: Nouvelle technologie
+        name_placeholder: Nouvelle technologie
+        submit: Ajouter
+    list:
+        title: Technologies
+        empty: So empty, even tumbleweeds are bored. 🌾
+        save_list: Enregistrer la liste
+    delete:
+        modal_title: Supprimer une technologie
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer la technologie %name% ?
+
+companies:
+    list_quote: Done is better than perfect. Rest is better than burnout. ✨
+    form:
+        title: Nouvelle entreprise
+        name_placeholder: Nouvelle entreprise
+        submit: Ajouter
+    list:
+        title: Entreprises
+        empty: Nothing here... yet. The potential is unreal. 🤩
+        save_list: Enregistrer la liste
+    delete:
+        modal_title: Supprimer une entreprise
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer l'entreprise %name% ?
+
+tags:
+    list_quote: You’ve made it through 100% of your worst days so far. 😎
+    form:
+        title: Nouveau tag
+        name_placeholder: Nouveau tag
+        submit: Ajouter
+    list:
+        title: Tags
+        empty: You haven’t added anything. Which is a bold move, honestly. 🤡
+        save_list: Enregistrer la liste
+    delete:
+        modal_title: Supprimer un tag
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer le tag %name% ?
