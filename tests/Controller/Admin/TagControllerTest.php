@@ -104,7 +104,7 @@ class TagControllerTest extends AdminWebTestCase
         $existingTag = array_shift($tags);
         $id = $existingTag->getId();
 
-        $this->client->request('GET', "/backstage/tags/delete/{$id}");
+        $this->client->request('GET', "/backstage/tag/delete/{$id}");
 
         $this->assertResponseRedirects('/backstage/tags');
         $this->client->followRedirect();

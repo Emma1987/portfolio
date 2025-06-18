@@ -259,6 +259,35 @@ html, body {
         .project-cards {
             > div {
                 margin-bottom: .5rem;
+
+                .open-picture-modal-button {
+                    margin: 0;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    outline: inherit;
+                }
+            }
+        }
+
+        .project-form {
+            .existing-project-picture {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                img {
+                    max-width: 10%;
+                }
+
+                .delete-icon {
+                    margin: 0 0 .5rem 1rem;
+                    color: $red;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    outline: inherit;
+                }
             }
         }
     }

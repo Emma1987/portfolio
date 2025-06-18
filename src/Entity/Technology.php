@@ -25,13 +25,13 @@ class Technology
     #[ORM\Column]
     private int $position = 0;
 
-    /** @var Collection<int, Project> */
-    #[ORM\ManyToMany(targetEntity: Project::class, mappedBy: 'technologies')]
-    private Collection $projects;
+    /** @var Collection<int, ProjectTechnology> */
+    #[ORM\OneToMany(targetEntity: ProjectTechnology::class, mappedBy: 'technology', cascade: ['remove'])]
+    private Collection $projectTechnologies;
 
     public function __construct()
     {
-        $this->projects = new ArrayCollection();
+        $this->projectTechnologies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -64,26 +64,26 @@ class Technology
     }
 
     /**
-     * @return Collection<int, Project>
+     * @return Collection<int, ProjectTechnology>
      */
-    public function getProjects(): Collection
+    public function getProjectTechnologies(): Collection
     {
-        return $this->projects;
+        return $this->projectTechnologies;
     }
 
-    public function addProject(Project $project): static
+    public function addProjectTechnology(ProjectTechnology $project): static
     {
-        if (!$this->projects->contains($project)) {
-            $this->projects->add($project);
+        if (!$this->projectTechnologies->contains($project)) {
+            $this->projectTechnologies->add($project);
         }
 
         return $this;
     }
 
-    public function removeProject(Project $project): static
+    public function removeProjectTechnology(ProjectTechnology $project): static
     {
-        if ($this->projects->removeElement($project)) {
-            $project->removeTechnology($this);
+        if ($this->projectTechnologies->removeElement($project)) {
+            $project->getProject()->removeProjectTechnology($project);
         }
 
         return $this;

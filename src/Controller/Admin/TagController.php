@@ -15,7 +15,7 @@ class TagController extends AbstractController
 {
     public function __construct(private EntityManagerInterface $entityManager) {}
 
-    #[Route(path: '/backstage/tags', name: 'em_portfolio_tags_list')]
+    #[Route(path: '/backstage/tags', name: 'em_portfolio_tag_list')]
     public function list(): Response
     {
         $tags = $this->entityManager->getRepository(Tag::class)->findAll();
@@ -31,7 +31,7 @@ class TagController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/backstage/tags/add', name: 'em_portfolio_tags_add', methods: [Request::METHOD_POST])]
+    #[Route(path: '/backstage/tag/add', name: 'em_portfolio_tag_add', methods: [Request::METHOD_POST])]
     public function add(Request $request): Response
     {
         $tag = new Tag();
@@ -45,7 +45,7 @@ class TagController extends AbstractController
                 if ($this->entityManager->getRepository(Tag::class)->findOneBy(['name' => $tag->getName()])) {
                     $this->addFlash('error', 'Don\'t remember you already created this one?');
 
-                    return $this->redirectToRoute('em_portfolio_tags_list');
+                    return $this->redirectToRoute('em_portfolio_tag_list');
                 }
 
                 $count = $this->entityManager->getRepository(Tag::class)->count();
@@ -58,10 +58,10 @@ class TagController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('em_portfolio_tags_list');
+        return $this->redirectToRoute('em_portfolio_tag_list');
     }
 
-    #[Route(path: '/backstage/tags/sort', name: 'em_portfolio_tags_sort', methods: [Request::METHOD_POST])]
+    #[Route(path: '/backstage/tag/sort', name: 'em_portfolio_tag_sort', methods: [Request::METHOD_POST])]
     public function sort(Request $request): Response
     {
         $tags = $this->entityManager->getRepository(Tag::class)->findAll();
@@ -78,10 +78,10 @@ class TagController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('em_portfolio_tags_list');
+        return $this->redirectToRoute('em_portfolio_tag_list');
     }
 
-    #[Route(path: '/backstage/tags/delete/{id}', name: 'em_portfolio_tags_delete')]
+    #[Route(path: '/backstage/tag/delete/{id}', name: 'em_portfolio_tag_delete')]
     public function delete(Tag $tag): Response
     {
         $this->entityManager->remove($tag);
@@ -89,6 +89,6 @@ class TagController extends AbstractController
 
         $this->addFlash('success', 'Twig smiled. Your action worked.');
 
-        return $this->redirectToRoute('em_portfolio_tags_list');
+        return $this->redirectToRoute('em_portfolio_tag_list');
     }
 }

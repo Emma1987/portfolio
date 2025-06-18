@@ -15,7 +15,7 @@ class TechnologyController extends AbstractController
 {
     public function __construct(private EntityManagerInterface $entityManager) {}
 
-    #[Route(path: '/backstage/technologies', name: 'em_portfolio_technologies_list')]
+    #[Route(path: '/backstage/technologies', name: 'em_portfolio_technology_list')]
     public function list(): Response
     {
         $technologies = $this->entityManager->getRepository(Technology::class)->findBy([], ['position' => 'ASC']);
@@ -31,7 +31,7 @@ class TechnologyController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/backstage/technologies/add', name: 'em_portfolio_technologies_add', methods: [Request::METHOD_POST])]
+    #[Route(path: '/backstage/technology/add', name: 'em_portfolio_technology_add', methods: [Request::METHOD_POST])]
     public function add(Request $request): Response
     {
         $technology = new Technology();
@@ -45,7 +45,7 @@ class TechnologyController extends AbstractController
                 if ($this->entityManager->getRepository(Technology::class)->findOneBy(['name' => $technology->getName()])) {
                     $this->addFlash('error', 'Don\'t remember you already created this one?');
 
-                    return $this->redirectToRoute('em_portfolio_technologies_list');
+                    return $this->redirectToRoute('em_portfolio_technology_list');
                 }
 
                 $count = $this->entityManager->getRepository(Technology::class)->count();
@@ -58,10 +58,10 @@ class TechnologyController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('em_portfolio_technologies_list');
+        return $this->redirectToRoute('em_portfolio_technology_list');
     }
 
-    #[Route(path: '/backstage/technologies/sort', name: 'em_portfolio_technologies_sort', methods: [Request::METHOD_POST])]
+    #[Route(path: '/backstage/technology/sort', name: 'em_portfolio_technology_sort', methods: [Request::METHOD_POST])]
     public function sort(Request $request): Response
     {
         $technologies = $this->entityManager->getRepository(Technology::class)->findAll();
@@ -78,10 +78,10 @@ class TechnologyController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('em_portfolio_technologies_list');
+        return $this->redirectToRoute('em_portfolio_technology_list');
     }
 
-    #[Route(path: '/backstage/technologies/delete/{id}', name: 'em_portfolio_technologies_delete')]
+    #[Route(path: '/backstage/technology/delete/{id}', name: 'em_portfolio_technology_delete')]
     public function delete(Technology $technology): Response
     {
         $this->entityManager->remove($technology);
@@ -89,6 +89,6 @@ class TechnologyController extends AbstractController
 
         $this->addFlash('success', 'Success. You’ve earned yourself a coffee. Or a nap.');
 
-        return $this->redirectToRoute('em_portfolio_technologies_list');
+        return $this->redirectToRoute('em_portfolio_technology_list');
     }
 }

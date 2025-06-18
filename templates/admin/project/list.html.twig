@@ -1,0 +1,46 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block body_title %}
+    <h1 class="d-flex">{{ 'admin.title'|trans({}, 'admin') }}<twig:ux:icon name="lucide:brain" class="ux-icon ms-2" /></h1>
+{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <div class="custom-card custom-card-blue card-large">
+            {{ 'projects.list_quote'|trans({}, 'admin') }}
+        </div>
+        <div class="custom-card custom-card-yellow card-small">
+            <a href="{{ path('em_portfolio_project_add') }}">
+                <twig:ux:icon name="iconoir:add-circle" class="ux-icon" /><br>{{ 'projects.add_project'|trans({}, 'admin') }}
+            </a>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    {% if projects|length > 0 %}
+        <section class="project-cards" {{ stimulus_controller('picture-modal') }}>
+            {% for project in projects %}
+                {{ include('admin/project/_project.html.twig') }}
+            {% endfor %}
+
+            {# View Picture Modal #}
+            <div class="modal fade" id="viewPictureModal" tabindex="-1" aria-labelledby="View Picture Modal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body my-3">
+                            <img src="#" alt="Project picture" class="w-100 me-2" {{ stimulus_target('picture-modal', 'imgPreview') }} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <div class="d-flex justify-content-center custom-card custom-card-pink mb-3">
+            <div>{{ 'projects.list.empty'|trans({}, 'admin') }}</div>
+        </div>
+    {% endif %}
+{% endblock %}

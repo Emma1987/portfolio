@@ -104,7 +104,7 @@ class CompanyControllerTest extends AdminWebTestCase
         $existingCompany = array_shift($companies);
         $id = $existingCompany->getId();
 
-        $this->client->request('GET', "/backstage/companies/delete/{$id}");
+        $this->client->request('GET', "/backstage/company/delete/{$id}");
 
         $this->assertResponseRedirects('/backstage/companies');
         $this->client->followRedirect();

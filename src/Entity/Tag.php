@@ -25,13 +25,13 @@ class Tag
     #[ORM\Column]
     private int $position = 0;
 
-    /** @var Collection<int, Project> */
-    #[ORM\ManyToMany(targetEntity: Project::class, mappedBy: 'tags')]
-    private Collection $projects;
+    /** @var Collection<int, ProjectTag> */
+    #[ORM\OneToMany(targetEntity: ProjectTag::class, mappedBy: 'tag', cascade: ['remove'])]
+    private Collection $projectTags;
 
     public function __construct()
     {
-        $this->projects = new ArrayCollection();
+        $this->projectTags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -64,26 +64,26 @@ class Tag
     }
 
     /**
-     * @return Collection<int, Project>
+     * @return Collection<int, ProjectTag>
      */
-    public function getProjects(): Collection
+    public function getProjectTags(): Collection
     {
-        return $this->projects;
+        return $this->projectTags;
     }
 
-    public function addProject(Project $project): static
+    public function addProjectTag(ProjectTag $tag): static
     {
-        if (!$this->projects->contains($project)) {
-            $this->projects->add($project);
+        if (!$this->projectTags->contains($tag)) {
+            $this->projectTags->add($tag);
         }
 
         return $this;
     }
 
-    public function removeProject(Project $project): static
+    public function removeProjectTag(ProjectTag $tag): static
     {
-        if ($this->projects->removeElement($project)) {
-            $project->removeTag($this);
+        if ($this->projectTags->removeElement($tag)) {
+            $tag->getProject()->removeProjectTag($tag);
         }
 
         return $this;

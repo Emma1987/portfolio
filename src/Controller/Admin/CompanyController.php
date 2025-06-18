@@ -15,7 +15,7 @@ class CompanyController extends AbstractController
 {
     public function __construct(private EntityManagerInterface $entityManager) {}
 
-    #[Route(path: '/backstage/companies', name: 'em_portfolio_companies_list')]
+    #[Route(path: '/backstage/companies', name: 'em_portfolio_company_list')]
     public function list(): Response
     {
         $companies = $this->entityManager->getRepository(Company::class)->findBy([], ['position' => 'ASC']);
@@ -31,7 +31,7 @@ class CompanyController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/backstage/companies/add', name: 'em_portfolio_companies_add', methods: [Request::METHOD_POST])]
+    #[Route(path: '/backstage/company/add', name: 'em_portfolio_company_add', methods: [Request::METHOD_POST])]
     public function add(Request $request): Response
     {
         $company = new Company();
@@ -45,7 +45,7 @@ class CompanyController extends AbstractController
                 if ($this->entityManager->getRepository(Company::class)->findOneBy(['name' => $company->getName()])) {
                     $this->addFlash('error', 'Don\'t remember you already created this one?');
 
-                    return $this->redirectToRoute('em_portfolio_companies_list');
+                    return $this->redirectToRoute('em_portfolio_company_list');
                 }
 
                 $count = $this->entityManager->getRepository(Company::class)->count();
@@ -58,10 +58,10 @@ class CompanyController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('em_portfolio_companies_list');
+        return $this->redirectToRoute('em_portfolio_company_list');
     }
 
-    #[Route(path: '/backstage/companies/sort', name: 'em_portfolio_companies_sort', methods: [Request::METHOD_POST])]
+    #[Route(path: '/backstage/company/sort', name: 'em_portfolio_company_sort', methods: [Request::METHOD_POST])]
     public function sort(Request $request): Response
     {
         $companies = $this->entityManager->getRepository(Company::class)->findAll();
@@ -78,10 +78,10 @@ class CompanyController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('em_portfolio_companies_list');
+        return $this->redirectToRoute('em_portfolio_company_list');
     }
 
-    #[Route(path: '/backstage/companies/delete/{id}', name: 'em_portfolio_companies_delete')]
+    #[Route(path: '/backstage/company/delete/{id}', name: 'em_portfolio_company_delete')]
     public function delete(Company $company): Response
     {
         $this->entityManager->remove($company);
@@ -89,6 +89,6 @@ class CompanyController extends AbstractController
 
         $this->addFlash('success', 'You make CRUD look good.');
 
-        return $this->redirectToRoute('em_portfolio_companies_list');
+        return $this->redirectToRoute('em_portfolio_company_list');
     }
 }

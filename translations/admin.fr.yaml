@@ -1,6 +1,13 @@
 admin:
     title: The Command Room
 
+enum:
+    level:
+        noobquest: 🧟‍️ Noob Quest
+        sidequest: 🔪 Slasher Sprint
+        bossfight: 🧛️ Bloodbath Build
+        finalboss: 👹 Nightmare Merge
+
 login:
     title: SE CONNECTER
     logged_in: ✅ Access granted. Welcome back, %name%.
@@ -28,8 +35,16 @@ projects:
     add_quote: The version of you who started this couldn’t have done what you just did. 🧠
     add_project: Nouveau projet
     back_to_list: Liste des projets
+    technologies: "Technologies :"
+    tags: "Tags :"
+    pictures: "Images :"
+    built_for: Développé avec %companies%.
+    preview_project: Aperçu
+    edit_project: Éditer
+    delete_project: Supprimer
     form:
         title: Nouveau projet
+        edit_title: Éditer projet
         title_placeholder: Titre
         summary_placeholder: Résumé
         description_placeholder: Description
@@ -37,6 +52,20 @@ projects:
         technologies_placeholder: Sélectionner ou ajouter une technologie
         companies_placeholder: Sélectionner ou ajouter une entreprise
         tags_placeholder: Sélectionner ou ajouter un tag
+        pictures: Ajouter de nouvelles images
+        add: Créer
+        edit: Mettre à jour
+        no_pics: No pics yet, but trust me, it’s gorgeous. 😍
+        pictures_label: "Images actuelles :"
+    list:
+        empty: Just imagine how good this is gonna look soon... 😍
+    delete:
+        modal_title: Supprimer le projet
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer le projet "%title%" ?
+    remove_picture:
+        modal_title: Supprimer l'image
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer l'image "%path%" ?<br>⚠️ Action irréversible ! ⚠️
+
 
 technologies:
     list_quote: You’re allowed to take your time and still be amazing. 🥰

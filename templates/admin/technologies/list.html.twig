@@ -20,7 +20,7 @@
 
             <hr>
 
-            {{ form_start(form, {action: path('em_portfolio_technologies_add')}) }}
+            {{ form_start(form, {action: path('em_portfolio_technology_add')}) }}
                 <div class="d-flex">
                     <div class="flex-grow-1 me-2">
                         {{ form_rest(form) }}
@@ -42,7 +42,7 @@
 
             {% if technologies|length > 0 %}
                 <div {{ stimulus_controller('sortable-list') }}>
-                    {{ form_start(sort_form, {action: path('em_portfolio_technologies_sort')}) }}
+                    {{ form_start(sort_form, {action: path('em_portfolio_technology_sort')}) }}
                         <ul class="sortable-list" {{ stimulus_target('sortable-list', 'list') }}>
                             {% for technology_form in sort_form.technologies %}
                                 <li {{ stimulus_target('sortable-list', 'item') }}>
@@ -59,11 +59,10 @@
                                         {{ stimulus_action('confirm-modal', 'open') }}
                                         data-title="{{ 'technologies.delete.modal_title'|trans({}, 'admin') }}"
                                         data-body="{{ 'technologies.delete.modal_body'|trans({'%name%': technology_form.vars.data.name}, 'admin') }}"
-                                        data-confirm-url="{{ path('em_portfolio_technologies_delete', {id: technology_form.vars.data.id}) }}"
+                                        data-confirm-url="{{ path('em_portfolio_technology_delete', {id: technology_form.vars.data.id}) }}"
                                     >
                                         <twig:ux:icon name="material-symbols:delete-outline" class="ux-icon" data-action="confirm-modal#open" />
                                     </button>
-
                                 </li>
                             {% endfor %}
                         </ul>

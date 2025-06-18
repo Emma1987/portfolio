@@ -1,0 +1,6 @@
+services:
+    App\Storage\PictureHandler:
+        class: App\Tests\Mock\FakePictureHandler
+        arguments:
+            $pictureDirectory: '%project_picture_directory%'
+            $slugger: '@slugger'

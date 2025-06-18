@@ -28,7 +28,7 @@ class MenuExtensionTest extends TestCase
 
     public function testProjectsIsActive()
     {
-        $ext = $this->getExtensionWithRoute('em_portfolio_projects_add');
+        $ext = $this->getExtensionWithRoute('em_portfolio_project_add');
         $this->assertTrue($ext->isActive(MenuExtension::PROJECTS));
     }
 

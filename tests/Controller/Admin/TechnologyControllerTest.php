@@ -104,7 +104,7 @@ class TechnologyControllerTest extends AdminWebTestCase
         $existingTechnology = array_shift($technologies);
         $id = $existingTechnology->getId();
 
-        $this->client->request('GET', "/backstage/technologies/delete/{$id}");
+        $this->client->request('GET', "/backstage/technology/delete/{$id}");
 
         $this->assertResponseRedirects('/backstage/technologies');
         $this->client->followRedirect();

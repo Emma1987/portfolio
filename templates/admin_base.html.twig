@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{{ 'admin.title'|trans({}, 'admin', 'en') }}{% endblock %}</title>
+    <title>{% block title %}{{ 'admin.title'|trans({}, 'admin') }}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
 
@@ -13,7 +13,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;700&display=swap" rel="stylesheet">
     {% endblock %}
 
     {% block javascripts %}
@@ -38,16 +38,16 @@
                             <a href="{{ path('em_portfolio_backend') }}">{{ 'navigation.home'|trans({}, 'admin') }}</a>
                         </li>
                         <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::PROJECTS')) ? 'active' : '' }}">
-                            <a href="{{ path('em_portfolio_projects_list') }}">{{ 'navigation.projects'|trans({}, 'admin') }}</a>
+                            <a href="{{ path('em_portfolio_project_list') }}">{{ 'navigation.projects'|trans({}, 'admin') }}</a>
                         </li>
                         <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::TECHNOLOGIES')) ? 'active' : '' }}">
-                            <a href="{{ path('em_portfolio_technologies_list') }}">{{ 'navigation.technologies'|trans({}, 'admin') }}</a>
+                            <a href="{{ path('em_portfolio_technology_list') }}">{{ 'navigation.technologies'|trans({}, 'admin') }}</a>
                         </li>
                         <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::TAGS')) ? 'active' : '' }}">
-                            <a href="{{ path('em_portfolio_tags_list') }}">{{ 'navigation.tags'|trans({}, 'admin') }}</a>
+                            <a href="{{ path('em_portfolio_tag_list') }}">{{ 'navigation.tags'|trans({}, 'admin') }}</a>
                         </li>
                         <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::COMPANIES')) ? 'active' : '' }}">
-                            <a href="{{ path('em_portfolio_companies_list') }}">{{ 'navigation.companies'|trans({}, 'admin') }}</a>
+                            <a href="{{ path('em_portfolio_company_list') }}">{{ 'navigation.companies'|trans({}, 'admin') }}</a>
                         </li>
                         <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::TOOLBOX')) ? 'active' : '' }}">
                             <a href="{{ path('em_portfolio_backend_toolbox') }}">{{ 'navigation.tool_box'|trans({}, 'admin') }}</a>
