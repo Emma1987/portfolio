@@ -29,16 +29,16 @@ class ToolBoxController extends AbstractController
 
         $form = $this->createForm(ToolType::class, $tool);
 
-        $sortLanguagesForm = $this->createSortForm(ToolCategory::Languages);
+        $sortLanguagesForm = $this->createSortForm(ToolCategory::LANGUAGES);
         $sortLanguagesForm->handleRequest($request);
 
-        $sortFrameworksForm = $this->createSortForm(ToolCategory::Frameworks);
+        $sortFrameworksForm = $this->createSortForm(ToolCategory::FRAMEWORKS);
         $sortFrameworksForm->handleRequest($request);
 
-        $sortToolsForm = $this->createSortForm(ToolCategory::Tools);
+        $sortToolsForm = $this->createSortForm(ToolCategory::TOOLS);
         $sortToolsForm->handleRequest($request);
 
-        $sortPracticesForm = $this->createSortForm(ToolCategory::Practices);
+        $sortPracticesForm = $this->createSortForm(ToolCategory::PRACTICES);
         $sortPracticesForm->handleRequest($request);
 
         foreach ([$sortLanguagesForm, $sortFrameworksForm, $sortToolsForm, $sortPracticesForm] as $sortForm) {
@@ -65,7 +65,7 @@ class ToolBoxController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/backstage/tool/add', name: 'em_portfolio_backend_tool_add')]
+    #[Route(path: '/backstage/tool/add', name: 'em_portfolio_backend_tool_add', methods: [Request::METHOD_POST])]
     public function add(Request $request): Response
     {
         $tool = new Tool();

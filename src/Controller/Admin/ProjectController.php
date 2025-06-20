@@ -51,9 +51,7 @@ class ProjectController extends AbstractController
     #[Route(path: '/backstage/project/edit/{id}', name: 'em_portfolio_project_edit')]
     public function edit(Request $request, Project $project): Response
     {
-        $form = $this->createForm(ProjectType::class, $project, [
-            'type' => 'edit',
-        ]);
+        $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {

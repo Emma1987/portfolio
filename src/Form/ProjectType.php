@@ -24,9 +24,6 @@ use Symfony\UX\Dropzone\Form\DropzoneType;
 
 class ProjectType extends AbstractType
 {
-    public const TYPE_ADD = 'add';
-    public const TYPE_EDIT = 'edit';
-
     public function __construct(
         private ProjectSubscriber $projectSubscriber,
         private EntityManagerInterface $entityManager,
@@ -127,10 +124,7 @@ class ProjectType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Project::class,
             'translation_domain' => 'admin',
-            'type' => self::TYPE_ADD,
         ]);
-
-        $resolver->setAllowedValues('type', [self::TYPE_ADD, self::TYPE_EDIT]);
     }
 
     /**

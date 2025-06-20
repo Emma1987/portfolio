@@ -88,7 +88,7 @@ class ProjectControllerTest extends AdminWebTestCase
         $this->assertProjectTag($project, $deadSignTag, 0);
         $this->assertCount(1, $project->getCompanies());
         $this->assertSame($corpsCompany->getName(), $project->getCompanies()->first()->getName());
-        $this->assertSame(Level::NoobQuest, $project->getLevel());
+        $this->assertSame(Level::NOOB_QUEST, $project->getLevel());
         $this->assertCount(1, $project->getPictures());
         $picture = $project->getPictures()->first();
         $this->assertSame('ghost_selfie.jpeg', $picture->getPath());
@@ -193,7 +193,7 @@ class ProjectControllerTest extends AdminWebTestCase
         $this->assertProjectTag($project, $csslayerTag, 0);
         $this->assertCount(1, $project->getCompanies());
         $this->assertSame($corpsCompany->getName(), $project->getCompanies()->first()->getName());
-        $this->assertSame(Level::SideQuest, $project->getLevel());
+        $this->assertSame(Level::SIDE_QUEST, $project->getLevel());
         $this->assertCount(2, $project->getPictures());
     }
 

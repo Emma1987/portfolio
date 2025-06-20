@@ -1,0 +1,33 @@
+{% set classes = ['custom-card-blue', 'custom-card-green', 'custom-card-yellow', 'custom-card-pink'] %}
+{% set random_class = random(classes) %}
+{% set btn_class = random_class == 'custom-card-pink' or random_class == 'custom-card-yellow' ? 'btn-secondary' : 'btn-primary' %}
+
+<div class="custom-card {{ random_class }}">
+    <p class="h4 fw-bold">{{ question.question }}</p>
+    <p>{{ question.answer }}</p>
+    <div class="alert alert-success d-inline-block px-3 py-1">
+        {{ ('enum.interview_prompt_category.' ~ question.category.value)|trans({}, 'admin') }}
+    </div>
+
+    <hr>
+
+    <div class="d-flex justify-content-around">
+        <a href="#" class="btn btn-sm {{ btn_class }}">
+            {{ 'recruiter_game.preview_question'|trans({}, 'admin') }}
+        </a>
+        <a href="{{ path('em_portfolio_recruiter_game_edit', {id: question.id}) }}" class="btn btn-sm {{ btn_class }}">
+            {{ 'recruiter_game.edit_question'|trans({}, 'admin') }}
+        </a>
+        <button
+            class="btn btn-sm {{ btn_class }}"
+            data-bs-toggle="modal"
+            data-bs-target="#confirmModal"
+            {{ stimulus_action('confirm-modal', 'open') }}
+            data-title="{{ 'recruiter_game.delete.modal_title'|trans({}, 'admin') }}"
+            data-body="{{ 'recruiter_game.delete.modal_body'|trans({'%question%': question.question}, 'admin') }}"
+            data-confirm-url="{{ path('em_portfolio_recruiter_game_delete', {id: question.id}) }}"
+        >
+            {{ 'recruiter_game.delete_question'|trans({}, 'admin') }}
+        </button>
+    </div>
+</div>
