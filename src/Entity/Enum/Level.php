@@ -7,10 +7,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 enum Level: string implements TranslatableInterface
 {
-    case NoobQuest = 'NOOB_QUEST';
-    case SideQuest = 'SIDE_QUEST';
-    case BossFight = 'BOSS_FIGHT';
-    case FinalBoss = 'FINAL_BOSS';
+    case NOOB_QUEST = 'NOOB_QUEST';
+    case SIDE_QUEST = 'SIDE_QUEST';
+    case BOSS_FIGHT = 'BOSS_FIGHT';
+    case FINAL_BOSS = 'FINAL_BOSS';
 
     /**
      * @return array<int, string>

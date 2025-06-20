@@ -362,12 +362,18 @@ html, body {
                 }
             }
 
-            .project-form {
-                width: 70%;
-                margin: auto;
+            .question-cards {
+                column-count: 3;
+                column-gap: 1rem;
+                margin-bottom: 0;
+
+                > div {
+                    break-inside: avoid;
+                    margin-bottom: 1rem;
+                }
             }
 
-            .technologies-card, .companies-card, .tags-card, .toolbox-card {
+            .technologies-card, .companies-card, .tags-card, .toolbox-card, .project-form, .question-form {
                 width: 70%;
                 margin: auto;
             }

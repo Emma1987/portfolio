@@ -28,7 +28,7 @@ class ToolBoxControllerTest extends AdminWebTestCase
 
         $form = $crawler->filter('form[name=tool]')->form();
         $form['tool[name]'] = 'CreepPress';
-        $form['tool[category]'] = ToolCategory::Frameworks->value;
+        $form['tool[category]'] = ToolCategory::FRAMEWORKS->value;
 
         $this->client->submit($form);
 
@@ -40,7 +40,7 @@ class ToolBoxControllerTest extends AdminWebTestCase
 
         $tool = $this->entityManager->getRepository(Tool::class)->findOneBy(['name' => 'CreepPress']);
         $this->assertNotNull($tool);
-        $this->assertSame(ToolCategory::Frameworks, $tool->getCategory());
+        $this->assertSame(ToolCategory::FRAMEWORKS, $tool->getCategory());
         $this->assertSame($savedTools + 1, $tool->getPosition());
     }
 
@@ -53,7 +53,7 @@ class ToolBoxControllerTest extends AdminWebTestCase
 
         $form = $crawler->filter('form[name=tool]')->form();
         $form['tool[name]'] = $existingTool->getName();
-        $form['tool[category]'] = ToolCategory::Languages->value;
+        $form['tool[category]'] = ToolCategory::LANGUAGES->value;
 
         $this->client->submit($form);
 
@@ -66,12 +66,12 @@ class ToolBoxControllerTest extends AdminWebTestCase
 
     public function testSortTools(): void
     {
-        $categories = [ToolCategory::Languages, ToolCategory::Frameworks, ToolCategory::Tools, ToolCategory::Practices];
+        $categories = [ToolCategory::LANGUAGES, ToolCategory::FRAMEWORKS, ToolCategory::TOOLS, ToolCategory::PRACTICES];
         $formNames = [
-            ToolCategory::Languages->value => 'sort_languages',
-            ToolCategory::Frameworks->value => 'sort_frameworks',
-            ToolCategory::Tools->value => 'sort_tools',
-            ToolCategory::Practices->value => 'sort_practices',
+            ToolCategory::LANGUAGES->value => 'sort_languages',
+            ToolCategory::FRAMEWORKS->value => 'sort_frameworks',
+            ToolCategory::TOOLS->value => 'sort_tools',
+            ToolCategory::PRACTICES->value => 'sort_practices',
         ];
 
         foreach ($categories as $category) {

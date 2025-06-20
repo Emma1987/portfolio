@@ -5,8 +5,8 @@ namespace App\Twig\Components;
 use Symfony\Component\Form\FormView;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent('sortable_card')]
-class SortableCardComponent
+#[AsTwigComponent]
+class SortableCard
 {
     public string $title;
     public string $color;

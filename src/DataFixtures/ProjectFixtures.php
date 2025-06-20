@@ -48,7 +48,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             ->addProjectTechnology($hauntedHouseFinderKnifeJSTechnology)
             ->addProjectTag($hauntedHouseFinderDeadsignTag)
             ->addCompany($this->getReference(CompanyFixtures::BUG_N_SLAY_COMPANY, Company::class))
-            ->setLevel(Level::SideQuest)
+            ->setLevel(Level::SIDE_QUEST)
             ->addPicture((new Picture())->setPath('haunted_house_finder.png'))
             ->addPicture((new Picture())->setPath('haunted_house_example.png'))
         ;

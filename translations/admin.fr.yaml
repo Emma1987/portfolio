@@ -3,10 +3,35 @@ admin:
 
 enum:
     level:
-        noobquest: 🧟‍️ Noob Quest
-        sidequest: 🔪 Slasher Sprint
-        bossfight: 🧛️ Bloodbath Build
-        finalboss: 👹 Nightmare Merge
+        noob_quest: 🧟‍️ Noob Quest
+        side_quest: 🔪 Slasher Sprint
+        boss_fight: 🧛️ Bloodbath Build
+        final_boss: 👹 Nightmare Merge
+    interview_prompt_category:
+        motivation: Motivation
+        motivation_help: Why this job? Why this company? Why you?
+        personality: Personnalité
+        personality_help: Strengths, weaknesses, values, soft skills
+        experience: Expérience
+        experience_help: Past jobs, achievements, challenges handled
+        education: Éducation
+        education_help: Degrees, certifications, learning style
+        technical: Compétences techniques
+        technical_help: Frameworks, tools, coding, technical tests
+        problem_solving: Résolution de problèmes
+        problem_solving_help: Logic, creativity, troubleshooting
+        teamwork: Travail d'équipe
+        teamwork_help: Working with others, conflicts, communication
+        adaptability: Adaptabilité
+        adaptability_help: Change, stress, handling uncertainty
+        ambition: Ambition
+        ambition_help: Career goals, 5-year vision
+        failure: Échecs & Apprentissages
+        failure_help: Biggest mistake, feedback received
+        organization: Organisation
+        organization_help: Prioritization, productivity, remote work
+        cultural_fit: Fit
+        cultural_fit_help: Company values, preferred environment
 
 login:
     title: SE CONNECTER
@@ -24,6 +49,7 @@ navigation:
     tags: Tags
     companies: Entreprises
     tool_box: Boite à outils
+    recruiter_game: Le jeu du recruteur
     logout: Se déconnecter
 
 confirm_modal:
@@ -126,3 +152,24 @@ tools:
     delete:
         modal_title: Supprimer un outil
         modal_body: Est-ce-que tu es sûre de vouloir supprimer l'outil %name% ?
+
+recruiter_game:
+    index_quote: Done is better than perfect. Rest is better than burnout. ✨
+    add_quote: Every great developer you know got there by solving problems they were unqualified to solve — until they did.
+    add_question: Nouvelle question
+    back_to_list: Liste des questions
+    preview_question: Aperçu
+    edit_question: Éditer
+    delete_question: Supprimer
+    list:
+        empty: Oops, looks like Michael Myers got to your list first. 🔪
+    form:
+        title: Nouvelle question
+        question_placeholder: Question
+        answer_placeholder: Réponse
+        category_placeholder: Catégorie
+        add: Créer
+        edit: Mettre à jour
+    delete:
+        modal_title: Supprimer une question
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer la question %question% ?
