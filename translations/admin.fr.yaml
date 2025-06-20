@@ -108,3 +108,21 @@ tags:
     delete:
         modal_title: Supprimer un tag
         modal_body: Est-ce-que tu es sûre de vouloir supprimer le tag %name% ?
+
+tools:
+    list_quote: You’re not behind. You’re just on your own timeline. 💻
+    form:
+        title: Nouvel outil
+        name_placeholder: Nouvel outil
+        category_placeholder: Catégorie
+        submit: Ajouter
+    list:
+        empty: This list is emptier than my fridge on Sunday night.
+        languages: Langages
+        frameworks: Frameworks
+        tools: Outils
+        practices: Méthodes
+        save_list: Enregistrer la liste
+    delete:
+        modal_title: Supprimer un outil
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer l'outil %name% ?

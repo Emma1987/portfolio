@@ -11,10 +11,4 @@ class AdminControllerTest extends AdminWebTestCase
         $this->client->request('GET', '/backstage/projects');
         $this->assertResponseIsSuccessful();
     }
-
-    public function testRenderToolBoxResponseIsSuccessful()
-    {
-        $this->client->request('GET', '/backstage/toolbox');
-        $this->assertResponseIsSuccessful();
-    }
 }

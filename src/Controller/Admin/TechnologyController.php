@@ -16,15 +16,28 @@ class TechnologyController extends AbstractController
     public function __construct(private EntityManagerInterface $entityManager) {}
 
     #[Route(path: '/backstage/technologies', name: 'em_portfolio_technology_list')]
-    public function list(): Response
+    public function list(Request $request): Response
     {
         $technologies = $this->entityManager->getRepository(Technology::class)->findBy([], ['position' => 'ASC']);
         $technology = new Technology();
 
         $form = $this->createForm(TechnologyType::class, $technology);
         $sortForm = $this->createForm(TechnologySortType::class, ['technologies' => $technologies]);
+        $sortForm->handleRequest($request);
 
-        return $this->render('admin/technologies/list.html.twig', [
+        if ($sortForm->isSubmitted()) {
+            if (!$sortForm->isValid()) {
+                $this->addFlash('error', 'Obviously, not what you expected when you tried sorting technologies...');
+            } else {
+                $this->entityManager->flush();
+
+                $this->addFlash('success', 'Boom. It worked. You rock.');
+            }
+
+            return $this->redirectToRoute('em_portfolio_technology_list');
+        }
+
+        return $this->render('admin/technologies.html.twig', [
             'technologies' => $technologies,
             'form' => $form,
             'sort_form' => $sortForm,
@@ -55,26 +68,6 @@ class TechnologyController extends AbstractController
                 $this->entityManager->flush();
 
                 $this->addFlash('success', sprintf('New technology "%s" created!', $technology->getName()));
-            }
-        }
-
-        return $this->redirectToRoute('em_portfolio_technology_list');
-    }
-
-    #[Route(path: '/backstage/technology/sort', name: 'em_portfolio_technology_sort', methods: [Request::METHOD_POST])]
-    public function sort(Request $request): Response
-    {
-        $technologies = $this->entityManager->getRepository(Technology::class)->findAll();
-        $form = $this->createForm(TechnologySortType::class, ['technologies' => $technologies]);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted()) {
-            if (!$form->isValid()) {
-                $this->addFlash('error', 'Obviously, not what you expected when you tried sorting technologies...');
-            } else {
-                $this->entityManager->flush();
-
-                $this->addFlash('success', 'Boom. It worked. You rock.');
             }
         }
 

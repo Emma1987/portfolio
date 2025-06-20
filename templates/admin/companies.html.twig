@@ -1,0 +1,52 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block body_title %}
+    <h1 class="d-flex">{{ 'admin.title'|trans({}, 'admin') }}<twig:ux:icon name="mdi:company" class="ux-icon ms-2" /></h1>
+{% endblock %}
+
+{% block body %}
+    <div class="custom-card custom-card-pink text-center">
+        {{ 'companies.list_quote'|trans({}, 'admin') }}
+    </div>
+
+    <hr class="my-4">
+
+    <section class="companies-card">
+        {# Add company form #}
+        <div class="custom-card custom-card-blue mb-3">
+            <div class="h5 text-center text-uppercase space-grotesk">
+                {{ 'companies.form.title'|trans({}, 'admin') }}
+            </div>
+
+            <hr>
+
+            {{ form_start(form, {action: path('em_portfolio_company_add')}) }}
+                <div class="d-flex">
+                    <div class="flex-grow-1 me-2">
+                        {{ form_rest(form) }}
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-primary mb-3">
+                        {{ 'companies.form.submit'|trans({}, 'admin') }}
+                    </button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+
+        {# Sort companies form #}
+        <twig:SortableCard
+            title="{{ 'companies.list.title'|trans({}, 'admin') }}"
+            color="yellow"
+            :form="sort_form"
+            :list="companies"
+            formFieldName="companies"
+            sortRoute="em_portfolio_company_list"
+            deleteRouteName="em_portfolio_company_delete"
+            :translations="{
+                delete_title: 'companies.delete.modal_title',
+                delete_body: 'companies.delete.modal_body',
+                save_list: 'companies.list.save_list',
+                empty: 'companies.list.empty'
+            }"
+        />
+    </section>
+{% endblock %}

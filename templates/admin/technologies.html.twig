@@ -1,0 +1,52 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block body_title %}
+    <h1 class="d-flex">{{ 'admin.title'|trans({}, 'admin') }}<twig:ux:icon name="lucide:atom" class="ux-icon ms-2" /></h1>
+{% endblock %}
+
+{% block body %}
+    <div class="custom-card custom-card-yellow text-center">
+        {{ 'technologies.list_quote'|trans({}, 'admin') }}
+    </div>
+
+    <hr class="my-4">
+
+    <section class="technologies-card">
+        {# Add technology form #}
+        <div class="custom-card custom-card-green mb-3">
+            <div class="h5 text-center text-uppercase space-grotesk">
+                {{ 'technologies.form.title'|trans({}, 'admin') }}
+            </div>
+
+            <hr>
+
+            {{ form_start(form, {action: path('em_portfolio_technology_add')}) }}
+                <div class="d-flex">
+                    <div class="flex-grow-1 me-2">
+                        {{ form_rest(form) }}
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-primary mb-3">
+                        {{ 'technologies.form.submit'|trans({}, 'admin') }}
+                    </button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+
+        {# Sort technologies form #}
+        <twig:SortableCard
+            title="{{ 'technologies.list.title'|trans({}, 'admin') }}"
+            color="blue"
+            :form="sort_form"
+            :list="technologies"
+            formFieldName="technologies"
+            sortRoute="em_portfolio_technology_list"
+            deleteRouteName="em_portfolio_technology_delete"
+            :translations="{
+                delete_title: 'technologies.delete.modal_title',
+                delete_body: 'technologies.delete.modal_body',
+                save_list: 'technologies.list.save_list',
+                empty: 'technologies.list.empty'
+            }"
+        />
+    </section>
+{% endblock %}
