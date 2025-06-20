@@ -16,15 +16,28 @@ class TagController extends AbstractController
     public function __construct(private EntityManagerInterface $entityManager) {}
 
     #[Route(path: '/backstage/tags', name: 'em_portfolio_tag_list')]
-    public function list(): Response
+    public function list(Request $request): Response
     {
-        $tags = $this->entityManager->getRepository(Tag::class)->findAll();
+        $tags = $this->entityManager->getRepository(Tag::class)->findBy([], ['position' => 'ASC']);
         $tag = new Tag();
 
         $form = $this->createForm(TagType::class, $tag);
         $sortForm = $this->createForm(TagSortType::class, ['tags' => $tags]);
+        $sortForm->handleRequest($request);
 
-        return $this->render('admin/tags/list.html.twig', [
+        if ($sortForm->isSubmitted()) {
+            if (!$sortForm->isValid()) {
+                $this->addFlash('error', 'Obviously, not what you expected when you tried sorting tags...');
+            } else {
+                $this->entityManager->flush();
+
+                $this->addFlash('success', 'Logged. Saved. Handled. You rock.');
+            }
+
+            return $this->redirectToRoute('em_portfolio_tag_list');
+        }
+
+        return $this->render('admin/tags.html.twig', [
             'tags' => $tags,
             'form' => $form,
             'sort_form' => $sortForm,
@@ -55,26 +68,6 @@ class TagController extends AbstractController
                 $this->entityManager->flush();
 
                 $this->addFlash('success', sprintf('New tag "%s" created!', $tag->getName()));
-            }
-        }
-
-        return $this->redirectToRoute('em_portfolio_tag_list');
-    }
-
-    #[Route(path: '/backstage/tag/sort', name: 'em_portfolio_tag_sort', methods: [Request::METHOD_POST])]
-    public function sort(Request $request): Response
-    {
-        $tags = $this->entityManager->getRepository(Tag::class)->findAll();
-        $form = $this->createForm(TagSortType::class, ['tags' => $tags]);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted()) {
-            if (!$form->isValid()) {
-                $this->addFlash('error', 'Obviously, not what you expected when you tried sorting tags...');
-            } else {
-                $this->entityManager->flush();
-
-                $this->addFlash('success', 'Logged. Saved. Handled. You rock.');
             }
         }
 

@@ -1,0 +1,44 @@
+<div class="custom-card custom-card-{{ color }} mb-3">
+    <div class="h5 text-center text-uppercase space-grotesk">
+        {{ title }}
+    </div>
+
+    <hr>
+
+    {% if list|length > 0 %}
+        <div {{ stimulus_controller('sortable-list') }}>
+            {{ form_start(form, {action: path(sortRoute)}) }}
+                <ul class="sortable-list" {{ stimulus_target('sortable-list', 'list') }}>
+                    {% for item_form in attribute(form, formFieldName) %}
+                        <li {{ stimulus_target('sortable-list', 'item') }}>
+                            {{ form_widget(attribute(item_form, 'name')) }}
+                            {{ form_widget(attribute(item_form, 'position')) }}
+                            <div class="item-name">
+                                <twig:ux:icon name="pixel:sort" class="ux-icon" /> {{ item_form.vars.data.name }}
+                            </div>
+                            <button
+                                type="button"
+                                class="delete-icon"
+                                data-bs-toggle="modal"
+                                data-bs-target="#confirmModal"
+                                {{ stimulus_action('confirm-modal', 'open') }}
+                                data-title="{{ translations.delete_title|trans({}, 'admin') }}"
+                                data-body="{{ translations.delete_body|trans({'%name%': item_form.vars.data.name}, 'admin') }}"
+                                data-confirm-url="{{ path(deleteRouteName, {id: item_form.vars.data.id}) }}"
+                            >
+                                <twig:ux:icon name="material-symbols:delete-outline" class="ux-icon" />
+                            </button>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <button type="submit" class="btn btn-sm btn-primary mb-3">
+                    {{ translations.save_list|trans({}, 'admin') }}
+                </button>
+            {{ form_end(form) }}
+        </div>
+    {% else %}
+        <p class="text-center">
+            {{ translations.empty|trans({}, 'admin') }}
+        </p>
+    {% endif %}
+</div>

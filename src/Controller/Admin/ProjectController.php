@@ -18,7 +18,7 @@ class ProjectController extends AbstractController
     #[Route(path: '/backstage/projects', name: 'em_portfolio_project_list')]
     public function list(): Response
     {
-        return $this->render('admin/project/list.html.twig', [
+        return $this->render('admin/projects.html.twig', [
             'projects' => $this->entityManager->getRepository(Project::class)->findAll(),
         ]);
     }

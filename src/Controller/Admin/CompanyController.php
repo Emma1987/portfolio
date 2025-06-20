@@ -16,15 +16,28 @@ class CompanyController extends AbstractController
     public function __construct(private EntityManagerInterface $entityManager) {}
 
     #[Route(path: '/backstage/companies', name: 'em_portfolio_company_list')]
-    public function list(): Response
+    public function list(Request $request): Response
     {
         $companies = $this->entityManager->getRepository(Company::class)->findBy([], ['position' => 'ASC']);
         $company = new Company();
 
         $form = $this->createForm(CompanyType::class, $company);
         $sortForm = $this->createForm(CompanySortType::class, ['companies' => $companies]);
+        $sortForm->handleRequest($request);
 
-        return $this->render('admin/companies/list.html.twig', [
+        if ($sortForm->isSubmitted()) {
+            if (!$sortForm->isValid()) {
+                $this->addFlash('error', 'Obviously, not what you expected when you tried sorting companies...');
+            } else {
+                $this->entityManager->flush();
+
+                $this->addFlash('success', '404 errors feared you. Success found you.');
+            }
+
+            return $this->redirectToRoute('em_portfolio_company_list');
+        }
+
+        return $this->render('admin/companies.html.twig', [
             'companies' => $companies,
             'form' => $form,
             'sort_form' => $sortForm,
@@ -55,26 +68,6 @@ class CompanyController extends AbstractController
                 $this->entityManager->flush();
 
                 $this->addFlash('success', sprintf('New company "%s" created!', $company->getName()));
-            }
-        }
-
-        return $this->redirectToRoute('em_portfolio_company_list');
-    }
-
-    #[Route(path: '/backstage/company/sort', name: 'em_portfolio_company_sort', methods: [Request::METHOD_POST])]
-    public function sort(Request $request): Response
-    {
-        $companies = $this->entityManager->getRepository(Company::class)->findAll();
-        $form = $this->createForm(CompanySortType::class, ['companies' => $companies]);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted()) {
-            if (!$form->isValid()) {
-                $this->addFlash('error', 'Obviously, not what you expected when you tried sorting companies...');
-            } else {
-                $this->entityManager->flush();
-
-                $this->addFlash('success', '404 errors feared you. Success found you.');
             }
         }
 

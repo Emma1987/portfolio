@@ -1,7 +1,102 @@
 {% extends 'admin_base.html.twig' %}
 
+{% block body_title %}
+    <h1 class="d-flex">{{ 'admin.title'|trans({}, 'admin') }}<twig:ux:icon name="gravity-ui:magic-wand" class="ux-icon ms-2" /></h1>
+{% endblock %}
+
 {% block body %}
     <div class="custom-card custom-card-yellow">
-        You’re not behind. You’re just on your own timeline. 💻
+        {{ 'tools.list_quote'|trans({}, 'admin') }}
     </div>
+
+    <hr class="my-4">
+
+    <div class="toolbox-card">
+        {# Add tool form #}
+        <div class="custom-card custom-card-pink mb-3">
+            <div class="h5 text-center text-uppercase space-grotesk">
+                {{ 'tools.form.title'|trans({}, 'admin') }}
+            </div>
+
+            <hr>
+
+            {{ form_start(form, {action: path('em_portfolio_backend_tool_add')}) }}
+                <div class="d-flex">
+                    <div class="flex-grow-1 me-2">
+                        {{ form_rest(form) }}
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-secondary align-self-end mb-3">
+                        {{ 'tools.form.submit'|trans({}, 'admin') }}
+                    </button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+
+        {# Sort languages form #}
+        <twig:SortableCard
+            title="{{ 'tools.list.languages'|trans({}, 'admin') }}"
+            color="green"
+            :form="sort_languages_form"
+            :list="tools|filter(tool => tool.category == constant('App\\Entity\\Enum\\ToolCategory::Languages'))"
+            formFieldName="tools"
+            sortRoute="em_portfolio_backend_toolbox"
+            deleteRouteName="em_portfolio_backend_tool_delete"
+            :translations="{
+                delete_title: 'tools.delete.modal_title',
+                delete_body: 'tools.delete.modal_body',
+                save_list: 'tools.list.save_list',
+                empty: 'tools.list.empty'
+            }"
+        />
+
+        {# Sort frameworks form #}
+        <twig:SortableCard
+            title="{{ 'tools.list.frameworks'|trans({}, 'admin') }}"
+            color="blue"
+            :form="sort_frameworks_form"
+            :list="tools|filter(tool => tool.category == constant('App\\Entity\\Enum\\ToolCategory::Frameworks'))"
+            formFieldName="tools"
+            sortRoute="em_portfolio_backend_toolbox"
+            deleteRouteName="em_portfolio_backend_tool_delete"
+            :translations="{
+                delete_title: 'tools.delete.modal_title',
+                delete_body: 'tools.delete.modal_body',
+                save_list: 'tools.list.save_list',
+                empty: 'tools.list.empty'
+            }"
+        />
+
+        {# Sort tools form #}
+        <twig:SortableCard
+            title="{{ 'tools.list.tools'|trans({}, 'admin') }}"
+            color="green"
+            :form="sort_tools_form"
+            :list="tools|filter(tool => tool.category == constant('App\\Entity\\Enum\\ToolCategory::Tools'))"
+            formFieldName="tools"
+            sortRoute="em_portfolio_backend_toolbox"
+            deleteRouteName="em_portfolio_backend_tool_delete"
+            :translations="{
+                delete_title: 'tools.delete.modal_title',
+                delete_body: 'tools.delete.modal_body',
+                save_list: 'tools.list.save_list',
+                empty: 'tools.list.empty'
+            }"
+        />
+
+        {# Sort practices form #}
+        <twig:SortableCard
+            title="{{ 'tools.list.practices'|trans({}, 'admin') }}"
+            color="blue"
+            :form="sort_practices_form"
+            :list="tools|filter(tool => tool.category == constant('App\\Entity\\Enum\\ToolCategory::Practices'))"
+            formFieldName="tools"
+            sortRoute="em_portfolio_backend_toolbox"
+            deleteRouteName="em_portfolio_backend_tool_delete"
+            :translations="{
+                delete_title: 'tools.delete.modal_title',
+                delete_body: 'tools.delete.modal_body',
+                save_list: 'tools.list.save_list',
+                empty: 'tools.list.empty'
+            }"
+        />
 {% endblock %}
