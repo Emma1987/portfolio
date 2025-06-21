@@ -113,6 +113,7 @@ class ProjectType extends AbstractType
                 'label' => 'projects.form.pictures',
                 'mapped' => false,
                 'multiple' => true,
+                'required' => false,
             ])
         ;
 

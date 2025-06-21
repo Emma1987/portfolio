@@ -1,17 +1,18 @@
 {% extends 'admin_base.html.twig' %}
+{% trans_default_domain 'admin' %}
 
 {% block body_title %}
-    <h1 class="d-flex">{{ 'admin.title'|trans({}, 'admin') }}<twig:ux:icon name="lucide:brain" class="ux-icon ms-2" /></h1>
+    <h1 class="d-flex">{{ 'admin.title'|trans }}<twig:ux:icon name="lucide:brain" class="ux-icon ms-2" /></h1>
 {% endblock %}
 
 {% block body %}
     <div class="page-header">
         <div class="custom-card custom-card-blue card-large">
-            {{ 'projects.list_quote'|trans({}, 'admin') }}
+            {{ 'projects.list_quote'|trans }}
         </div>
         <div class="custom-card custom-card-yellow card-small">
             <a href="{{ path('em_portfolio_project_add') }}">
-                <twig:ux:icon name="iconoir:add-circle" class="ux-icon" /><br>{{ 'projects.add_project'|trans({}, 'admin') }}
+                <twig:ux:icon name="iconoir:add-circle" class="ux-icon" /><br>{{ 'projects.add_project'|trans }}
             </a>
         </div>
     </div>
@@ -40,7 +41,7 @@
         </section>
     {% else %}
         <div class="d-flex justify-content-center custom-card custom-card-pink mb-3">
-            <div>{{ 'projects.list.empty'|trans({}, 'admin') }}</div>
+            <div>{{ 'projects.list.empty'|trans }}</div>
         </div>
     {% endif %}
 {% endblock %}

@@ -1,17 +1,18 @@
 {% extends 'admin_base.html.twig' %}
+{% trans_default_domain 'admin' %}
 
 {% block body_title %}
-    <h1 class="d-flex">{{ 'admin.title'|trans({}, 'admin') }}<twig:ux:icon name="lucide:brain" class="ux-icon ms-2" /></h1>
+    <h1 class="d-flex">{{ 'admin.title'|trans }}<twig:ux:icon name="lucide:brain" class="ux-icon ms-2" /></h1>
 {% endblock %}
 
 {% block body %}
     <div class="page-header">
         <div class="custom-card custom-card-blue card-large">
-            {{ 'projects.add_quote'|trans({}, 'admin') }}
+            {{ 'projects.add_quote'|trans }}
         </div>
         <div class="custom-card custom-card-yellow card-small">
             <a href="{{ path('em_portfolio_project_list') }}">
-                <twig:ux:icon name="fluent-mdl2:navigate-back" class="ux-icon" /><br>{{ 'projects.back_to_list'|trans({}, 'admin') }}
+                <twig:ux:icon name="fluent-mdl2:navigate-back" class="ux-icon" /><br>{{ 'projects.back_to_list'|trans }}
             </a>
         </div>
     </div>
@@ -22,11 +23,11 @@
         <div class="custom-card custom-card-pink">
             <div class="space-grotesk d-flex justify-content-center fw-bold text-uppercase mb-3">
                 {% block project_form_title %}
-                    {{ 'projects.form.title'|trans({}, 'admin') }}
+                    {{ 'projects.form.title'|trans }}
                 {% endblock %}
             </div>
 
-            {{ form_start(form, {attr: {'data-turbo': 'false'}}) }}
+            {{ form_start(form) }}
             {{ form_row(form.title) }}
             {{ form_row(form.summary) }}
             {{ form_row(form.description) }}
@@ -45,7 +46,7 @@
 
             <button type="submit" class="btn btn-sm btn-secondary">
                 {% block project_form_button %}
-                    {{ 'projects.form.add'|trans({}, 'admin') }}
+                    {{ 'projects.form.add'|trans }}
                 {% endblock %}
             </button>
             {{ form_end(form) }}

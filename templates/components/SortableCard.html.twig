@@ -1,3 +1,5 @@
+{% trans_default_domain 'admin' %}
+
 <div class="custom-card custom-card-{{ color }} mb-3">
     <div class="h5 text-center text-uppercase space-grotesk">
         {{ title }}
@@ -22,8 +24,8 @@
                                 data-bs-toggle="modal"
                                 data-bs-target="#confirmModal"
                                 {{ stimulus_action('confirm-modal', 'open') }}
-                                data-title="{{ translations.delete_title|trans({}, 'admin') }}"
-                                data-body="{{ translations.delete_body|trans({'%name%': item_form.vars.data.name}, 'admin') }}"
+                                data-title="{{ translations.delete_title|trans }}"
+                                data-body="{{ translations.delete_body|trans({name: item_form.vars.data.name}) }}"
                                 data-confirm-url="{{ path(deleteRouteName, {id: item_form.vars.data.id}) }}"
                             >
                                 <twig:ux:icon name="material-symbols:delete-outline" class="ux-icon" />
@@ -32,13 +34,13 @@
                     {% endfor %}
                 </ul>
                 <button type="submit" class="btn btn-sm btn-primary mb-3">
-                    {{ translations.save_list|trans({}, 'admin') }}
+                    {{ translations.save_list|trans }}
                 </button>
             {{ form_end(form) }}
         </div>
     {% else %}
         <p class="text-center">
-            {{ translations.empty|trans({}, 'admin') }}
+            {{ translations.empty|trans }}
         </p>
     {% endif %}
 </div>

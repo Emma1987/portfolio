@@ -1,12 +1,13 @@
 {% extends 'admin_base.html.twig' %}
+{% trans_default_domain 'admin' %}
 
 {% block body_title %}
-    <h1 class="d-flex">{{ 'admin.title'|trans({}, 'admin') }}<twig:ux:icon name="mdi:company" class="ux-icon ms-2" /></h1>
+    <h1 class="d-flex">{{ 'admin.title'|trans }}<twig:ux:icon name="mdi:company" class="ux-icon ms-2" /></h1>
 {% endblock %}
 
 {% block body %}
     <div class="custom-card custom-card-pink text-center">
-        {{ 'companies.list_quote'|trans({}, 'admin') }}
+        {{ 'companies.list_quote'|trans }}
     </div>
 
     <hr class="my-4">
@@ -15,7 +16,7 @@
         {# Add company form #}
         <div class="custom-card custom-card-blue mb-3">
             <div class="h5 text-center text-uppercase space-grotesk">
-                {{ 'companies.form.title'|trans({}, 'admin') }}
+                {{ 'companies.form.title'|trans }}
             </div>
 
             <hr>
@@ -26,7 +27,7 @@
                         {{ form_rest(form) }}
                     </div>
                     <button type="submit" class="btn btn-sm btn-primary mb-3">
-                        {{ 'companies.form.submit'|trans({}, 'admin') }}
+                        {{ 'companies.form.submit'|trans }}
                     </button>
                 </div>
             {{ form_end(form) }}
@@ -34,7 +35,7 @@
 
         {# Sort companies form #}
         <twig:SortableCard
-            title="{{ 'companies.list.title'|trans({}, 'admin') }}"
+            title="{{ 'companies.list.title'|trans }}"
             color="yellow"
             :form="sort_form"
             :list="companies"
