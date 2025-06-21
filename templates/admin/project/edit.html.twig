@@ -1,12 +1,13 @@
 {% extends 'admin/project/add.html.twig' %}
+{% trans_default_domain 'admin' %}
 
 {% block project_form_title %}
-    {{ 'projects.form.edit_title'|trans({}, 'admin') }}
+    {{ 'projects.form.edit_title'|trans }}
 {% endblock %}
 
 {% block project_form_pictures %}
     <div class="text-decoration-underline fw-bold" id="existing-pictures">
-        {{ 'projects.form.pictures_label'|trans({}, 'admin') }}
+        {{ 'projects.form.pictures_label'|trans }}
     </div>
 
     {% if form.vars.data.pictures|length > 0 %}
@@ -22,8 +23,8 @@
                     data-bs-toggle="modal"
                     data-bs-target="#confirmModal"
                     {{ stimulus_action('confirm-modal', 'open') }}
-                    data-title="{{ 'projects.remove_picture.modal_title'|trans({}, 'admin') }}"
-                    data-body="{{ 'projects.remove_picture.modal_body'|trans({'%path%': picture.path}, 'admin') }}"
+                    data-title="{{ 'projects.remove_picture.modal_title'|trans }}"
+                    data-body="{{ 'projects.remove_picture.modal_body'|trans({path: picture.path}) }}"
                     data-confirm-url="{{ path('em_portfolio_picture_delete', {id: picture.id}) }}"
                 >
                     <twig:ux:icon name="material-symbols:delete-outline" class="ux-icon" data-action="confirm-modal#open" />
@@ -31,10 +32,10 @@
             </div>
         {% endfor %}
     {% else %}
-        <p>{{ 'projects.form.no_pics'|trans({}, 'admin') }}</p>
+        <p>{{ 'projects.form.no_pics'|trans }}</p>
     {% endif %}
 {% endblock %}
 
 {% block project_form_button %}
-    {{ 'projects.form.edit'|trans({}, 'admin') }}
+    {{ 'projects.form.edit'|trans }}
 {% endblock %}

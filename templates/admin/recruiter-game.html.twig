@@ -1,17 +1,18 @@
 {% extends 'admin_base.html.twig' %}
+{% trans_default_domain 'admin' %}
 
 {% block body_title %}
-    <h1 class="d-flex">{{ 'admin.title'|trans({}, 'admin') }}<twig:ux:icon name="icon-park-outline:game" class="ux-icon ms-2" /></h1>
+    <h1 class="d-flex">{{ 'admin.title'|trans }}<twig:ux:icon name="icon-park-outline:game" class="ux-icon ms-2" /></h1>
 {% endblock %}
 
 {% block body %}
     <div class="page-header">
         <div class="custom-card custom-card-green card-large">
-            {{ 'recruiter_game.index_quote'|trans({}, 'admin') }}
+            {{ 'recruiter_game.index_quote'|trans }}
         </div>
         <div class="custom-card custom-card-yellow card-small">
             <a href="{{ path('em_portfolio_recruiter_game_add') }}">
-                <twig:ux:icon name="iconoir:add-circle" class="ux-icon" /><br>{{ 'recruiter_game.add_question'|trans({}, 'admin') }}
+                <twig:ux:icon name="iconoir:add-circle" class="ux-icon" /><br>{{ 'recruiter_game.add_question'|trans }}
             </a>
         </div>
     </div>
@@ -26,7 +27,7 @@
         </section>
     {% else %}
         <div class="d-flex justify-content-center custom-card custom-card-pink mb-3">
-            <div>{{ 'recruiter_game.list.empty'|trans({}, 'admin') }}</div>
+            <div>{{ 'recruiter_game.list.empty'|trans }}</div>
         </div>
     {% endif %}
 {% endblock %}

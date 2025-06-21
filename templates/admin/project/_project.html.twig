@@ -1,3 +1,4 @@
+{% trans_default_domain 'admin' %}
 {% set classes = ['custom-card-blue', 'custom-card-green', 'custom-card-yellow', 'custom-card-pink'] %}
 {% set random_class = random(classes) %}
 {% set btn_class = random_class == 'custom-card-pink' or random_class == 'custom-card-yellow' ? 'btn-secondary' : 'btn-primary' %}
@@ -6,21 +7,21 @@
     <p class="h4 fw-bold">{{ project.title }}</p>
     <p>{{ project.summary }}</p>
 
-    {{ 'projects.technologies'|trans({}, 'admin') }}
+    {{ 'projects.technologies'|trans }}
     <ul>
         {% for technology in project.projectTechnologies %}
             <li>{{ technology.technology.name }}</li>
         {% endfor %}
     </ul>
 
-    {{ 'projects.tags'|trans({}, 'admin') }}
+    {{ 'projects.tags'|trans }}
     <ul>
         {% for tag in project.projectTags %}
             <li>{{ tag.tag.name }}</li>
         {% endfor %}
     </ul>
 
-    {{ 'projects.pictures'|trans({}, 'admin') }}
+    {{ 'projects.pictures'|trans }}
     <div class="d-flex w-auto mb-3">
         {% for picture in project.pictures %}
             <button
@@ -36,28 +37,28 @@
     </div>
 
     <p><em>
-        {{ 'projects.built_for'|trans({'%companies%': project.companies|map(company => company.name)|join(', ')}, 'admin') }}
+        {{ 'projects.built_for'|trans({companies: project.companies|map(company => company.name)|join(', ')}) }}
     </em></p>
 
     <hr>
 
     <div class="d-flex justify-content-around">
         <a href="#" class="btn btn-sm {{ btn_class }}">
-            {{ 'projects.preview_project'|trans({}, 'admin') }}
+            {{ 'projects.preview_project'|trans }}
         </a>
         <a href="{{ path('em_portfolio_project_edit', {id: project.id}) }}" class="btn btn-sm {{ btn_class }}">
-            {{ 'projects.edit_project'|trans({}, 'admin') }}
+            {{ 'projects.edit_project'|trans }}
         </a>
         <button
             class="btn btn-sm {{ btn_class }}"
             data-bs-toggle="modal"
             data-bs-target="#confirmModal"
             {{ stimulus_action('confirm-modal', 'open') }}
-            data-title="{{ 'projects.delete.modal_title'|trans({}, 'admin') }}"
-            data-body="{{ 'projects.delete.modal_body'|trans({'%title%': project.title}, 'admin') }}"
+            data-title="{{ 'projects.delete.modal_title'|trans }}"
+            data-body="{{ 'projects.delete.modal_body'|trans({title: project.title}) }}"
             data-confirm-url="{{ path('em_portfolio_project_delete', {id: project.id}) }}"
         >
-            {{ 'projects.delete_project'|trans({}, 'admin') }}
+            {{ 'projects.delete_project'|trans }}
         </button>
     </div>
 </div>

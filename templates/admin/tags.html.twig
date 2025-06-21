@@ -1,12 +1,13 @@
 {% extends 'admin_base.html.twig' %}
+{% trans_default_domain 'admin' %}
 
 {% block body_title %}
-    <h1 class="d-flex">{{ 'admin.title'|trans({}, 'admin') }}<twig:ux:icon name="lucide:bug" class="ux-icon ms-2" /></h1>
+    <h1 class="d-flex">{{ 'admin.title'|trans }}<twig:ux:icon name="lucide:bug" class="ux-icon ms-2" /></h1>
 {% endblock %}
 
 {% block body %}
     <div class="custom-card custom-card-green text-center">
-        {{ 'tags.list_quote'|trans({}, 'admin') }}
+        {{ 'tags.list_quote'|trans }}
     </div>
 
     <hr class="my-4">
@@ -15,7 +16,7 @@
         {# Add tag form #}
         <div class="custom-card custom-card-yellow mb-3">
             <div class="h5 text-center text-uppercase space-grotesk">
-                {{ 'tags.form.title'|trans({}, 'admin') }}
+                {{ 'tags.form.title'|trans }}
             </div>
 
             <hr>
@@ -26,7 +27,7 @@
                         {{ form_rest(form) }}
                     </div>
                     <button type="submit" class="btn btn-sm btn-primary mb-3">
-                        {{ 'tags.form.submit'|trans({}, 'admin') }}
+                        {{ 'tags.form.submit'|trans }}
                     </button>
                 </div>
             {{ form_end(form) }}
@@ -34,7 +35,7 @@
 
         {# Sort tags form #}
         <twig:SortableCard
-            title="{{ 'tags.list.title'|trans({}, 'admin') }}"
+            title="{{ 'tags.list.title'|trans }}"
             color="pink"
             :form="sort_form"
             :list="tags"

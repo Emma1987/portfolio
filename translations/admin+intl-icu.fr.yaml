@@ -35,7 +35,7 @@ enum:
 
 login:
     title: SE CONNECTER
-    logged_in: ✅ Access granted. Welcome back, %name%.
+    logged_in: ✅ Access granted. Welcome back, {name}.
     label:
         email: Email
         password: Mot de passe
@@ -56,6 +56,46 @@ confirm_modal:
     cancel: Annuler
     confirm: Confirmer
 
+dashboard:
+    index_quote: Congrats! 🎉 You have admin powers. 👑 Please use responsibly… or not. 💀
+    actions: 'Actions rapides :'
+    project_count: >-
+        {count, plural,
+            =0    {Projet}
+            =1    {Projet}
+            other {Projets}
+        }
+    technology_count: >-
+        {count, plural,
+            =0    {Technologie}
+            =1    {Technologie}
+            other {Technologies}
+        }
+    tag_count: >-
+        {count, plural,
+            =0    {Tag}
+            =1    {Tag}
+            other {Tags}
+        }
+    company_count: >-
+        {count, plural,
+            =0    {Entreprise}
+            =1    {Entreprise}
+            other {Entreprises}
+        }
+    tool_count: >-
+        {count, plural,
+            =0    {Outil}
+            =1    {Outil}
+            other {Outils}
+        }
+    question_count: >-
+        {count, plural,
+            =0    {Question}
+            =1    {Question}
+            other {Questions}
+        }
+
 projects:
     list_quote: You don’t have to do everything today. Just one thing is enough. ✨
     add_quote: The version of you who started this couldn’t have done what you just did. 🧠
@@ -64,7 +104,7 @@ projects:
     technologies: "Technologies :"
     tags: "Tags :"
     pictures: "Images :"
-    built_for: Développé avec %companies%.
+    built_for: Développé avec {companies}.
     preview_project: Aperçu
     edit_project: Éditer
     delete_project: Supprimer
@@ -87,14 +127,14 @@ projects:
         empty: Just imagine how good this is gonna look soon... 😍
     delete:
         modal_title: Supprimer le projet
-        modal_body: Est-ce-que tu es sûre de vouloir supprimer le projet "%title%" ?
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer le projet "{title}" ?
     remove_picture:
         modal_title: Supprimer l'image
-        modal_body: Est-ce-que tu es sûre de vouloir supprimer l'image "%path%" ?<br>⚠️ Action irréversible ! ⚠️
-
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer l'image "{path}" ?<br>⚠️ Action irréversible ! ⚠️
 
 technologies:
     list_quote: You’re allowed to take your time and still be amazing. 🥰
+    list_title: Liste des technologies
     form:
         title: Nouvelle technologie
         name_placeholder: Nouvelle technologie
@@ -105,10 +145,11 @@ technologies:
         save_list: Enregistrer la liste
     delete:
         modal_title: Supprimer une technologie
-        modal_body: Est-ce-que tu es sûre de vouloir supprimer la technologie %name% ?
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer la technologie {name} ?
 
 companies:
     list_quote: Done is better than perfect. Rest is better than burnout. ✨
+    list_title: Liste des entreprises
     form:
         title: Nouvelle entreprise
         name_placeholder: Nouvelle entreprise
@@ -119,10 +160,11 @@ companies:
         save_list: Enregistrer la liste
     delete:
         modal_title: Supprimer une entreprise
-        modal_body: Est-ce-que tu es sûre de vouloir supprimer l'entreprise %name% ?
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer l'entreprise {name} ?
 
 tags:
     list_quote: You’ve made it through 100% of your worst days so far. 😎
+    list_title: Liste des tags
     form:
         title: Nouveau tag
         name_placeholder: Nouveau tag
@@ -133,10 +175,11 @@ tags:
         save_list: Enregistrer la liste
     delete:
         modal_title: Supprimer un tag
-        modal_body: Est-ce-que tu es sûre de vouloir supprimer le tag %name% ?
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer le tag {name} ?
 
 tools:
     list_quote: You’re not behind. You’re just on your own timeline. 💻
+    list_title: Liste des outils
     form:
         title: Nouvel outil
         name_placeholder: Nouvel outil
@@ -151,7 +194,7 @@ tools:
         save_list: Enregistrer la liste
     delete:
         modal_title: Supprimer un outil
-        modal_body: Est-ce-que tu es sûre de vouloir supprimer l'outil %name% ?
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer l'outil {name} ?
 
 recruiter_game:
     index_quote: Done is better than perfect. Rest is better than burnout. ✨
@@ -172,4 +215,4 @@ recruiter_game:
         edit: Mettre à jour
     delete:
         modal_title: Supprimer une question
-        modal_body: Est-ce-que tu es sûre de vouloir supprimer la question %question% ?
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer la question {question} ?

@@ -290,6 +290,21 @@ html, body {
                 }
             }
         }
+
+        .admin-card {
+            > div {
+                gap: 1rem;
+                flex-direction: column;
+            }
+
+            .custom-card {
+                flex: 1 1 0;
+
+                .entity-count {
+                    font-size: 2rem;
+                }
+            }
+        }
     }
 }
 
@@ -376,6 +391,12 @@ html, body {
             .technologies-card, .companies-card, .tags-card, .toolbox-card, .project-form, .question-form {
                 width: 70%;
                 margin: auto;
+            }
+
+            .admin-card {
+                > div {
+                    flex-direction: row;
+                }
             }
         }
     }

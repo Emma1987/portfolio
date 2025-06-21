@@ -1,7 +1,103 @@
 {% extends 'admin_base.html.twig' %}
+{% trans_default_domain 'admin' %}
+
+{% block body_title %}
+    <h1 class="d-flex">{{ 'admin.title'|trans }}<twig:ux:icon name="ix:dashboard-pen" class="ux-icon ms-2" /></h1>
+{% endblock %}
 
 {% block body %}
-    <div class="neon-card">
-        Hello World!
+    <div class="custom-card custom-card-yellow text-center">
+        {{ 'dashboard.index_quote'|trans }}
+    </div>
+
+    <hr class="my-4">
+
+    <div class="admin-card custom-card custom-card-blue">
+        <div class="d-flex entity-count-card">
+            <div class="custom-card custom-card-pink text-center space-grotesk">
+                <div class="entity-count">{{ project_count }}</div>
+                <div>{{ 'dashboard.project_count'|trans({count: project_count}) }}</div>
+            </div>
+            <div class="custom-card custom-card-pink text-center space-grotesk">
+                <div class="entity-count">{{ technology_count }}</div>
+                <div>{{ 'dashboard.technology_count'|trans({count: technology_count}) }}</div>
+            </div>
+            <div class="custom-card custom-card-pink text-center space-grotesk">
+                <div class="entity-count">{{ tag_count }}</div>
+                <div>{{ 'dashboard.tag_count'|trans({count: tag_count}) }}</div>
+            </div>
+            <div class="custom-card custom-card-pink text-center space-grotesk">
+                <div class="entity-count">{{ company_count }}</div>
+                <div>{{ 'dashboard.company_count'|trans({count: company_count}) }}</div>
+            </div>
+            <div class="custom-card custom-card-pink text-center space-grotesk">
+                <div class="entity-count">{{ tool_count }}</div>
+                <div>{{ 'dashboard.tool_count'|trans({count: tool_count}) }}</div>
+            </div>
+            <div class="custom-card custom-card-pink text-center space-grotesk">
+                <div class="entity-count">{{ question_count }}</div>
+                <div>{{ 'dashboard.question_count'|trans({count: question_count}) }}</div>
+            </div>
+        </div>
+
+        <p class="space-grotesk text-decoration-underline mt-5">
+            {{ 'dashboard.actions'|trans }}
+        </p>
+        <div class="d-flex">
+            <div class="custom-card custom-card-yellow text-center">
+                <a href="{{ path('em_portfolio_project_add') }}">
+                    <twig:ux:icon name="gridicons:add-outline" class="ux-icon ms-2" />
+                    <br>
+                    {{ 'projects.form.title'|trans }}
+                </a>
+                <hr>
+                <a href="{{ path('em_portfolio_project_list') }}">
+                    <twig:ux:icon name="mdi:eye-outline" class="ux-icon ms-2" />
+                    <br>
+                    {{ 'projects.back_to_list'|trans }}
+                </a>
+            </div>
+            <div class="custom-card custom-card-yellow text-center">
+                <a href="{{ path('em_portfolio_technology_list') }}">
+                    <twig:ux:icon name="mdi:eye-outline" class="ux-icon ms-2" />
+                    <br>
+                    {{ 'technologies.list_title'|trans }}
+                </a>
+            </div>
+            <div class="custom-card custom-card-yellow text-center">
+                <a href="{{ path('em_portfolio_tag_list') }}">
+                    <twig:ux:icon name="mdi:eye-outline" class="ux-icon ms-2" />
+                    <br>
+                    {{ 'tags.list_title'|trans }}
+                </a>
+            </div>
+            <div class="custom-card custom-card-yellow text-center">
+                <a href="{{ path('em_portfolio_company_list') }}">
+                    <twig:ux:icon name="mdi:eye-outline" class="ux-icon ms-2" />
+                    <br>
+                    {{ 'companies.list_title'|trans }}
+                </a>
+            </div>
+            <div class="custom-card custom-card-yellow text-center">
+                <a href="{{ path('em_portfolio_backend_toolbox') }}">
+                    <twig:ux:icon name="mdi:eye-outline" class="ux-icon ms-2" />
+                    <br>
+                    {{ 'tools.list_title'|trans }}
+                </a>
+            </div>
+            <div class="custom-card custom-card-yellow text-center">
+                <a href="{{ path('em_portfolio_recruiter_game_add') }}">
+                    <twig:ux:icon name="gridicons:add-outline" class="ux-icon ms-2" />
+                    <br>
+                    {{ 'recruiter_game.form.title'|trans }}
+                </a>
+                <hr>
+                <a href="{{ path('em_portfolio_recruiter_game_index') }}">
+                    <twig:ux:icon name="mdi:eye-outline" class="ux-icon ms-2" />
+                    <br>
+                    {{ 'recruiter_game.back_to_list'|trans }}
+                </a>
+            </div>
+        </div>
     </div>
 {% endblock %}

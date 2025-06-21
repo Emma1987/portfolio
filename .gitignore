@@ -11,6 +11,7 @@
 
 .DS_Store
 .idea/
+/public/images/project/
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
