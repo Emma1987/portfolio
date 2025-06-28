@@ -2,12 +2,15 @@
 
 namespace App\Entity;
 
+use App\Entity\Trait\PositionTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
 #[ORM\UniqueConstraint(name: 'UNIQ_PROJECT_TECHNOLOGY', columns: ['project_id', 'technology_id'])]
 class ProjectTechnology
 {
+    use PositionTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -20,9 +23,6 @@ class ProjectTechnology
     #[ORM\ManyToOne(targetEntity: Technology::class, fetch: 'EAGER', inversedBy: 'projectTechnologies')]
     #[ORM\JoinColumn(nullable: false)]
     private Technology $technology;
-
-    #[ORM\Column]
-    private int $position = 0;
 
     public function getId(): ?int
     {
@@ -49,18 +49,6 @@ class ProjectTechnology
     public function setTechnology(Technology $technology): static
     {
         $this->technology = $technology;
-
-        return $this;
-    }
-
-    public function getPosition(): int
-    {
-        return $this->position;
-    }
-
-    public function setPosition(int $position): static
-    {
-        $this->position = $position;
 
         return $this;
     }

@@ -50,6 +50,7 @@ navigation:
     companies: Entreprises
     tool_box: Boite à outils
     recruiter_game: Le jeu du recruteur
+    translations: Traductions
     logout: Se déconnecter
 
 confirm_modal:
@@ -216,3 +217,13 @@ recruiter_game:
     delete:
         modal_title: Supprimer une question
         modal_body: Est-ce-que tu es sûre de vouloir supprimer la question {question} ?
+
+translations:
+    index_quote: Every great developer you know got there by solving problems they were unqualified to solve — until they did.
+    single_quote: You can do this. Probably. Maybe. Okay, definitely. ✨
+    form:
+        entity: Entité
+        field: Attribut
+        fr_translation: Traduction FR
+        en_translation: Traduction EN
+        submit: Enregistrer

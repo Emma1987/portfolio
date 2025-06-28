@@ -1,0 +1,29 @@
+{% extends 'admin_base.html.twig' %}
+{% trans_default_domain 'admin' %}
+{% form_theme form 'form/translation_theme.html.twig' %}
+
+{% block body_title %}
+    <h1 class="d-flex">{{ 'admin.title'|trans }}<twig:ux:icon name="garden:translation-exists-stroke-16" class="ux-icon ms-2" /></h1>
+{% endblock %}
+
+{% block body %}
+    <div class="custom-card custom-card-pink text-center">
+        {{ 'translations.index_quote'|trans }}
+    </div>
+
+    <hr class="my-4">
+
+    <section class="translations-card">
+        <div class="custom-card custom-card-blue text-center">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-sm btn-primary mb-3">
+                        {{ 'translations.form.submit'|trans }}
+                    </button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}
