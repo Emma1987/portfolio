@@ -2,12 +2,15 @@
 
 namespace App\Entity;
 
+use App\Entity\Trait\PositionTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
 #[ORM\UniqueConstraint(name: 'UNIQ_PROJECT_TAG', columns: ['project_id', 'tag_id'])]
 class ProjectTag
 {
+    use PositionTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -20,9 +23,6 @@ class ProjectTag
     #[ORM\ManyToOne(targetEntity: Tag::class, fetch: 'EAGER', inversedBy: 'projectTags')]
     #[ORM\JoinColumn(nullable: false)]
     private Tag $tag;
-
-    #[ORM\Column]
-    private int $position = 0;
 
     public function getId(): ?int
     {
@@ -49,18 +49,6 @@ class ProjectTag
     public function setTag(Tag $tag): static
     {
         $this->tag = $tag;
-
-        return $this;
-    }
-
-    public function getPosition(): int
-    {
-        return $this->position;
-    }
-
-    public function setPosition(int $position): static
-    {
-        $this->position = $position;
 
         return $this;
     }

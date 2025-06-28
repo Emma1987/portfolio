@@ -57,6 +57,11 @@
                         <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::RECRUITER_GAME')) ? 'active' : '' }}">
                             <a href="{{ path('em_portfolio_recruiter_game_index') }}">{{ 'navigation.recruiter_game'|trans }}</a>
                         </li>
+                        <hr>
+                        <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::TRANSLATIONS')) ? 'active' : '' }}">
+                            <a href="{{ path('em_portfolio_translations') }}">{{ 'navigation.translations'|trans }}</a>
+                        </li>
+                        <hr>
                         <li>
                             <a href="{{ path('em_portfolio_backend_logout') }}" data-turbo="false">
                                 {{ 'navigation.logout'|trans }}

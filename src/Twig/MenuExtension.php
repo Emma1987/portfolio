@@ -15,6 +15,7 @@ class MenuExtension extends AbstractExtension
     public const COMPANIES = 'companies';
     public const TOOLBOX = 'toolbox';
     public const RECRUITER_GAME = 'recruiter-game';
+    public const TRANSLATIONS = 'translations';
 
     public function __construct(private RequestStack $requestStack) {}
 
@@ -37,6 +38,7 @@ class MenuExtension extends AbstractExtension
             self::COMPANIES => 'em_portfolio_company_list' === $currentRoute,
             self::TOOLBOX => 'em_portfolio_backend_toolbox' === $currentRoute,
             self::RECRUITER_GAME => in_array($currentRoute, ['em_portfolio_recruiter_game_index', 'em_portfolio_recruiter_game_add', 'em_portfolio_recruiter_game_edit']),
+            self::TRANSLATIONS => 'em_portfolio_translations' === $currentRoute,
             default => false,
         };
     }
