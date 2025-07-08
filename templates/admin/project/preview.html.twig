@@ -1,0 +1,25 @@
+{% extends 'admin_base.html.twig' %}
+{% trans_default_domain 'admin' %}
+
+{% block body_title %}
+    <h1 class="d-flex">{{ 'admin.title'|trans }}<twig:ux:icon name="lucide:brain" class="ux-icon ms-2" /></h1>
+{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <div class="custom-card custom-card-blue card-large">
+            {{ 'projects.preview_quote'|trans }}
+        </div>
+        <div class="custom-card custom-card-yellow card-small">
+            <a href="{{ path('em_portfolio_project_list') }}">
+                <twig:ux:icon name="fluent-mdl2:navigate-back" class="ux-icon" /><br>{{ 'projects.back_to_list'|trans }}
+            </a>
+        </div>
+    </div>
+
+    <hr>
+
+    <section class="project-preview">
+        {{ include('common/_project_front.html.twig', {project: project}) }}
+    </section>
+{% endblock %}

@@ -2,6 +2,18 @@ meta:
   title: Emmanuelle – Code, café & chaos bienveillant
   description: Dev backend boostée au PHP, au café et à des playlists douteuses sur Spotify. Le frontend ? J'en fais aussi (quand il faut).
 
+enum:
+    level:
+        noob_quest: 🧟‍️ Facile
+        side_quest: 🔪 Moyen
+        boss_fight: 🧛️ Difficile
+        final_boss: 👹 Extra difficile
+    tool_category:
+        languages: Langages
+        frameworks: Frameworks
+        tools: Outils
+        practices: Méthodes
+
 header:
     language:
         french: 🇫🇷 Français
@@ -22,19 +34,35 @@ introduction:
     my_name_is: Je m'appelle Emmanuelle
     what_i_do: 'J''écris du code, je fais des blagues nulles, et je prétends savoir ce que je fais (spoiler : c''est souvent vrai).'
 
+projects:
+    description: Mission
+    technologies: Technologies
+    tags: Tags
+    company: Entreprise
+    companies: Entreprises
+    see_more: Voir plus
+    previous_slide: Précédent
+    next_slide: Suivant
+    empty: Aucun projet pour le moment.
+    filters:
+        title: Filtres
+        technologies_placeholder: Sélectionnez une ou plusieurs technologies
+        tags_placeholder: Sélectionnez un ou plusieurs tags
+        companies_placeholder: Sélectionnez une ou plusieurs entreprises
+        submit: Filtrer
+
 about:
     intro_title: Moi
     intro_text1: Moi c'est Emmanuelle, développeuse backend qui aime créer des applications à la fois utiles et agréables à utiliser (alors forcément, je fais aussi un peu de JavaScript côté front).
     intro_text2: J'aime aussi les cafés Starbucks ☕, les orages ⛈️ et la photographie 📸.
     learning_title: Le commencencement
     learning_text: Je me suis formée via le parcours %link% Développeur d'applications PHP/Symfony, et je n'ai pas arrêté d'apprendre depuis.
-    skills_title: Ma boîte à outils
-    skills_text: |
-        Langages :<br><ul><li>PHP 6/7/8 🐘</li><li>JavaScript 💻 (notions en VueJS et React)</li><li>HTML5 & CSS3 🎨</li><li>SQL (MySQL, PostgreSQL) 🗄️</li></ul>
-        Frameworks :<br><ul><li>Symfony 4/5/6 ⚙ & PHPUnit 🧪️️</li><li>Bootstrap 🧩</li><li>jQuery 🕸️</li></ul>
-        Outils :<br><ul><li>Git & GitHub 🧬️</li><li>Bitbucket & Jira 📋️</li><li>Docker 🐳️</li><li>Caféine ☕</li></ul>
-        Méthodes :<br><ul><li>Pair programming 👯‍♀️</li><li>Code review 🔍</li></ul>
-        <p>Je fais attention au code propre, à l'accessibilité, et au confort des développeurs.</p>
+    tools_title: Ma boîte à outils
+    tools_languages: Langages :<br><ul><li>%languages%</li></ul>
+    tools_frameworks: Frameworks :<br><ul><li>%frameworks%</li></ul>
+    tools_tools: Outils :<br><ul><li>%tools%</li></ul>
+    tools_practices: Méthodes :<br><ul><li>%practices%</li></ul>
+    tools_text: Je fais attention au code propre, à l'accessibilité, et au confort des développeurs.
     outro: En résumé, je crée des trucs qui marchent, qui sont jolis, et bien sûr que non, je n'ai jamais développé en PHP6.
     progress_bar: Level 2 — 67% to Level 3
 

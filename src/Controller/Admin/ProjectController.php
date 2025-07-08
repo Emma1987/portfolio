@@ -71,6 +71,14 @@ class ProjectController extends AbstractController
         ]);
     }
 
+    #[Route(path: '/backstage/project/preview/{id}', name: 'em_portfolio_project_preview')]
+    public function preview(Project $project): Response
+    {
+        return $this->render('admin/project/preview.html.twig', [
+            'project' => $project,
+        ]);
+    }
+
     #[Route(path: '/backstage/project/delete/{id}', name: 'em_portfolio_project_delete')]
     public function delete(Project $project): Response
     {

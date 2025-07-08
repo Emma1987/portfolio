@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_horizontal_layout.html.twig' %}
+
+{% block body %}
+    <section id="projects-grid">
+        {% if projects %}
+            <div {{ stimulus_controller('project-filters') }}>
+                <div class="mb-2">
+                    <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false" aria-controls="filters">
+                        {{ 'projects.filters.title'|trans }} <twig:ux:icon name="mage:filter" class="ux-icon" />
+                    </button>
+                    <div class="collapse" id="filters">
+                        <div class="card card-body">
+                            {{ form_start(form, {attr: {'data-action': 'change->project-filters#filter'}}) }}
+                                {{ form_row(form.technologies, {attr: {'data-project-filters-target': 'technologiesInput'}}) }}
+                                {{ form_row(form.tags, {attr: {'data-project-filters-target': 'tagsInput'}}) }}
+                                {{ form_row(form.companies, {attr: {'data-project-filters-target': 'companiesInput'}}) }}
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex" id="project-cards">
+                    {% for project in projects %}
+                        {{ include('common/_project_front.html.twig', {project: project}) }}
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <p class="d-flex justify-content-center w-100">{{ 'projects.empty'|trans }}</p>
+        {% endif %}
+    </section>
+{% endblock %}

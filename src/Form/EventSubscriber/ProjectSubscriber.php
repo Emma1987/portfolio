@@ -80,7 +80,7 @@ class ProjectSubscriber implements EventSubscriberInterface
         }
 
         foreach ($currentProjectTechnologies as $projectTechnology) {
-            if (!in_array($projectTechnology, $formTechnologies)) {
+            if (!in_array($projectTechnology->getTechnology()->getId(), $formTechnologies)) {
                 $project->removeProjectTechnology($projectTechnology);
             }
         }
@@ -113,7 +113,7 @@ class ProjectSubscriber implements EventSubscriberInterface
         }
 
         foreach ($currentProjectTags as $projectTag) {
-            if (!in_array($projectTag, $formTags)) {
+            if (!in_array($projectTag->getTag()->getId(), $formTags)) {
                 $project->removeProjectTag($projectTag);
             }
         }

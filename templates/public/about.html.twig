@@ -24,10 +24,32 @@
         <hr>
 
         <h2 class="title press-start-2p-regular">
-            <span class="mt-1">{{ 'about.skills_title'|trans }}</span>
+            <span class="mt-1">{{ 'about.tools_title'|trans }}</span>
             <span>🧰</span>
         </h2>
-        <p class="justify">{{ 'about.skills_text'|trans|raw }}</p>
+        <p class="justify">
+            {{ 'about.tools_languages'|trans({
+                '%languages%': tools|filter(tool => tool.category == constant('App\\Entity\\Enum\\ToolCategory::LANGUAGES'))|map(tool => tool.name)|join('</li><li>'),
+            })|raw }}
+        </p>
+        <p class="justify">
+            {{ 'about.tools_frameworks'|trans({
+                '%frameworks%': tools|filter(tool => tool.category == constant('App\\Entity\\Enum\\ToolCategory::FRAMEWORKS'))|map(tool => tool.name)|join('</li><li>'),
+            })|raw }}
+        </p>
+        <p class="justify">
+            {{ 'about.tools_tools'|trans({
+                '%tools%': tools|filter(tool => tool.category == constant('App\\Entity\\Enum\\ToolCategory::TOOLS'))|map(tool => tool.name)|join('</li><li>'),
+            })|raw }}
+        </p>
+        <p class="justify">
+            {{ 'about.tools_practices'|trans({
+                '%practices%': tools|filter(tool => tool.category == constant('App\\Entity\\Enum\\ToolCategory::PRACTICES'))|map(tool => tool.name)|join('</li><li>'),
+            })|raw }}
+        </p>
+        <p class="justify">
+            {{ 'about.tools_text'|trans|raw }}
+        </p>
 
         <p class="justify pt-3">{{ 'about.outro'|trans }}</p>
 

@@ -100,6 +100,7 @@ dashboard:
 projects:
     list_quote: You don’t have to do everything today. Just one thing is enough. ✨
     add_quote: The version of you who started this couldn’t have done what you just did. 🧠
+    preview_quote: Coding is 90% figuring out what you broke and 10% writing new bugs. 🐞
     add_project: Nouveau projet
     back_to_list: Liste des projets
     technologies: "Technologies :"
@@ -219,7 +220,7 @@ recruiter_game:
         modal_body: Est-ce-que tu es sûre de vouloir supprimer la question {question} ?
 
 translations:
-    index_quote: Every great developer you know got there by solving problems they were unqualified to solve — until they did.
+    index_quote: Every great developer you know got there by solving problems they were unqualified to solve, until they did.
     single_quote: You can do this. Probably. Maybe. Okay, definitely. ✨
     form:
         entity: Entité
