@@ -3,33 +3,18 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/{_locale}', requirements: ['_locale' => 'en|fr'], defaults: ['_locale' => 'fr'])]
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'em_portfolio_home')]
-    public function home(): Response
+    #[Route('/', name: 'em_portfolio_root_redirect')]
+    public function rootRedirect(Request $request): Response
     {
-        return $this->render('public/index.html.twig', []);
-    }
+        $locale = $request->getLocale();
+        $redirectLocale = in_array($locale, ['fr', 'en']) ? $locale : 'fr';
 
-    #[Route('/projects', name: 'em_portfolio_projects')]
-    public function projects(): Response
-    {
-        return $this->render('public/projects.html.twig', []);
-    }
-
-    #[Route('/about', name: 'em_portfolio_about')]
-    public function about(): Response
-    {
-        return $this->render('public/about.html.twig', []);
-    }
-
-    #[Route('/contact', name: 'em_portfolio_contact')]
-    public function contact(): Response
-    {
-        return $this->render('public/contact.html.twig', []);
+        return $this->redirectToRoute('em_portfolio_home', ['_locale' => $redirectLocale]);
     }
 }

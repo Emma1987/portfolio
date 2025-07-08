@@ -15,4 +15,21 @@ class ToolRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Tool::class);
     }
+
+    /**
+     * @return Tool[]
+     */
+    public function findAll(): array
+    {
+        return $this->createQueryBuilder('t')
+            ->orderBy('t.category', 'ASC')
+            ->addOrderBy('t.position', 'ASC')
+            ->getQuery()
+            ->setHint(
+                \Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER,
+                'Gedmo\Translatable\Query\TreeWalker\TranslationWalker',
+            )
+            ->getResult()
+        ;
+    }
 }

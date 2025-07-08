@@ -28,7 +28,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     {% endblock %}
 
     {% block javascripts %}
@@ -67,19 +67,15 @@
 
         <nav id="navigation">
             <a href="{{ path('em_portfolio_projects') }}">
-                <img src="{{ asset('/images/projects-icon.png') }}" alt="See my projects">
+                <img src="{{ asset('/images/icons/projects.png') }}" alt="See my projects">
                 <p>{{ 'header.nav.projects'|trans }}</p>
             </a>
-            <a href="{{ path('em_portfolio_projects') }}">
-                <img src="{{ asset('/images/skills-icon.png') }}" alt="See my skills">
-                <p>{{ 'header.nav.skills'|trans }}</p>
-            </a>
             <a href="{{ path('em_portfolio_about') }}">
-                <img src="{{ asset('/images/about-icon.png') }}" alt="Know about me">
+                <img src="{{ asset('/images/icons/about.png') }}" alt="Know about me">
                 <p>{{ 'header.nav.about'|trans }}</p>
             </a>
             <a href="{{ path('em_portfolio_contact') }}">
-                <img src="{{ asset('/images/contact-icon.png') }}" alt="Contact me">
+                <img src="{{ asset('/images/icons/contact.png') }}" alt="Contact me">
                 <p>{{ 'header.nav.contact'|trans }}</p>
             </a>
         </nav>

@@ -1,0 +1,108 @@
+$primary-color: #143347;
+$secondary-color: #c9a37a;
+$light-gray: #d3d3d3;
+$pastel-pink: #ffaebc;
+$pastel-green: #a0e7e5;
+$pastel-yellow: #fbe7c6;
+$bright-green: #b4f8c8;
+$pastel-purple: #b0c5ff;
+$bright-yellow: #fcd34d;
+$background: #FFF9FB;
+
+body {
+    .press-start-2p-regular {
+        font-family: 'Press Start 2P', system-ui;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .space-grotesk {
+        font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .project-card {
+        background: #f2fafa;
+        border: 3px solid $primary-color;
+
+        .pixel-icon-title {
+            width: 3rem;
+        }
+
+        .pixel-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .project-title {
+            font-size: .75rem;
+        }
+
+        .pixel-hr {
+            border-top: .15rem solid;
+            margin: 1rem .5rem;
+            opacity: 1;
+        }
+
+        .xp-bar {
+            background: $primary-color;
+            height: 10px;
+            flex: 1;
+            position: relative;
+            border: 2px solid $primary-color;
+            margin-top: .5rem;
+
+            .xp-fill {
+                height: 100%;
+
+                &.level-easy {
+                    width: 25%;
+                    background: $pastel-green;
+                }
+
+                &.level-medium {
+                    width: 40%;
+                    background: $pastel-yellow;
+                }
+
+                &.level-hard {
+                    width: 70%;
+                    background: $pastel-pink;
+                }
+
+                &.level-extra-hard {
+                    width: 90%;
+                    background: $pastel-purple;
+                }
+            }
+        }
+
+        .pixel-btn {
+            background: $pastel-green;
+            border: 2px solid $primary-color;
+            box-shadow: 2px 2px 0 $primary-color;
+            font-size: 0.75rem;
+            padding: 0.4rem 1rem;
+
+                &:hover {
+                    background-color: $pastel-purple;
+            }
+        }
+
+        .carousel-item, .single-project-picture {
+            img {
+                display: block;
+                width: 80%;
+                margin: 1rem auto;
+            }
+        }
+    }
+}
+
+@media screen and (width >= 768px) {
+    body {
+        .project-card {
+            width: 40%;
+            margin: auto;
+        }
+    }
+}

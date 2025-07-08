@@ -18,19 +18,35 @@ introduction:
     my_name_is: My name is Emmanuelle
     what_i_do: 'I write code, tell bad jokes, and pretend I know what I''m doing (spoiler: it''s often true).'
 
+projects:
+    description: Mission
+    technologies: Technologies
+    tags: Tags
+    company: Company
+    companies: Companies
+    see_more: See more
+    previous_slide: Previous
+    next_slide: Next
+    empty: No projects yet.
+    filters:
+        title: Filters
+        technologies_placeholder: Select one or more technologies
+        tags_placeholder: Select one or more tags
+        companies_placeholder: Select one or more companies
+        submit: Filter
+
 about:
     intro_title: About me
     intro_text1: I'm Emmanuelle, a backend developer who loves building apps that are both useful and pleasant to use (which naturally means I do a bit of JavaScript on the front too).
     intro_text2: I also love Starbucks coffee ☕, thunderstorms ⛈️, and photography 📸.
     learning_title: How it all started
     learning_text: I trained through the %link% PHP/Symfony Developer path, and I haven't stopped learning since.
-    skills_title: My toolbox
-    skills_text: |
-        Languages:<br><ul><li>PHP 6/7/8 🐘</li><li>JavaScript 💻 (some experience with VueJS and React)</li><li>HTML5 & CSS3 🎨</li><li>SQL (MySQL, PostgreSQL) 🗄️</li></ul>
-        Frameworks:<br><ul><li>Symfony 4/5/6 ⚙ & PHPUnit 🧪️️</li><li>Bootstrap 🧩</li><li>jQuery 🕸️</li></ul>
-        Tools:<br><ul><li>Git & GitHub 🧬️</li><li>Bitbucket & Jira 📋️</li><li>Docker 🐳️</li><li>Caffeine ☕</li></ul>
-        Methods:<br><ul><li>Pair programming 👯‍♀️</li><li>Code review 🔍</li></ul>
-        <p>I care about clean code, accessibility, and making life easier for developers.</p>
+    tools_title: My toolbox
+    tools_languages: Languages:<br><ul><li>%languages%</li></ul>
+    tools_frameworks: Frameworks:<br><ul><li>%frameworks%</li></ul>
+    tools_tools: Tools:<br><ul><li>%tools%</li></ul>
+    tools_practices: Methods:<br><ul><li>%practices%</li></ul>
+    tools_text: I care about clean code, accessibility, and making life easier for developers.
     outro: In short, I build things that work, that look nice, and of course - no, I've never developed anything in PHP6. Ever.
     progress_bar: Level 2 — 67% to Level 3
 

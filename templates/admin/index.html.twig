@@ -2,7 +2,16 @@
 {% trans_default_domain 'admin' %}
 
 {% block body_title %}
-    <h1 class="d-flex">{{ 'admin.title'|trans }}<twig:ux:icon name="ix:dashboard-pen" class="ux-icon ms-2" /></h1>
+    <h1 class="d-flex justify-content-between">
+        <span>
+            {{ 'admin.title'|trans }}<twig:ux:icon name="ix:dashboard-pen" class="ux-icon ms-2" />
+        </span>
+        <span>
+            <a href="{{ path('em_portfolio_home') }}" data-turbo="false">
+                <twig:ux:icon name="dashicons:portfolio" class="ux-icon me-2" />
+            </a>
+        </span>
+    </h1>
 {% endblock %}
 
 {% block body %}

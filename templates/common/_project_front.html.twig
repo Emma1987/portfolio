@@ -1,0 +1,150 @@
+<div
+    class="project-card p-2 mb-4"
+    data-technologies="{{ project.projectTechnologies|map(projectTechnology => projectTechnology.technology)|map(technology => technology.id)|join(',') }}"
+    data-tags="{{ project.projectTags|map(projectTag => projectTag.tag)|map(tag => tag.id)|join(',') }}"
+    data-companies="{{ project.companies|map(company => company.id)|join(',') }}"
+    {{ stimulus_target('project-filters', 'projectCard') }}
+>
+    <div class="d-flex align-items-center mb-2">
+        <img src="{{ asset('/images/icons/star.png') }}" alt="Title icon" class="pixel-icon-title me-2">
+        <p class="project-title m-0 press-start-2p-regular">{{ project.title }}</p>
+    </div>
+
+    <hr class="pixel-hr" />
+
+    <div class="project-section">
+        {# Summary #}
+        <div class="d-flex flex-row mb-3">
+            <img src="{{ asset('/images/icons/target.png') }}" alt="Mission icon" class="pixel-icon me-2">
+            <div class="space-grotesk">{{ project.summary }}</div>
+        </div>
+
+        {# Technologies #}
+        <div class="d-flex flex-row mb-3">
+            <img src="{{ asset('/images/icons/skills.png') }}" alt="Technology icon" class="pixel-icon me-2">
+            <div class="space-grotesk">
+                {{ project.projectTechnologies|map(projectTechnology => projectTechnology.technology)|map(technology => technology.name)|join(', ') }}
+            </div>
+        </div>
+
+        {# Tags #}
+        <div class="d-flex flex-row mb-3">
+            <img src="{{ asset('/images/icons/tag.png') }}" alt="Tag icon" class="pixel-icon me-2">
+            <div class="space-grotesk">
+                {{ project.projectTags|map(projectTag => projectTag.tag)|map(tag => tag.name)|join(', ') }}
+            </div>
+        </div>
+
+        {# Level #}
+        <div class="d-flex flex-row mb-3">
+            <img src="{{ asset('/images/icons/shield.png') }}" alt="Difficulty icon" class="pixel-icon me-2">
+            <div class="xp-bar mb-3">
+                <div class="xp-fill {{ get_level_class(project.level) }}"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <button class="btn pixel-btn text-uppercase space-grotesk" data-bs-toggle="modal" data-bs-target="#detailsModal-{{ project.id }}">
+            {{ 'projects.see_more'|trans }}
+        </button>
+    </div>
+
+    {# Details Modal #}
+    <div class="modal fade" id="detailsModal-{{ project.id }}" tabindex="-1" aria-labelledby="Project details modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                        <img src="{{ asset('/images/icons/star.png') }}" alt="Title icon" class="pixel-icon me-2">
+                        <span class="project-title m-0 press-start-2p-regular">{{ project.title }}</span>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {# Pictures #}
+                    {% if project.pictures|length == 1 %}
+                        {% for picture in project.pictures %}
+                            <div class="single-project-picture">
+                                <img src="{{ asset('images/project/' ~ picture.path) }}" alt="Project picture">
+                            </div>
+                        {% endfor %}
+                    {% elseif project.pictures|length > 1 %}
+                        <div id="projectPicturesCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                {% for key in project.pictures|keys %}
+                                    <button type="button" data-bs-target="#projectPicturesCarousel" data-bs-slide-to="{{ key }}" {% if loop.index == 1 %}class="active"{% endif %} aria-current="true"></button>
+                                {% endfor %}
+                            </div>
+                            <div class="carousel-inner">
+                                {% for picture in project.pictures %}
+                                    <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                                        <img src="{{ asset('images/project/' ~ picture.path) }}" alt="Project picture">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#projectPicturesCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">{{ 'projects.previous_slide'|trans }}</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#projectPicturesCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">{{ 'projects.next_slide'|trans }}</span>
+                            </button>
+                        </div>
+                    {% endif %}
+
+                    {# Description #}
+                    <div class="d-flex flex-row mb-4">
+                        <img src="{{ asset('/images/icons/target.png') }}" alt="Mission icon" class="pixel-icon me-2">
+                        <div>
+                            <span class="press-start-2p-regular text-uppercase">{{ 'projects.description'|trans }}</span>
+                            <br>
+                            <span class="space-grotesk">{{ project.description|raw }}</span>
+                        </div>
+                    </div>
+
+                    {# Technologies #}
+                    <div class="d-flex flex-row mb-4">
+                        <img src="{{ asset('/images/icons/skills.png') }}" alt="Technology icon" class="pixel-icon me-2">
+                        <div>
+                            <span class="press-start-2p-regular text-uppercase">{{ 'projects.technologies'|trans }}</span>
+                            <br>
+                            {% for project_technology in project.projectTechnologies %}
+                                <span class="space-grotesk {% if loop.index == 1 or loop.index == 2 %}fw-bold{% endif %}">{{ project_technology.technology.name }}</span>{% if not loop.last %}<span>, </span>{% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    {# Tags #}
+                    <div class="d-flex flex-row mb-4">
+                        <img src="{{ asset('/images/icons/tag.png') }}" alt="Tag icon" class="pixel-icon me-2">
+                        <div>
+                            <span class="press-start-2p-regular text-uppercase">{{ 'projects.tags'|trans }}</span>
+                            <br>
+                            {% for project_tag in project.projectTags %}
+                                <span class="space-grotesk">{{ project_tag.tag.name }}{% if not loop.last %}, {% endif %}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    {# Companies #}
+                    <div class="d-flex flex-row mb-4">
+                        <img src="{{ asset('/images/icons/company.png') }}" alt="Company icon" class="pixel-icon me-2">
+                        <div>
+                            <span class="press-start-2p-regular text-uppercase">
+                                {% if project.companies|length > 1 %}
+                                    {{ 'projects.companies'|trans }}
+                                {% else %}
+                                    {{ 'projects.company'|trans }}
+                                {% endif %}
+                            </span>
+                            <br>
+                            <span class="space-grotesk">{{ project.companies|map(company => company.name)|join(', ') }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

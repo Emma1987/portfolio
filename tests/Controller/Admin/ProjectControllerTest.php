@@ -197,6 +197,17 @@ class ProjectControllerTest extends AdminWebTestCase
         $this->assertCount(2, $project->getPictures());
     }
 
+    public function testPreviewProject()
+    {
+        $project = $this->entityManager->getRepository(Project::class)->findOneBy(['title' => 'Haunted house finder']);
+
+        $this->client->request('GET', '/backstage/project/preview/' . $project->getId());
+        $this->assertResponseIsSuccessful();
+
+        $this->assertSelectorExists('.project-card');
+        $this->assertSelectorExists("#detailsModal-{$project->getId()}");
+    }
+
     public function testDeleteProject()
     {
         $project = $this->entityManager->getRepository(Project::class)->findOneBy(['title' => 'Haunted house finder']);
