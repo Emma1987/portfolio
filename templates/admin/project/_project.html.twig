@@ -1,9 +1,6 @@
 {% trans_default_domain 'admin' %}
-{% set classes = ['custom-card-blue', 'custom-card-green', 'custom-card-yellow', 'custom-card-pink'] %}
-{% set random_class = random(classes) %}
-{% set btn_class = random_class == 'custom-card-pink' or random_class == 'custom-card-yellow' ? 'btn-secondary' : 'btn-primary' %}
 
-<div class="custom-card {{ random_class }}">
+<div class="custom-card custom-card-light">
     <p class="h4 fw-bold">{{ project.title }}</p>
     <p>{{ project.summary }}</p>
 
@@ -43,14 +40,14 @@
     <hr>
 
     <div class="d-flex justify-content-around">
-        <a href="{{ path('em_portfolio_project_preview', {id: project.id}) }}" class="btn btn-sm {{ btn_class }}">
+        <a href="{{ path('em_portfolio_project_preview', {id: project.id}) }}" class="btn btn-sm btn-secondary">
             {{ 'projects.preview_project'|trans }}
         </a>
-        <a href="{{ path('em_portfolio_project_edit', {id: project.id}) }}" class="btn btn-sm {{ btn_class }}">
+        <a href="{{ path('em_portfolio_project_edit', {id: project.id}) }}" class="btn btn-sm btn-secondary">
             {{ 'projects.edit_project'|trans }}
         </a>
         <button
-            class="btn btn-sm {{ btn_class }}"
+            class="btn btn-sm btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#confirmModal"
             {{ stimulus_action('confirm-modal', 'open') }}

@@ -53,7 +53,7 @@
 
         <p class="justify pt-3">{{ 'about.outro'|trans }}</p>
 
-        <div class="xp-bar mt-5 text-center">
+        <div class="xp-bar my-5 text-center">
             <div class="progress-bar-title press-start-2p-regular">
                 {{ 'about.progress_bar'|trans }}
             </div>
@@ -61,5 +61,7 @@
                 <div class="xp-bar-fill"></div>
             </div>
         </div>
+
+        <p>{{ 'about.recruiter_game'|trans({'%link%': path('em_portfolio_recruiter_game')})|raw }}</p>
     </section>
 {% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'admin_base.html.twig' %}
+{% trans_default_domain 'admin' %}
+
+{% block body_title %}
+    <h1 class="d-flex">{{ 'admin.title'|trans }}<twig:ux:icon name="icon-park-outline:game" class="ux-icon ms-2" /></h1>
+{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <div class="custom-card custom-card-green card-large">
+            {{ 'recruiter_game.preview_quote'|trans }}
+        </div>
+        <div class="custom-card custom-card-yellow card-small">
+            <a href="{{ path('em_portfolio_recruiter_game_index') }}">
+                <twig:ux:icon name="fluent-mdl2:navigate-back" class="ux-icon" /><br>{{ 'recruiter_game.back_to_list'|trans }}
+            </a>
+        </div>
+    </div>
+
+    <hr>
+
+    <section class="question-preview">
+        <div class="w-50 m-auto">
+            {{ include('common/_question_front.html.twig', {question: question}) }}
+        </div>
+    </section>
+{% endblock %}

@@ -65,6 +65,7 @@ about:
     tools_text: Je fais attention au code propre, à l'accessibilité, et au confort des développeurs.
     outro: En résumé, je crée des trucs qui marchent, qui sont jolis, et bien sûr que non, je n'ai jamais développé en PHP6.
     progress_bar: Level 2 — 67% to Level 3
+    recruiter_game: 🕹️Jeu du recruteur débloqué 👉🏼 <a href="%link%">ICI</a> 👈🏼
 
 contact:
     title: Contactez-moi
@@ -73,5 +74,14 @@ contact:
     linkedin: LinkedIn
     github: GitHub
     congrats: Merci d'avoir scrollé. Vous gagnez 100 XP.
+
+recruiter_game:
+    rules:
+        title: Règles du jeu 🎲
+        rules: |
+            <p>Bienvenue dans le Dev Guessing Game 🕹️</p>
+            🃏 Chaque carte contient une question qu'on me pose souvent en entretien<br>
+            👀 Sous la carte se trouve ma réponse<br>
+            🎯 Ce jeu n'a qu'un seul niveau : mieux me connaître
 
 footer: Tous droits réservés &copy; %date% - Emmanuelle Mercadal

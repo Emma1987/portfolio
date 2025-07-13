@@ -52,6 +52,14 @@ class RecruiterGameController extends AbstractController
         ]);
     }
 
+    #[Route(path: '/backstage/recruiter-game/preview/{id}', name: 'em_portfolio_recruiter_game_preview')]
+    public function preview(InterviewPrompt $interviewPrompt): Response
+    {
+        return $this->render('admin/recruiter-game/preview.html.twig', [
+            'question' => $interviewPrompt,
+        ]);
+    }
+
     #[Route(path: '/backstage/recruiter-game/delete/{id}', name: 'em_portfolio_recruiter_game_delete')]
     public function delete(InterviewPrompt $interviewPrompt): Response
     {
