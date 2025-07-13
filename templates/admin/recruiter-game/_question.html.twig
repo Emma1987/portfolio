@@ -3,9 +3,9 @@
 {% set random_class = random(classes) %}
 {% set btn_class = random_class == 'custom-card-pink' or random_class == 'custom-card-yellow' ? 'btn-secondary' : 'btn-primary' %}
 
-<div class="custom-card {{ random_class }}">
+<div class="custom-card custom-card-light">
     <p class="h4 fw-bold">{{ question.question }}</p>
-    <p>{{ question.answer }}</p>
+    <p>{{ question.answer|raw }}</p>
     <div class="alert alert-success d-inline-block px-3 py-1">
         {{ ('enum.interview_prompt_category.' ~ question.category.value)|trans }}
     </div>
@@ -13,14 +13,14 @@
     <hr>
 
     <div class="d-flex justify-content-around">
-        <a href="#" class="btn btn-sm {{ btn_class }}">
+        <a href="{{ path('em_portfolio_recruiter_game_preview', {id: question.id}) }}" class="btn btn-sm btn-secondary">
             {{ 'recruiter_game.preview_question'|trans }}
         </a>
-        <a href="{{ path('em_portfolio_recruiter_game_edit', {id: question.id}) }}" class="btn btn-sm {{ btn_class }}">
+        <a href="{{ path('em_portfolio_recruiter_game_edit', {id: question.id}) }}" class="btn btn-sm btn-secondary">
             {{ 'recruiter_game.edit_question'|trans }}
         </a>
         <button
-            class="btn btn-sm {{ btn_class }}"
+            class="btn btn-sm btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#confirmModal"
             {{ stimulus_action('confirm-modal', 'open') }}

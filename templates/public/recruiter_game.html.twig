@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section id="recruiter-game" class="py-5">
+        <div class="mb-2">
+            <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#rules" aria-expanded="false" aria-controls="filters">
+                {{ 'recruiter_game.rules.title'|trans }}
+            </button>
+            <div class="collapse show" id="rules">
+                <div class="card card-body">
+                    {{ 'recruiter_game.rules.rules'|trans|raw }}
+                    <div data-bs-toggle="collapse" data-bs-target="#rules" class="d-flex justify-content-end">
+                        <twig:ux:icon name="line-md:chevron-up" class="ux-icon" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recruiter-game-cards row">
+            {% for question in questions %}
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 gap-1">
+                    {{ include('common/_question_front.html.twig', {question: question}) }}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

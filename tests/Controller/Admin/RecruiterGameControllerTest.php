@@ -62,6 +62,16 @@ class RecruiterGameControllerTest extends AdminWebTestCase
         $this->assertSame('Commanding an army of robotic interns I built myself, ruling over a desolate tech wasteland, and still waiting for that one Jira ticket to be closed.', $question->getAnswer());
     }
 
+    public function testPreviewInterviewPrompt()
+    {
+        $question = $this->entityManager->getRepository(InterviewPrompt::class)->findOneBy(['question' => 'Where do you see yourself in five years, assuming the world survives?']);
+
+        $this->client->request('GET', '/backstage/recruiter-game/preview/' . $question->getId());
+        $this->assertResponseIsSuccessful();
+
+        $this->assertSelectorExists('.recruiter-game-container');
+    }
+
     public function testDeleteInterviewPrompt()
     {
         $question = $this->entityManager->getRepository(InterviewPrompt::class)->findOneBy(['question' => 'Where do you see yourself in five years, assuming the world survives?']);

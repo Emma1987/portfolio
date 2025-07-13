@@ -97,6 +97,10 @@ html, body {
         &.custom-card-pink {
             background-color: $darker-pastel-pink;
         }
+
+        &.custom-card-light {
+            border: 1px solid $light-gray;
+        }
     }
 
     .ux-icon {
@@ -168,6 +172,11 @@ html, body {
         }
     }
 
+    hr {
+        opacity: 1;
+        border-color: $light-gray;
+    }
+
     header {
         position: absolute;
         top: 0;
@@ -190,13 +199,13 @@ html, body {
             background-color: $pastel-green;
 
             /* Animation setup */
-            transform: translateX(-100%);
+            width: 0;
             opacity: 0;
-            transition: transform .7s ease, opacity .6s ease;
+            transition: width .3s ease, opacity .5s ease;
 
             &.open {
                 display: flex;
-                transform: translateX(0);
+                width: 100%;
                 opacity: 1;
                 pointer-events: auto;
             }
@@ -212,6 +221,8 @@ html, body {
                     padding: 0 .5rem;
                     margin-bottom: 1rem;
                     border-radius: 10px;
+                    white-space: nowrap;
+                    text-overflow: clip;
 
                     &.active {
                         background-color: $darker-pastel-green;
@@ -288,6 +299,12 @@ html, body {
                     padding: 0;
                     outline: inherit;
                 }
+            }
+        }
+
+        .question-cards {
+            > div {
+                margin-bottom: .5rem;
             }
         }
 

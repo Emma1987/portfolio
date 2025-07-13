@@ -1,0 +1,10 @@
+<div class="recruiter-game-container" {{ stimulus_controller('card-flip') }}>
+    <div class="recruiter-game-card" {{ stimulus_action('card-flip', 'toggle', 'click') }}>
+        <div class="card-front d-flex align-items-center text-center press-start-2p-regular">
+            <div class="recruiter-game-question m-5">{{ question.question }}</div>
+        </div>
+        <div class="card-back d-flex align-items-center text-center">
+            <div class="recruiter-game-answer space-grotesk">{{ question.answer|raw }}</div>
+        </div>
+    </div>
+</div>

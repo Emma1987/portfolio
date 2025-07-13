@@ -96,13 +96,77 @@ body {
             }
         }
     }
+
+    .recruiter-game-container {
+        perspective: 1000px;
+        height: 450px;
+        max-width: 350px;
+
+        .recruiter-game-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1.5s ease;
+            cursor: pointer;
+            user-select: none;
+
+            .card-front {
+                background-image: url('../../public/images/game-card-front.png');
+
+                .recruiter-game-question {
+                    font-size: .9rem;
+                }
+            }
+
+            .card-back {
+                background-image: url('../../public/images/game-card-back.png');
+                transform: rotateY(180deg);
+
+                .recruiter-game-answer {
+                    margin: 0 3rem;
+                    max-height: 310px;
+                    overflow: scroll;
+                }
+            }
+
+            .card-front, .card-back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                padding: 1rem;
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+            &.flipped {
+                transform: rotateY(180deg);
+            }
+        }
+    }
 }
 
-@media screen and (width >= 768px) {
+@media screen and (width > 768px) {
     body {
         .project-card {
             width: 40%;
             margin: auto;
+        }
+    }
+}
+
+@media screen and (width > 992px) {
+    body {
+        .recruiter-game-container {
+            .recruiter-game-card {
+                .card-back {
+                    .recruiter-game-answer {
+                        margin: 0 2rem;
+                    }
+                }
+            }
         }
     }
 }

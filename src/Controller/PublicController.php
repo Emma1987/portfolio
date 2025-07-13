@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\InterviewPrompt;
 use App\Entity\Project;
 use App\Entity\Tool;
 use App\Form\ProjectFilterType;
@@ -44,5 +45,13 @@ class PublicController extends AbstractController
     public function contact(): Response
     {
         return $this->render('public/contact.html.twig', []);
+    }
+
+    #[Route('/recruiter-game', name: 'em_portfolio_recruiter_game')]
+    public function recruiterGame(): Response
+    {
+        return $this->render('public/recruiter_game.html.twig', [
+            'questions' => $this->entityManager->getRepository(InterviewPrompt::class)->findAll(),
+        ]);
     }
 }

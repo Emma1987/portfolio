@@ -98,8 +98,8 @@ dashboard:
         }
 
 projects:
-    list_quote: You don’t have to do everything today. Just one thing is enough. ✨
-    add_quote: The version of you who started this couldn’t have done what you just did. 🧠
+    list_quote: You don't have to do everything today. Just one thing is enough. ✨
+    add_quote: The version of you who started this couldn't have done what you just did. 🧠
     preview_quote: Coding is 90% figuring out what you broke and 10% writing new bugs. 🐞
     add_project: Nouveau projet
     back_to_list: Liste des projets
@@ -123,7 +123,7 @@ projects:
         pictures: Ajouter de nouvelles images
         add: Créer
         edit: Mettre à jour
-        no_pics: No pics yet, but trust me, it’s gorgeous. 😍
+        no_pics: No pics yet, but trust me, it's gorgeous. 😍
         pictures_label: "Images actuelles :"
     list:
         empty: Just imagine how good this is gonna look soon... 😍
@@ -135,7 +135,7 @@ projects:
         modal_body: Est-ce-que tu es sûre de vouloir supprimer l'image "{path}" ?<br>⚠️ Action irréversible ! ⚠️
 
 technologies:
-    list_quote: You’re allowed to take your time and still be amazing. 🥰
+    list_quote: You're allowed to take your time and still be amazing. 🥰
     list_title: Liste des technologies
     form:
         title: Nouvelle technologie
@@ -165,7 +165,7 @@ companies:
         modal_body: Est-ce-que tu es sûre de vouloir supprimer l'entreprise {name} ?
 
 tags:
-    list_quote: You’ve made it through 100% of your worst days so far. 😎
+    list_quote: You've made it through 100% of your worst days so far. 😎
     list_title: Liste des tags
     form:
         title: Nouveau tag
@@ -173,14 +173,14 @@ tags:
         submit: Ajouter
     list:
         title: Tags
-        empty: You haven’t added anything. Which is a bold move, honestly. 🤡
+        empty: You haven't added anything. Which is a bold move, honestly. 🤡
         save_list: Enregistrer la liste
     delete:
         modal_title: Supprimer un tag
         modal_body: Est-ce-que tu es sûre de vouloir supprimer le tag {name} ?
 
 tools:
-    list_quote: You’re not behind. You’re just on your own timeline. 💻
+    list_quote: You're not behind. You're just on your own timeline. 💻
     list_title: Liste des outils
     form:
         title: Nouvel outil
@@ -201,6 +201,7 @@ tools:
 recruiter_game:
     index_quote: Done is better than perfect. Rest is better than burnout. ✨
     add_quote: Every great developer you know got there by solving problems they were unqualified to solve — until they did.
+    preview_quote: Think of bugs as features... that haven't reached their potential yet.
     add_question: Nouvelle question
     back_to_list: Liste des questions
     preview_question: Aperçu

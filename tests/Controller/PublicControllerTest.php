@@ -44,6 +44,16 @@ class PublicControllerTest extends WebTestCase
         $this->assertSelectorExists('#about');
     }
 
+    public function testRenderRecruiterGameIsSuccessful()
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/fr/recruiter-game');
+        $this->assertResponseIsSuccessful();
+
+        $this->assertSelectorExists('#recruiter-game');
+    }
+
     public function testRenderContactIsSuccessful()
     {
         $client = static::createClient();
