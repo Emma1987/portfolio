@@ -1,5 +1,4 @@
 $primary-color: #143347;
-$secondary-color: #c9a37a;
 $light-gray: #d3d3d3;
 $pastel-pink: #ffaebc;
 $pastel-green: #a0e7e5;
@@ -94,11 +93,6 @@ html, body {
         }
 
         #navigation {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            margin-top: 2rem;
-
             > a {
                 max-width: 20%;
                 color: $primary-color;
@@ -129,9 +123,6 @@ html, body {
                 width: 250px;
                 height: 250px;
                 overflow: hidden;
-                display: flex;
-                align-items: center;
-                justify-content: center;
                 position: relative;
                 border-radius: 50%;
                 opacity: .7;
@@ -148,8 +139,6 @@ html, body {
         }
 
         #about {
-            width: 100%;
-
             hr {
                 margin: 2rem 0;
             }
@@ -177,17 +166,7 @@ html, body {
             }
         }
 
-        #projects-grid {
-            #project-cards {
-                flex-direction: column;
-            }
-        }
-
         #contact {
-            .title {
-                justify-content: center;
-            }
-
             .sub-title {
                 font-size: 1.2rem;
             }
@@ -240,20 +219,6 @@ html, body {
 
                 .introduction-text {
                     width: 60%;
-                }
-            }
-
-            #projects-grid {
-                width: 90%;
-                margin: auto;
-
-                #project-cards {
-                    flex-direction: row;
-
-                    .project-card {
-                        width: 24%;
-                        margin: 0 1rem 0 0;
-                    }
                 }
             }
 
