@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column" id="error-page">
+        <div class="horizontal-divider server-error"></div>
+        <div class="d-flex flex-row flex-grow-1">
+            <div class="vertical-divider server-error"></div>
+            <div class="error-message-container d-flex flex-grow-1">
+                <h1 class="error-code server-error my-5 press-start-2p-regular">500</h1>
+                <div class="error-message d-flex flex-grow-1 align-items-center justify-content-around">
+                    <div>
+                        <p>You were never supposed to be here...<br>We didn't plan for anyone to make it this far.</p>
+                        <a href="{{ path('em_portfolio_root_redirect') }}" class="btn btn-sm btn-primary">Back to homepage</a>
+                    </div>
+                    <img src="{{ asset('images/500-error.png') }}" alt="500 error illustration" />
+                </div>
+            </div>
+            <div class="vertical-divider server-error"></div>
+        </div>
+        <div class="horizontal-divider server-error"></div>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

@@ -146,6 +146,52 @@ body {
             }
         }
     }
+
+    #error-page {
+        height: 95%;
+
+        .horizontal-divider {
+            height: 10px;
+            margin-inline: 10px;
+        }
+
+        .vertical-divider {
+            width: 10px;
+        }
+
+        .horizontal-divider.not-found, .vertical-divider.not-found {
+            background-color: $pastel-green;
+        }
+
+        .horizontal-divider.server-error, .vertical-divider.server-error {
+            background-color: $pastel-pink;
+        }
+
+        .error-code {
+            font-size: 4rem;
+
+            &.not-found {
+                color: $pastel-green;
+            }
+
+            &.server-error {
+                color: $pastel-pink;
+            }
+        }
+
+        .error-message-container {
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .error-message {
+            flex-direction: column;
+
+            img {
+                height: 300px;
+            }
+        }
+    }
 }
 
 @media screen and (width > 992px) {
@@ -157,6 +203,20 @@ body {
                         margin: 0 2rem;
                     }
                 }
+            }
+        }
+
+        #error-page {
+            .error-code {
+                font-size: 10rem;
+            }
+
+            .error-message-container {
+                flex-direction: column;
+            }
+
+            .error-message {
+                flex-direction: row;
             }
         }
     }
