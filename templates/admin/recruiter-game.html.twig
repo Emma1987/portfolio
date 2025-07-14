@@ -20,9 +20,11 @@
     <hr class="my-4">
 
     {% if questions|length > 0 %}
-        <section class="question-cards">
+        <section class="question-cards row">
             {% for question in questions %}
-                {{ include('admin/recruiter-game/_question.html.twig') }}
+                <div class="col-12 col-md-6 col-xl-4">
+                    {{ include('admin/recruiter-game/_question.html.twig') }}
+                </div>
             {% endfor %}
         </section>
     {% else %}

@@ -12,7 +12,7 @@
 
     {% if form.vars.data.pictures|length > 0 %}
         {% for picture in form.vars.data.pictures %}
-            <div class="existing-project-picture mb-3">
+            <div class="d-flex align-items-center justify-content-between existing-project-picture mb-3">
                 <div>
                     <img src="{{ asset('images/project/' ~ picture.path) }}" alt="Project picture" />
                     {{ picture.path }}

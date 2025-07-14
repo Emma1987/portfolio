@@ -20,9 +20,11 @@
     <hr class="my-4">
 
     {% if projects|length > 0 %}
-        <section class="project-cards" {{ stimulus_controller('picture-modal') }}>
+        <section class="project-cards row" {{ stimulus_controller('picture-modal') }}>
             {% for project in projects %}
-                {{ include('admin/project/_project.html.twig') }}
+                <div class="col-12 col-md-6 col-xl-4">
+                    {{ include('admin/project/_project.html.twig') }}
+                </div>
             {% endfor %}
 
             {# View Picture Modal #}

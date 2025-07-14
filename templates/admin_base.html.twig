@@ -36,7 +36,7 @@
                 >
                     <i class="fa-solid fa-bars"></i>
                 </div>
-                <nav {{ stimulus_target('menu', 'menu') }}>
+                <nav class="d-flex justify-content-between" {{ stimulus_target('menu', 'menu') }}>
                     <ul class="nav-links">
                         <li class="{{ is_menu_active(constant('App\\Twig\\MenuExtension::HOME')) ? 'active' : '' }}">
                             <a href="{{ path('em_portfolio_backend') }}">{{ 'navigation.home'|trans }}</a>
