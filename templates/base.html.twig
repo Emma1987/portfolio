@@ -37,48 +37,50 @@
 </head>
 <body>
     <header>
-        <div id="pre-header">
-            <div class="dropdown">
-                <button class="btn btn-light btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ app.request.locale == 'en' ? 'header.language.english'|trans : 'header.language.french'|trans }}
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li>
-                        <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'en'})) }}">
-                            {{ 'header.language.english'|trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'fr'})) }}">
-                            {{ 'header.language.french'|trans }}
-                        </a>
-                    </li>
-                </ul>
+        {% block header %}
+            <div id="pre-header">
+                <div class="dropdown">
+                    <button class="btn btn-light btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ app.request.locale == 'en' ? 'header.language.english'|trans : 'header.language.french'|trans }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'en'})) }}">
+                                {{ 'header.language.english'|trans }}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'fr'})) }}">
+                                {{ 'header.language.french'|trans }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
-        <div id="header">
-            <a href="{{ path('em_portfolio_home') }}">
-                <div class="title press-start-2p-regular">{{ 'header.name'|trans }}</div>
-                <div class="sub-title press-start-2p-regular">{{ 'header.title'|trans }}</div>
-                <div class="sub-sub-title press-start-2p-regular">{{ 'header.sub_title'|trans }}</div>
-            </a>
-        </div>
+            <div id="header">
+                <a href="{{ path('em_portfolio_home') }}">
+                    <div class="title press-start-2p-regular">{{ 'header.name'|trans }}</div>
+                    <div class="sub-title press-start-2p-regular">{{ 'header.title'|trans }}</div>
+                    <div class="sub-sub-title press-start-2p-regular">{{ 'header.sub_title'|trans }}</div>
+                </a>
+            </div>
 
-        <nav id="navigation" class="d-flex align-items-center justify-content-around mt-4">
-            <a href="{{ path('em_portfolio_projects') }}">
-                <img src="{{ asset('/images/icons/projects.png') }}" alt="See my projects">
-                <p>{{ 'header.nav.projects'|trans }}</p>
-            </a>
-            <a href="{{ path('em_portfolio_about') }}">
-                <img src="{{ asset('/images/icons/about.png') }}" alt="Know about me">
-                <p>{{ 'header.nav.about'|trans }}</p>
-            </a>
-            <a href="{{ path('em_portfolio_contact') }}">
-                <img src="{{ asset('/images/icons/contact.png') }}" alt="Contact me">
-                <p>{{ 'header.nav.contact'|trans }}</p>
-            </a>
-        </nav>
+            <nav id="navigation" class="d-flex align-items-center justify-content-around mt-4">
+                <a href="{{ path('em_portfolio_projects') }}">
+                    <img src="{{ asset('/images/icons/projects.png') }}" alt="See my projects">
+                    <p>{{ 'header.nav.projects'|trans }}</p>
+                </a>
+                <a href="{{ path('em_portfolio_about') }}">
+                    <img src="{{ asset('/images/icons/about.png') }}" alt="Know about me">
+                    <p>{{ 'header.nav.about'|trans }}</p>
+                </a>
+                <a href="{{ path('em_portfolio_contact') }}">
+                    <img src="{{ asset('/images/icons/contact.png') }}" alt="Contact me">
+                    <p>{{ 'header.nav.contact'|trans }}</p>
+                </a>
+            </nav>
+        {% endblock %}
     </header>
 
     <main>
@@ -86,7 +88,9 @@
     </main>
 
     <footer>
-        <p>{{ 'footer'|trans({'%date%': 'now'|date('Y')})|raw }}</p>
+        {% block footer %}
+            <p>{{ 'footer'|trans({'%date%': 'now'|date('Y')})|raw }}</p>
+        {% endblock %}
     </footer>
 </body>
 </html>

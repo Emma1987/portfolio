@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column" id="error-page">
+        <div class="horizontal-divider not-found"></div>
+        <div class="d-flex flex-row flex-grow-1">
+            <div class="vertical-divider not-found"></div>
+            <div class="error-message-container d-flex flex-grow-1">
+                <h1 class="error-code not-found my-5 press-start-2p-regular">404</h1>
+                <div class="error-message d-flex flex-grow-1 align-items-center justify-content-around">
+                    <div>
+                        <p>Well, this is awkward. There's nothing here...</p>
+                        <a href="{{ path('em_portfolio_root_redirect') }}" class="btn btn-sm btn-primary">Back to homepage</a>
+                    </div>
+                    <img src="{{ asset('images/404-error.png') }}" alt="404 error illustration" />
+                </div>
+            </div>
+            <div class="vertical-divider not-found"></div>
+        </div>
+        <div class="horizontal-divider not-found"></div>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
