@@ -69,3 +69,47 @@ recruiter_game:
             🎯 This game has only one level: getting to know me better
 
 footer: All rights reserved &copy; %date% - Emmanuelle Mercadal
+
+legal:
+    title: Legal Notice
+    notice: |
+        <h2 class="text-center">Legal Notice</h2>
+        <h3>1. Site Publisher</h3>
+        <p class="justify">
+            The website <strong>e-mercadal.com</strong> is a personal portfolio published by:<br>
+            <strong>Emmanuelle MERCADAL</strong>, individual.<br>
+            Contact: <a href="mailto:pingme@e-mercadal.com">pingme@e-mercadal.com</a>
+        </p>
+        <h3>2. Hosting</h3>
+        <p class="justify">
+            <p>This site is hosted by:</p>
+            <strong>o2switch</strong><br>
+            Simplified joint-stock company with a capital of €100,000<br>
+            RCS Clermont-Ferrand 510 909 807<br>
+            SIRET: 510 909 807 00024<br>
+            Address: 222 Boulevard Gustave Flaubert, 63000 Clermont-Ferrand, France<br>
+            Website: https://www.o2switch.fr<br>
+            Phone: +33 4 44 44 60 40
+        </p>
+        <h3>3. Purpose of the Site</h3>
+        <p class="justify">
+            This site is intended to showcase my background, projects, and a little bit of my personality, and who knows, maybe land a cool gig 😊.
+        </p>
+        <h3>4. Personal Data</h3>
+        <p class="justify">
+            This site does not collect any personal data.<br>
+            No forms, no cookies, no invisible trackers. Breathe easy, you're safe.
+        </p>
+        <h3>5. Technical Monitoring</h3>
+        <p class="justify">
+            To ensure the proper functioning of the site and detect possible errors, this site uses <a href="https://sentry.io" target="_blank">Sentry</a>, a monitoring tool. The data collected for this purpose is completely anonymous and cannot be used to identify you in any way.
+        </p>
+        <h3>6. Liability</h3>
+        <p class="justify">
+            I do my best to keep this site clean, readable, and bug-free. If an error slips through, I promise to fix it as soon as I catch it.
+        </p>
+        <h3>7. Governing Law</h3>
+        <p class="justify">
+            This legal notice is governed by French law. In the event of a dispute and failing amicable resolution, only French courts shall have jurisdiction.
+        </p>
+
