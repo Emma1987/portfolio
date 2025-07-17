@@ -85,3 +85,46 @@ recruiter_game:
             🎯 Ce jeu n'a qu'un seul niveau : mieux me connaître
 
 footer: Tous droits réservés &copy; %date% - Emmanuelle Mercadal
+
+legal:
+    title: Mentions légales
+    notice: |
+        <h2 class="text-center">Mentions légales</h2>
+        <h3>1. Édition du site</h3>
+        <p class="justify">
+            Le site <strong>e-mercadal.com</strong> est un portfolio personnel édité par :<br>
+            <strong>Emmanuelle MERCADAL</strong>, personne physique.<br>
+            Contact : <a href="mailto:pingme@e-mercadal.com">pingme@e-mercadal.com</a>
+        </p>
+        <h3>2. Hébergement</h3>
+        <p class="justify">
+            <p>Le site est hébergé par l'entreprise :</p>
+            <strong>o2switch</strong><br>
+            Société par actions simplifiée au capital de 100.000 €<br>
+            RCS Clermont-Ferrand 510 909 807<br>
+            SIRET : 510 909 807 00024<br>
+            Adresse : 222 Boulevard Gustave Flaubert, 63000 Clermont-Ferrand, France<br>
+            Site web : https://www.o2switch.fr<br>
+            Téléphone : 04 44 44 60 40
+        </p>
+        <h3>3. Objectif du site</h3>
+        <p class="justify">
+            Ce site a pour but de présenter mon parcours, mes projets et un petit bout de ma personnalité, et qui sait, peut-être décrocher une mission sympa 😊.
+        </p>
+        <h3>4. Données personnelles</h3>
+        <p class="justify">
+            Ce site ne collecte aucune donnée personnelle.<br>
+            Pas de formulaire, pas de cookies, pas de pixels invisibles. Respirez, vous êtes tranquilles.
+        </p>
+        <h3>5. Suivi technique</h3>
+        <p class="justify">
+            Pour garantir le bon fonctionnement du site et détecter d'éventuelles erreurs, ce site utilise <a href="https://sentry.io" target="_blank">Sentry</a>, un outil de monitoring. Les informations collectées à cette fin sont totalement anonymes et ne permettent en aucun cas de vous identifier.
+        </p>
+        <h3>6. Responsabilité</h3>
+        <p class="justify">
+            J'essaie de maintenir ce site propre, lisible et sans bug. Si jamais une erreur survient, je promets de la corriger dès que je l'attrape.
+        </p>
+        <h3>7. Droit applicable</h3>
+        <p class="justify">
+            Les présentes mentions légales sont régies par le droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.
+        </p>

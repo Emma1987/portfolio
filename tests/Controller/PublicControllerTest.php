@@ -63,4 +63,14 @@ class PublicControllerTest extends WebTestCase
 
         $this->assertSelectorExists('#contact');
     }
+
+    public function testRenderLegalIsSuccessful()
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/fr/legal');
+        $this->assertResponseIsSuccessful();
+
+        $this->assertSelectorExists('#legal-notice');
+    }
 }

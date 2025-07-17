@@ -188,9 +188,17 @@ html, body {
     }
 
     footer {
-        text-align: right;
         color: $light-gray;
         font-size: .8rem;
+
+        > div {
+            flex-direction: column;
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
     }
 }
 
@@ -222,9 +230,16 @@ html, body {
                 }
             }
 
-            #about {
+            #about, #legal-notice {
                 width: 50%;
                 margin: auto;
+            }
+        }
+
+        footer {
+            > div {
+                flex-direction: row;
+                justify-content: space-between;
             }
         }
     }

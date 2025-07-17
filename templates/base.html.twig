@@ -89,7 +89,10 @@
 
     <footer>
         {% block footer %}
-            <p>{{ 'footer'|trans({'%date%': 'now'|date('Y')})|raw }}</p>
+            <div class="d-flex my-3">
+                <a href="{{ path('em_portfolio_legal') }}">{{ 'legal.title'|trans }}</a>
+                <span>{{ 'footer'|trans({'%date%': 'now'|date('Y')})|raw }}</span>
+            </div>
         {% endblock %}
     </footer>
 </body>

@@ -54,4 +54,10 @@ class PublicController extends AbstractController
             'questions' => $this->entityManager->getRepository(InterviewPrompt::class)->findAll(),
         ]);
     }
+
+    #[Route('/legal', name: 'em_portfolio_legal')]
+    public function legal(): Response
+    {
+        return $this->render('public/legal.html.twig');
+    }
 }

@@ -2,6 +2,7 @@
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
+/.env.prod
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
@@ -12,6 +13,7 @@
 .DS_Store
 .idea/
 /public/images/project/
+/bash/deploy.sh
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
