@@ -16,6 +16,9 @@
                                 {{ form_row(form.tags, {attr: {'data-project-filters-target': 'tagsInput'}}) }}
                                 {{ form_row(form.companies, {attr: {'data-project-filters-target': 'companiesInput'}}) }}
                             {{ form_end(form) }}
+                            <div data-bs-toggle="collapse" data-bs-target="#filters" class="d-flex justify-content-end">
+                                <twig:ux:icon name="line-md:chevron-up" class="ux-icon pe-" />
+                            </div>
                         </div>
                     </div>
                 </div>

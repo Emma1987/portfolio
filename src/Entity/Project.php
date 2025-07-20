@@ -43,6 +43,15 @@ class Project implements Translatable
     #[ORM\Column(type: Types::STRING, length: 50, enumType: Level::class)]
     private ?Level $level = null;
 
+    #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => 0])]
+    private bool $featured = false;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => 0])]
+    private bool $hidden = false;
+
     /** @var Collection<int, ProjectTechnology> */
     #[ORM\OneToMany(targetEntity: ProjectTechnology::class, mappedBy: 'project', cascade: ['all'], orphanRemoval: true)]
     #[ORM\OrderBy(['position' => 'ASC'])]
@@ -63,6 +72,7 @@ class Project implements Translatable
 
     public function __construct()
     {
+        $this->createdAt = new \DateTimeImmutable();
         $this->projectTechnologies = new ArrayCollection();
         $this->companies = new ArrayCollection();
         $this->projectTags = new ArrayCollection();
@@ -118,6 +128,42 @@ class Project implements Translatable
     public function setLevel(?Level $level): static
     {
         $this->level = $level;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function isFeatured(): ?bool
+    {
+        return $this->featured;
+    }
+
+    public function setFeatured(bool $featured): static
+    {
+        $this->featured = $featured;
+
+        return $this;
+    }
+
+    public function isHidden(): ?bool
+    {
+        return $this->hidden;
+    }
+
+    public function setHidden(bool $hidden): static
+    {
+        $this->hidden = $hidden;
 
         return $this;
     }

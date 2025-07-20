@@ -40,6 +40,8 @@ projects:
     tags: Tags
     company: Entreprise
     companies: Entreprises
+    one_more: (+%count% autre)
+    several_more: (+%count% autres)
     see_more: Voir plus
     previous_slide: Précédent
     next_slide: Suivant
@@ -83,6 +85,7 @@ recruiter_game:
             🃏 Chaque carte contient une question qu'on me pose souvent en entretien<br>
             👀 Sous la carte se trouve ma réponse<br>
             🎯 Ce jeu n'a qu'un seul niveau : mieux me connaître
+
 
 footer: Tous droits réservés &copy; %date% - Emmanuelle Mercadal
 

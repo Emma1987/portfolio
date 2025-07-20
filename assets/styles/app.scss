@@ -174,14 +174,17 @@ html, body {
             #contact-cards {
                 .mailto {
                     background-color: $pastel-yellow;
+                    box-shadow: 2px 2px 0 $primary-color;
                 }
 
                 .linkedin {
                     background-color: $pastel-pink;
+                    box-shadow: 2px 2px 0 $primary-color;
                 }
 
                 .github {
                     background-color: $pastel-green;
+                    box-shadow: 2px 2px 0 $primary-color;
                 }
             }
         }

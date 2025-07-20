@@ -9,6 +9,8 @@ $pastel-blue: #ddecf0;
 $darker-pastel-blue: #bfd3e0;
 $light-gray: #bbb;
 $red: #ff7a7a;
+$champagne: #f3e5ab;
+$darker-champagne: #f3e5ab;
 $background: $pastel-yellow;
 $text-color: #324662;
 
@@ -47,6 +49,19 @@ html, body {
         &:hover, &:active {
             background-color: $darker-pastel-blue;
             border-color: $darker-pastel-blue;
+            color: $text-color;
+        }
+    }
+
+    .btn-tertiary {
+        background-color: $champagne;
+        color: $text-color;
+        border-color: $champagne;
+        box-shadow: 0 0 5px $champagne;
+
+        &:hover, &:active {
+            background-color: $darker-champagne;
+            border-color: $darker-champagne;
             color: $text-color;
         }
     }
@@ -99,7 +114,18 @@ html, body {
         }
 
         &.custom-card-light {
+            background-color: #eee;
             border: 1px solid $light-gray;
+        }
+
+        &.featured {
+            background-color: #eee;
+            border: 2px solid $darker-champagne;
+        }
+
+        &.hidden {
+            background-color: #eee;
+            border: 2px solid $red;
         }
     }
 

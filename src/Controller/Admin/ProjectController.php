@@ -19,7 +19,7 @@ class ProjectController extends AbstractController
     public function list(): Response
     {
         return $this->render('admin/projects.html.twig', [
-            'projects' => $this->entityManager->getRepository(Project::class)->findAll(),
+            'projects' => $this->entityManager->getRepository(Project::class)->findAll(withHidden: true), // @phpstan-ignore-line
         ]);
     }
 
@@ -79,6 +79,37 @@ class ProjectController extends AbstractController
         ]);
     }
 
+    #[Route(path: '/backstage/project/highlight/{id}', name: 'em_portfolio_project_highlight')]
+    public function highlight(Project $project): Response
+    {
+        $toFeature = !$project->isFeatured();
+
+        $project->setFeatured($toFeature);
+        $this->entityManager->flush();
+
+        $message = $toFeature ? 'Project highlighted! Keep up the good work!' : 'This project is no longer in the spotlight! Keep up the good work!';
+        $this->addFlash('success', $message);
+
+        return $this->redirectToRoute('em_portfolio_project_list');
+    }
+
+    #[Route(path: '/backstage/project/hide/{id}', name: 'em_portfolio_project_hide')]
+    public function hide(Project $project): Response
+    {
+        $toHide = !$project->isHidden();
+
+        $project
+            ->setHidden($toHide)
+            ->setFeatured(false)
+        ;
+        $this->entityManager->flush();
+
+        $message = $toHide ? 'Project hidden! Nailed it! 🎯' : 'This project is no longer hidden! Nailed it! 🎯';
+        $this->addFlash('success', $message);
+
+        return $this->redirectToRoute('em_portfolio_project_list');
+    }
+
     #[Route(path: '/backstage/project/delete/{id}', name: 'em_portfolio_project_delete')]
     public function delete(Project $project): Response
     {
@@ -88,7 +119,6 @@ class ProjectController extends AbstractController
         $this->addFlash('success', 'Project deleted. Ghosted. 👻');
 
         return $this->redirectToRoute('em_portfolio_project_list');
-
     }
 
     #[Route(path: '/backstage/picture/delete/{id}', name: 'em_portfolio_picture_delete')]
@@ -102,6 +132,5 @@ class ProjectController extends AbstractController
         $this->addFlash('success', 'Poof! The picture\'s gone. No going back now... 🧙️✨');
 
         return $this->redirectToRoute('em_portfolio_project_edit', ['id' => $project->getId()]);
-
     }
 }

@@ -97,6 +97,7 @@ dashboard:
             other {Questions}
         }
 
+
 projects:
     list_quote: You don't have to do everything today. Just one thing is enough. ✨
     add_quote: The version of you who started this couldn't have done what you just did. 🧠
@@ -107,6 +108,10 @@ projects:
     tags: "Tags :"
     pictures: "Images :"
     built_for: Développé avec {companies}.
+    highlight_project: Mettre à la une
+    remove_highlight_project: Retirer d'à la une
+    hide_project: Mettre dans la liste cachée
+    remove_hidden_project: Retirer de la liste cachée
     preview_project: Aperçu
     edit_project: Éditer
     delete_project: Supprimer
@@ -127,12 +132,24 @@ projects:
         pictures_label: "Images actuelles :"
     list:
         empty: Just imagine how good this is gonna look soon... 😍
+    highlight:
+        modal_title: Mettre le projet à la une
+        modal_body: Est-ce-que tu es sûre de vouloir mettre le projet "{title}" à la une ?
+    remove_highlight:
+        modal_title: Retirer le projet d'à la une
+        modal_body: Est-ce-que tu es sûre de vouloir retirer le projet "{title}" d'à la une ?
+    hide:
+        modal_title: Mettre le projet dans la liste cachée
+        modal_body: Est-ce-que tu es sûre de vouloir mettre le projet "{title}" dans la liste cachée ?
+    remove_hidden:
+        modal_title: Retirer le projet de la liste cachée
+        modal_body: Est-ce-que tu es sûre de vouloir retirer le projet "{title}" de la liste cachée ?
     delete:
         modal_title: Supprimer le projet
         modal_body: Est-ce-que tu es sûre de vouloir supprimer le projet "{title}" ?
     remove_picture:
         modal_title: Supprimer l'image
-        modal_body: Est-ce-que tu es sûre de vouloir supprimer l'image "{path}" ?<br>⚠️ Action irréversible ! ⚠️
+        modal_body: Est-ce-que tu es sûre de vouloir supprimer l'image "{path}" ? ⚠️ Action irréversible ! ⚠️
 
 technologies:
     list_quote: You're allowed to take your time and still be amazing. 🥰
