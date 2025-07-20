@@ -24,6 +24,8 @@ projects:
     tags: Tags
     company: Company
     companies: Companies
+    one_more: (+%count% more)
+    several_more: (+%count% more)
     see_more: See more
     previous_slide: Previous
     next_slide: Next
@@ -67,6 +69,7 @@ recruiter_game:
             🃏 Each card contains a question I'm often asked in interviews<br>
             👀 Under the card, you'll find my answer<br>
             🎯 This game has only one level: getting to know me better
+
 
 footer: All rights reserved &copy; %date% - Emmanuelle Mercadal
 

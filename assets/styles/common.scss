@@ -33,8 +33,12 @@ body {
             height: 1.5rem;
         }
 
-        .project-title {
+        .project-title, .project-section .and-more {
             font-size: .75rem;
+        }
+
+        .project-section {
+            font-size: .9rem;
         }
 
         .pixel-hr {
@@ -46,6 +50,7 @@ body {
         .xp-bar {
             background: $primary-color;
             height: 10px;
+            max-width: 300px;
             flex: 1;
             position: relative;
             border: 2px solid $primary-color;

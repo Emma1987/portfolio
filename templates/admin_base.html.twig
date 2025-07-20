@@ -5,6 +5,7 @@
     <title>{% block title %}{{ 'admin.title'|trans({}, 'admin') }}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
+    <meta name="turbo-prefetch" content="false">
 
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
 
@@ -103,7 +104,7 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                 {{ 'confirm_modal.cancel'|trans }}
                             </button>
-                            <a href="#" class="btn btn-primary" {{ stimulus_target('confirm-modal', 'confirmButton') }}>
+                            <a href="#" class="btn btn-primary" {{ stimulus_target('confirm-modal', 'confirmButton') }} data-turbo="false">
                                 {{ 'confirm_modal.confirm'|trans }}
                             </a>
                         </div>

@@ -208,6 +208,67 @@ class ProjectControllerTest extends AdminWebTestCase
         $this->assertSelectorExists("#detailsModal-{$project->getId()}");
     }
 
+    public function testHighlightProject()
+    {
+        $project = $this->entityManager->getRepository(Project::class)->findOneBy(['title' => 'Haunted house finder']);
+        $this->assertFalse($project->isFeatured());
+
+        // Highlight project
+        $this->client->request('GET', '/backstage/project/highlight/' . $project->getId());
+        $this->assertResponseRedirects('/backstage/projects');
+        $this->client->followRedirect();
+
+        $this->assertSelectorExists('.alert-success');
+        $this->assertSelectorTextContains('.alert-success', 'Project highlighted! Keep up the good work!');
+        $this->assertSelectorCount(1, '.project-cards .custom-card.featured');
+
+        $project = $this->entityManager->getRepository(Project::class)->findOneBy(['title' => 'Haunted house finder']);
+        $this->assertTrue($project->isFeatured());
+
+        // Remove project from highlights
+        $this->client->request('GET', '/backstage/project/highlight/' . $project->getId());
+        $this->assertResponseRedirects('/backstage/projects');
+        $this->client->followRedirect();
+
+        $this->assertSelectorExists('.alert-success');
+        $this->assertSelectorTextContains('.alert-success', 'This project is no longer in the spotlight! Keep up the good work!');
+        $this->assertSelectorCount(0, '.project-cards .custom-card.featured');
+
+        $project = $this->entityManager->getRepository(Project::class)->findOneBy(['title' => 'Haunted house finder']);
+        $this->assertFalse($project->isFeatured());
+    }
+
+    public function testHideProject()
+    {
+        /** @var Project $project */
+        $project = $this->entityManager->getRepository(Project::class)->findOneBy(['title' => 'Haunted house finder']);
+        $this->assertFalse($project->isHidden());
+
+        // Hide project
+        $this->client->request('GET', '/backstage/project/hide/' . $project->getId());
+        $this->assertResponseRedirects('/backstage/projects');
+        $this->client->followRedirect();
+
+        $this->assertSelectorExists('.alert-success');
+        $this->assertSelectorTextContains('.alert-success', 'Project hidden! Nailed it! 🎯');
+        $this->assertSelectorCount(1, '.project-cards .custom-card.hidden');
+
+        $project = $this->entityManager->getRepository(Project::class)->findOneBy(['title' => 'Haunted house finder']);
+        $this->assertTrue($project->isHidden());
+
+        // Remove project from hidden list
+        $this->client->request('GET', '/backstage/project/hide/' . $project->getId());
+        $this->assertResponseRedirects('/backstage/projects');
+        $this->client->followRedirect();
+
+        $this->assertSelectorExists('.alert-success');
+        $this->assertSelectorTextContains('.alert-success', 'This project is no longer hidden! Nailed it! 🎯');
+        $this->assertSelectorCount(0, '.project-cards .custom-card.hidden');
+
+        $project = $this->entityManager->getRepository(Project::class)->findOneBy(['title' => 'Haunted house finder']);
+        $this->assertFalse($project->isHidden());
+    }
+
     public function testDeleteProject()
     {
         $project = $this->entityManager->getRepository(Project::class)->findOneBy(['title' => 'Haunted house finder']);
