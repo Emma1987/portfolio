@@ -9,6 +9,16 @@ $pastel-purple: #b0c5ff;
 $bright-yellow: #fcd34d;
 $background: #FFF9FB;
 
+@keyframes bounce-down {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(6px);
+    }
+}
+
 body {
     .press-start-2p-regular {
         font-family: 'Press Start 2P', system-ui;
@@ -132,6 +142,16 @@ body {
                     margin: 0 3rem;
                     max-height: 310px;
                     overflow: scroll;
+                }
+
+                .scroll-hint {
+                    position: absolute;
+                    right: 3rem;
+                    bottom: 3.5rem;
+                    transform: translateX(-50%);
+                    opacity: 0.5;
+                    transition: opacity 0.3s;
+                    animation: bounce-down 1.5s infinite ease-in-out;
                 }
             }
 

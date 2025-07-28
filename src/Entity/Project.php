@@ -44,7 +44,7 @@ class Project implements Translatable
     private ?Level $level = null;
 
     #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
-    private ?\DateTimeImmutable $createdAt = null;
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: 'boolean', options: ['default' => 0])]
     private bool $featured = false;

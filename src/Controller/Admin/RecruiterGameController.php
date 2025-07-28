@@ -18,7 +18,7 @@ class RecruiterGameController extends AbstractController
     public function index(): Response
     {
         return $this->render('admin/recruiter-game.html.twig', [
-            'questions' => $this->entityManager->getRepository(InterviewPrompt::class)->findAll(),
+            'questions' => $this->entityManager->getRepository(InterviewPrompt::class)->findAll(withHidden: true), // @phpstan-ignore-line
         ]);
     }
 
@@ -60,6 +60,37 @@ class RecruiterGameController extends AbstractController
         ]);
     }
 
+    #[Route(path: '/backstage/recruiter-game/highlight/{id}', name: 'em_portfolio_recruiter_game_highlight')]
+    public function highlight(InterviewPrompt $interviewPrompt): Response
+    {
+        $toFeature = !$interviewPrompt->isFeatured();
+
+        $interviewPrompt->setFeatured($toFeature);
+        $this->entityManager->flush();
+
+        $message = $toFeature ? 'Interview prompt highlighted! Keep up the good work!' : 'This interview prompt is no longer in the spotlight! Keep up the good work!';
+        $this->addFlash('success', $message);
+
+        return $this->redirectToRoute('em_portfolio_recruiter_game_index');
+    }
+
+    #[Route(path: '/backstage/recruiter-game/hide/{id}', name: 'em_portfolio_recruiter_game_hide')]
+    public function hide(InterviewPrompt $interviewPrompt): Response
+    {
+        $toHide = !$interviewPrompt->isHidden();
+
+        $interviewPrompt
+            ->setHidden($toHide)
+            ->setFeatured(false)
+        ;
+        $this->entityManager->flush();
+
+        $message = $toHide ? 'Interview prompt hidden! Nailed it! 🎯' : 'This interview prompt is no longer hidden! Nailed it! 🎯';
+        $this->addFlash('success', $message);
+
+        return $this->redirectToRoute('em_portfolio_recruiter_game_index');
+    }
+
     #[Route(path: '/backstage/recruiter-game/delete/{id}', name: 'em_portfolio_recruiter_game_delete')]
     public function delete(InterviewPrompt $interviewPrompt): Response
     {
@@ -69,6 +100,5 @@ class RecruiterGameController extends AbstractController
         $this->addFlash('success', 'Data flushed. Like a good cache clear.');
 
         return $this->redirectToRoute('em_portfolio_recruiter_game_index');
-
     }
 }

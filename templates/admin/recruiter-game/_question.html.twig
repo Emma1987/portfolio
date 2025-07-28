@@ -1,9 +1,6 @@
 {% trans_default_domain 'admin' %}
-{% set classes = ['custom-card-blue', 'custom-card-green', 'custom-card-yellow', 'custom-card-pink'] %}
-{% set random_class = random(classes) %}
-{% set btn_class = random_class == 'custom-card-pink' or random_class == 'custom-card-yellow' ? 'btn-secondary' : 'btn-primary' %}
 
-<div class="custom-card custom-card-light">
+<div class="custom-card {% if question.featured %}featured{% elseif question.isHidden %}hidden{% else %}custom-card-light{% endif %}">
     <p class="h4 fw-bold">{{ question.question }}</p>
     <p>{{ question.answer|raw }}</p>
     <div class="alert alert-success d-inline-block px-3 py-1">
@@ -12,6 +9,30 @@
 
     <hr>
 
+    <div class="d-flex justify-content-around mb-2">
+        <button
+            class="btn btn-sm btn-tertiary"
+            data-bs-toggle="modal"
+            data-bs-target="#confirmModal"
+            {{ stimulus_action('confirm-modal', 'open') }}
+            data-title="{{ (question.isFeatured ? 'recruiter_game.remove_highlight.modal_title' : 'recruiter_game.highlight.modal_title')|trans }}"
+            data-body="{{ (question.isFeatured ? 'recruiter_game.remove_highlight.modal_body' : 'recruiter_game.highlight.modal_body')|trans({question: question.question}) }}"
+            data-confirm-url="{{ path('em_portfolio_recruiter_game_highlight', {id: question.id}) }}"
+        >
+            {{ (question.isFeatured ? 'recruiter_game.remove_highlight_question' : 'recruiter_game.highlight_question')|trans }}
+        </button>
+        <button
+            class="btn btn-sm btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#confirmModal"
+            {{ stimulus_action('confirm-modal', 'open') }}
+            data-title="{{ (question.isHidden ? 'recruiter_game.remove_hidden.modal_title' : 'recruiter_game.hide.modal_title')|trans }}"
+            data-body="{{ (question.isHidden ? 'recruiter_game.remove_hidden.modal_body' : 'recruiter_game.hide.modal_body')|trans({question: question.question}) }}"
+            data-confirm-url="{{ path('em_portfolio_recruiter_game_hide', {id: question.id}) }}"
+        >
+            {{ (question.isHidden ? 'recruiter_game.remove_hidden_question' : 'recruiter_game.hide_question')|trans }}
+        </button>
+    </div>
     <div class="d-flex justify-content-around">
         <a href="{{ path('em_portfolio_recruiter_game_preview', {id: question.id}) }}" class="btn btn-sm btn-secondary">
             {{ 'recruiter_game.preview_question'|trans }}
