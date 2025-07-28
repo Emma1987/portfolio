@@ -27,7 +27,10 @@ class InterviewPromptType extends AbstractType
             ])
             ->add('answer', TextareaType::class, [
                 'label' => false,
-                'attr' => ['placeholder' => 'recruiter_game.form.answer_placeholder'],
+                'attr' => [
+                    'placeholder' => 'recruiter_game.form.answer_placeholder',
+                    'rows' => 10,
+                ],
             ])
             ->add('category', EnumType::class, [
                 'label' => false,

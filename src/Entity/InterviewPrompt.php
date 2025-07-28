@@ -29,8 +29,22 @@ class InterviewPrompt implements Translatable
     #[Assert\NotBlank]
     private ?string $answer = null;
 
+    #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
+    private \DateTimeImmutable $createdAt;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => 0])]
+    private bool $featured = false;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => 0])]
+    private bool $hidden = false;
+
     #[ORM\Column(length: 50, nullable: true, enumType: InterviewPromptCategory::class)]
     private ?InterviewPromptCategory $category = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -57,6 +71,42 @@ class InterviewPrompt implements Translatable
     public function setAnswer(string $answer): static
     {
         $this->answer = $answer;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function isFeatured(): ?bool
+    {
+        return $this->featured;
+    }
+
+    public function setFeatured(bool $featured): static
+    {
+        $this->featured = $featured;
+
+        return $this;
+    }
+
+    public function isHidden(): ?bool
+    {
+        return $this->hidden;
+    }
+
+    public function setHidden(bool $hidden): static
+    {
+        $this->hidden = $hidden;
 
         return $this;
     }

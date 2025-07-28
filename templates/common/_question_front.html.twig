@@ -3,8 +3,9 @@
         <div class="card-front d-flex align-items-center text-center press-start-2p-regular">
             <div class="recruiter-game-question m-5">{{ question.question }}</div>
         </div>
-        <div class="card-back d-flex align-items-center text-center">
-            <div class="recruiter-game-answer space-grotesk">{{ question.answer|raw }}</div>
+        <div class="card-back d-flex align-items-center text-center" {{ stimulus_controller('scroll-hint') }}>
+            <div class="recruiter-game-answer space-grotesk" {{ stimulus_target('scroll-hint', 'answer') }}>{{ question.answer|raw }}</div>
+            <div class="scroll-hint" {{ stimulus_target('scroll-hint', 'hint') }}>↓</div>
         </div>
     </div>
 </div>

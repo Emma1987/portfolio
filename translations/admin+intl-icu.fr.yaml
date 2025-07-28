@@ -97,7 +97,6 @@ dashboard:
             other {Questions}
         }
 
-
 projects:
     list_quote: You don't have to do everything today. Just one thing is enough. ✨
     add_quote: The version of you who started this couldn't have done what you just did. 🧠
@@ -223,6 +222,10 @@ recruiter_game:
     back_to_list: Liste des questions
     preview_question: Aperçu
     edit_question: Éditer
+    highlight_question: Mettre à la une
+    remove_highlight_question: Retirer d'à la une
+    hide_question: Mettre dans la liste cachée
+    remove_hidden_question: Retirer de la liste cachée
     delete_question: Supprimer
     list:
         empty: Oops, looks like Michael Myers got to your list first. 🔪
@@ -233,6 +236,18 @@ recruiter_game:
         category_placeholder: Catégorie
         add: Créer
         edit: Mettre à jour
+    highlight:
+        modal_title: Mettre la question à la une
+        modal_body: Est-ce-que tu es sûre de vouloir mettre la question "{question}" à la une ?
+    remove_highlight:
+        modal_title: Retirer la question d'à la une
+        modal_body: Est-ce-que tu es sûre de vouloir retirer la question "{question}" d'à la une ?
+    hide:
+        modal_title: Mettre la question dans la liste cachée
+        modal_body: Est-ce-que tu es sûre de vouloir mettre la question "{question}" dans la liste cachée ?
+    remove_hidden:
+        modal_title: Retirer la question de la liste cachée
+        modal_body: Est-ce-que tu es sûre de vouloir retirer la question "{question}" de la liste cachée ?
     delete:
         modal_title: Supprimer une question
         modal_body: Est-ce-que tu es sûre de vouloir supprimer la question {question} ?

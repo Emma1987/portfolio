@@ -72,6 +72,66 @@ class RecruiterGameControllerTest extends AdminWebTestCase
         $this->assertSelectorExists('.recruiter-game-container');
     }
 
+    public function testHighlightInterviewPrompt()
+    {
+        $question = $this->entityManager->getRepository(InterviewPrompt::class)->findOneBy(['question' => 'Where do you see yourself in five years, assuming the world survives?']);
+        $this->assertFalse($question->isFeatured());
+
+        // Highlight interview prompt
+        $this->client->request('GET', '/backstage/recruiter-game/highlight/' . $question->getId());
+        $this->assertResponseRedirects('/backstage/recruiter-game');
+        $this->client->followRedirect();
+
+        $this->assertSelectorExists('.alert-success');
+        $this->assertSelectorTextContains('.alert-success', 'Interview prompt highlighted! Keep up the good work!');
+        $this->assertSelectorCount(1, '.question-cards .custom-card.featured');
+
+        $question = $this->entityManager->getRepository(InterviewPrompt::class)->findOneBy(['question' => 'Where do you see yourself in five years, assuming the world survives?']);
+        $this->assertTrue($question->isFeatured());
+
+        // Remove interview prompt from highlights
+        $this->client->request('GET', '/backstage/recruiter-game/highlight/' . $question->getId());
+        $this->assertResponseRedirects('/backstage/recruiter-game');
+        $this->client->followRedirect();
+
+        $this->assertSelectorExists('.alert-success');
+        $this->assertSelectorTextContains('.alert-success', 'This interview prompt is no longer in the spotlight! Keep up the good work!');
+        $this->assertSelectorCount(0, '.question-cards .custom-card.featured');
+
+        $question = $this->entityManager->getRepository(InterviewPrompt::class)->findOneBy(['question' => 'Where do you see yourself in five years, assuming the world survives?']);
+        $this->assertFalse($question->isFeatured());
+    }
+
+    public function testHideInterviewPrompt()
+    {
+        $question = $this->entityManager->getRepository(InterviewPrompt::class)->findOneBy(['question' => 'Where do you see yourself in five years, assuming the world survives?']);
+        $this->assertFalse($question->isHidden());
+
+        // Hide interview prompt
+        $this->client->request('GET', '/backstage/recruiter-game/hide/' . $question->getId());
+        $this->assertResponseRedirects('/backstage/recruiter-game');
+        $this->client->followRedirect();
+
+        $this->assertSelectorExists('.alert-success');
+        $this->assertSelectorTextContains('.alert-success', 'Interview prompt hidden! Nailed it! 🎯');
+        $this->assertSelectorCount(1, '.question-cards .custom-card.hidden');
+
+        $question = $this->entityManager->getRepository(InterviewPrompt::class)->findOneBy(['question' => 'Where do you see yourself in five years, assuming the world survives?']);
+        $this->assertTrue($question->isHidden());
+
+        // Remove interview prompt from hidden list
+        $this->client->request('GET', '/backstage/recruiter-game/hide/' . $question->getId());
+        $this->assertResponseRedirects('/backstage/recruiter-game');
+        $this->client->followRedirect();
+
+        $this->assertSelectorExists('.alert-success');
+        $this->assertSelectorTextContains('.alert-success', 'This interview prompt is no longer hidden! Nailed it! 🎯');
+        $this->assertSelectorCount(0, '.question-cards .custom-card.hidden');
+
+        $question = $this->entityManager->getRepository(InterviewPrompt::class)->findOneBy(['question' => 'Where do you see yourself in five years, assuming the world survives?']);
+        $this->assertFalse($question->isHidden());
+    }
+
     public function testDeleteInterviewPrompt()
     {
         $question = $this->entityManager->getRepository(InterviewPrompt::class)->findOneBy(['question' => 'Where do you see yourself in five years, assuming the world survives?']);
