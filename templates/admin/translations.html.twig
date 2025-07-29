@@ -1,6 +1,5 @@
 {% extends 'admin_base.html.twig' %}
 {% trans_default_domain 'admin' %}
-{% form_theme form 'form/translation_theme.html.twig' %}
 
 {% block body_title %}
     <h1 class="d-flex">{{ 'admin.title'|trans }}<twig:ux:icon name="garden:translation-exists-stroke-16" class="ux-icon ms-2" /></h1>
@@ -14,16 +13,55 @@
     <hr class="my-4">
 
     <section class="translations-card">
-        <div class="custom-card custom-card-blue text-center">
-            {{ form_start(form) }}
-                {{ form_widget(form) }}
-
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-sm btn-primary mb-3">
-                        {{ 'translations.form.submit'|trans }}
+        <ul class="nav nav-tabs mb-2" id="translationTab" role="tablist">
+            {% for entity in translatable_entities %}
+                {% set entity_slug = entity|u.snake|replace({_: '-'}) %}
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link {% if loop.index == 1 %}active{% endif %}" id="{{ entity_slug }}-tab" data-bs-toggle="tab" data-bs-target="#{{ entity_slug }}" type="button" role="tab" aria-controls="{{ entity_slug }}" aria-selected="true">
+                        {{ entity_slug|replace({'-': ' '})|capitalize }}
                     </button>
-                </div>
-            {{ form_end(form) }}
-        </div>
+                </li>
+            {% endfor %}
+        </ul>
+        {{ form_start(form) }}
+            <div class="tab-content" id="translationTabContent">
+                {% for entity in translatable_entities %}
+                    {% set entity_slug = entity|u.snake|replace({_: '-'}) %}
+                    {% set translation_forms = form.translations|filter(child => child.entity.vars.value == entity) %}
+
+                    <div class="tab-pane fade {% if loop.index == 1 %}show active{% endif %}" id="{{ entity_slug }}" role="tabpanel" aria-labelledby="{{ entity_slug }}-tab">
+                        <div class="custom-card custom-card-blue text-center">
+                            {% for form in form.translations|filter(child => child.entity.vars.value == entity) %}
+                                    {% if loop.index == 1 %}
+                                        {# Header row: render field labels manually #}
+                                        <div class="translation-label d-flex gap-3">
+                                            <label style="flex: 0 0 140px;">{{ form.entity.vars.label|trans }}</label>
+                                            <label style="flex: 0 0 140px;">{{ form.field.vars.label|trans }}</label>
+                                            <label style="flex: 1;">{{ form.fr_translation.vars.label|trans }}</label>
+                                            <label style="flex: 1;">{{ form.en_translation.vars.label|trans }}</label>
+                                        </div>
+                                    {% endif %}
+
+                                    {# Data rows: render each translation without labels #}
+                                    <div class="translations-row d-flex flex-column mb-2">
+                                        <div class="translation-entry d-flex gap-3">
+                                            <div style="flex: 0 0 140px;">{{ form_widget(form.entity) }}</div>
+                                            <div style="flex: 0 0 140px;">{{ form_widget(form.field) }}</div>
+                                            <div style="flex: 1;">{{ form_widget(form.fr_translation) }}</div>
+                                            <div style="flex: 1;">{{ form_widget(form.en_translation) }}</div>
+                                        </div>
+                                    </div>
+                            {% endfor %}
+
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-sm btn-primary mb-3">
+                                    {{ 'translations.form.submit'|trans }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {{ form_end(form) }}
     </section>
 {% endblock %}

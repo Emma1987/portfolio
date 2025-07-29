@@ -4,7 +4,9 @@ namespace App\Service;
 
 use App\Entity\DTO\TranslationDTO;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Gedmo\Translatable\Entity\Translation;
+use Gedmo\Translatable\Translatable;
 
 class TranslationService
 {
@@ -64,5 +66,26 @@ class TranslationService
             $setter = 'set' . ucfirst($translationEntity->getField());
             $entity->{$setter}($translation);
         }
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getTranslatableEntities(): array
+    {
+        $entities = [];
+        $metadata = $this->entityManager->getMetadataFactory()->getAllMetadata();
+        $translatableEntities = array_filter($metadata, function (ClassMetadata $entity) {
+            return in_array(Translatable::class, class_implements($entity->getName()));
+        });
+
+        foreach ($translatableEntities as $translatableEntity) {
+            $namespace = explode('\\', $translatableEntity->getName());
+            $entities[] = $namespace[count($namespace) - 1];
+        }
+
+        sort($entities);
+
+        return array_unique($entities);
     }
 }
