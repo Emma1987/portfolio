@@ -36,6 +36,7 @@ class TranslationController extends AbstractController
 
         return $this->render('admin/translations.html.twig', [
             'form' => $form,
+            'translatable_entities' => $this->translationService->getTranslatableEntities(),
         ]);
     }
 }
