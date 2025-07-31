@@ -1,3 +1,6 @@
+[![Lint Check](https://github.com/Emma1987/portfolio/actions/workflows/lint.yml/badge.svg)](https://github.com/Emma1987/portfolio/actions/workflows/lint.yml)
+[![Symfony Tests](https://github.com/Emma1987/portfolio/actions/workflows/tests.yml/badge.svg)](https://github.com/Emma1987/portfolio/actions/workflows/tests.yml)
+
 ## 📁 Portfolio
 
 ### 🎯 Purpose
