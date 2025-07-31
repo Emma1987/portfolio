@@ -14,7 +14,7 @@ This is my personal developer portfolio, built with Symfony, Twig, and Symfony U
 
 ### 🛠️ Tech Stack
 • Symfony 7.3  
-• Twig & AssetMapper  
-• Symfony UX (Turbo, Stimulus, Twig Components)  
+• Twig  
+• Symfony UX  
 • MySQL / Doctrine  
-• GitHub Actions CI
+• GitHub Actions  
